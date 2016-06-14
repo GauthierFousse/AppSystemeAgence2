@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Conseiller {
 	
-	private int id;
 	private String login;
 	private String password;
 	private List<Client> listeClients;
