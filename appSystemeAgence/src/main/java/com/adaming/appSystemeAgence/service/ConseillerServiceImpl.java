@@ -21,13 +21,17 @@ public class ConseillerServiceImpl implements IConseillerService {
 	 * Ajout d'un conseiller
 	 */
 	public void addConseiller(Conseiller pConseiller) {
+		System.out.println("===== Entrée dans la méthode addConseiller de ConseillerServiceImpl.java. =====");
 		conseillerDao.addConseiller(pConseiller);
+		System.out.println("===== Sortie de la méthode addConseiller de ConseillerServiceImpl.java. =====");
 	}
 	
 	/**
 	 * Initialisation d'un conseiller d'un conseiller
 	 */
 	public void initConseiller(Conseiller pConseiller) {
+		System.out.println("===== Entrée dans la méthode initConseiller de ConseillerServiceImpl.java. =====");
 		conseillerDao.initConseiller(pConseiller);
+		System.out.println("===== Sortie de la méthode initConseiller de ConseillerServiceImpl.java. =====");
 	}
 }
