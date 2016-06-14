@@ -24,17 +24,9 @@ public class Conseiller {
 		this.password = password;
 	}
 
-	public Conseiller(int id, String login, String password) {
-		super();
-		this.id = id;
-		this.login = login;
-		this.password = password;
-	}
-	
-	public Conseiller(int id, String login, String password,
+	public Conseiller(String login, String password,
 			List<Client> listeClients, double cA) {
 		super();
-		this.id = id;
 		this.login = login;
 		this.password = password;
 		this.listeClients = listeClients;
@@ -45,14 +37,6 @@ public class Conseiller {
 	 * Getters / Setters
 	 * @return
 	 */
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getLogin() {
 		return login;
