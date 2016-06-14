@@ -30,12 +30,31 @@ private static final long serialVersionUID = 1L;
 		super();
 	}
 	
-	List<Conseiller> getAllConseillers() {
-		System.out.println("===== EntrÃ©e dans la mÃ©thode getAllConseillers de AgenceBean.java. =====");
+	/**
+	* Récupération de la liste des conseillers.
+	*/
+	public List<Conseiller> getAllConseillers() {
+		System.out.println("===== Entrée dans la méthode getAllConseillers de AgenceBean.java. =====");
 		conseillerList = conseillerService.getAllConseillers();
-		System.out.println("===== Fin de la mÃ©thode getAllConseillers de AgenceBean.java. =====");
+		System.out.println("===== Fin de la méthode getAllConseillers de AgenceBean.java. =====");
 		return conseillerList;
 	}
-	
 
+	/**
+	* Initialisation d'un conseiller.
+	*/
+	public void initConseiller() {
+		System.out.println("===== Entrée dans la méthode initConseiller de AgenceBean.java. =====");
+		conseillerList = conseillerService.initConseiller();
+		System.out.println("===== Fin de la méthode initConseiller de AgenceBean.java. =====");
+	}
+
+	/**
+	* Ajout d'un conseiller.
+	*/
+	public void addConseiller() {
+		System.out.println("===== Entrée dans la méthode addConseiller de AgenceBean.java. =====");
+		conseillerList = conseillerService.addConseiller();
+		System.out.println("===== Fin de la méthode addConseiller de AgenceBean.java. =====");
+	}
 }
