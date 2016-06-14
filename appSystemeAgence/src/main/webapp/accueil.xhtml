@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page accueil.xhtml</title>
+</h:head>
+<body>
+
+	<h:form>
+		<p:dataTable id="liste" value="#{agenceMB.getAllConseiller}"
+			var="conseiller">
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Identifiant" />
+				</f:facet>
+				<h:outputText value="#{conseiller.id}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Nom" />
+				</f:facet>
+				<h:outputText value="#{conseiller.nom}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Prénom" />
+				</f:facet>
+				<h:outputText value="#{conseiller.prenom}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Adresse" />
+				</f:facet>
+				<h:outputText value="#{conseiller.adresse}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Téléphone personnel" />
+				</f:facet>
+				<h:outputText value="#{conseiller.telPrive}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Chiffre d'affaire" />
+				</f:facet>
+				<h:outputText value="#{conseiller.CA}" />
+			</p:column>
+
+		</p:dataTable>
+
+
+	</h:form>
+
+	<h:form>
+
+		<p:commandButton value="Ajouter conseiller" id="addConseiller"
+			action="toAddClient" actionListener="#{agenceMB.initConseiller}"
+			styleClass="ui-priority-primary" />
+	</h:form>
+
+</body>
+</html>
