@@ -9,6 +9,6 @@ public interface IConseillerService {
 	
 	public List<Conseiller> getAllConseillers();
 	public void addConseiller(Conseiller pConseiller);
-	
+	public void initConseiller (Conseiller pConseiller);
 
 }

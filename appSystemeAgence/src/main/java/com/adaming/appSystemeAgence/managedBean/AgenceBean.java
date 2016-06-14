@@ -43,18 +43,18 @@ private static final long serialVersionUID = 1L;
 	/**
 	* Initialisation d'un conseiller.
 	*/
-	public void initConseiller() {
+	public void initConseiller(Conseiller pConseiller) {
 		System.out.println("===== Entrée dans la méthode initConseiller de AgenceBean.java. =====");
-		conseillerList = conseillerService.initConseiller();
+		conseillerService.initConseiller(pConseiller);
 		System.out.println("===== Fin de la méthode initConseiller de AgenceBean.java. =====");
 	}
 
 	/**
 	* Ajout d'un conseiller.
 	*/
-	public void addConseiller() {
+	public void addConseiller(Conseiller pConseiller) {
 		System.out.println("===== Entrée dans la méthode addConseiller de AgenceBean.java. =====");
-		conseillerList = conseillerService.addConseiller();
+		conseillerService.addConseiller(pConseiller);
 		System.out.println("===== Fin de la méthode addConseiller de AgenceBean.java. =====");
 	}
 }

@@ -24,5 +24,10 @@ public class ConseillerServiceImpl implements IConseillerService {
 		conseillerDao.addConseiller(pConseiller);
 	}
 	
-	
+	/**
+	 * Initialisation d'un conseiller d'un conseiller
+	 */
+	public void initConseiller(Conseiller pConseiller) {
+		conseillerDao.initConseiller(pConseiller);
+	}
 }
