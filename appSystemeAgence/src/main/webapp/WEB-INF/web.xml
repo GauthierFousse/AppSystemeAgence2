@@ -18,12 +18,15 @@
 <!-- 	<listener> -->
 <!-- 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class> -->
 <!-- 	</listener> -->
+
 	<display-name>appSystemeAgence</display-name>
+	
 	<servlet>
-		<display-name>Faces Servlet</display-name>
-		<servlet-class>"http://java.sun.com/xml/ns/javaee":icon</servlet-class>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>/faces/*</url-pattern>
