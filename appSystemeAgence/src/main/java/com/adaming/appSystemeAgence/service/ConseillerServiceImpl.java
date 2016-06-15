@@ -2,6 +2,7 @@ package com.adaming.appSystemeAgence.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adaming.appSystemeAgence.dao.IConseillerDao;
@@ -10,6 +11,7 @@ import com.adaming.appSystemeAgence.modele.Conseiller;
 @Service("conseillerServiceBean")
 public class ConseillerServiceImpl implements IConseillerService {
 
+	@Autowired
 	private IConseillerDao conseillerDao;
 	
 	/**
