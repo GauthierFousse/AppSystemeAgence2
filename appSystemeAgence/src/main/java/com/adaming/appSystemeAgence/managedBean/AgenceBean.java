@@ -53,7 +53,7 @@ private static final long serialVersionUID = 1L;
 	 * 
 	 * @return la liste de tous les conseillers.
 	 */
-	public List<Conseiller> getConseillerList() {
+	public List<Conseiller> getListeConseillers() {
 		System.out.println("===> MB : getting listeConseillers");
 		listeConseillers = conseillerService.getAllConseillers();
 		System.out.println("===> MB : liste recuperee : " + listeConseillers);
