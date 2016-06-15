@@ -8,12 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity(name="personne")
+/*@Entity(name="personne")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@Table(name="personnes")
+@Table(name="personnes")*/
+@MappedSuperclass
 public abstract class Personne {
 
 	@Id

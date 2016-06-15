@@ -10,13 +10,13 @@ import javax.persistence.Table;
 
 @Entity(name="conseiller")
 @Table(name="conseillers")  
-@AttributeOverrides({  
+/*@AttributeOverrides({  
     @AttributeOverride(name="id_personne", column=@Column(name="id_personne")),  
     @AttributeOverride(name="nom", column=@Column(name="nom")), 
     @AttributeOverride(name="prenom", column=@Column(name="prenom")), 
     @AttributeOverride(name="tel_prive", column=@Column(name="tel_prive"))  
-})  
-public class Conseiller {
+})*/
+public class Conseiller extends Personne {
 	
 	@Column(name="login")
 	private String login;
