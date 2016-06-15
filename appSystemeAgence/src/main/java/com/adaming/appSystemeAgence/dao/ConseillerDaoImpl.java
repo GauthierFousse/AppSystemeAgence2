@@ -6,11 +6,14 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.appSystemeAgence.modele.Conseiller;
 
+@Repository
 public class ConseillerDaoImpl implements IConseillerDao {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 
