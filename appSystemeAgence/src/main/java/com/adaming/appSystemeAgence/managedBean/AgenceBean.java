@@ -5,13 +5,14 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.enterprise.context.RequestScoped;
+
+import javax.enterprise.context.SessionScoped;
 
 import com.adaming.appSystemeAgence.modele.Conseiller;
 import com.adaming.appSystemeAgence.service.IConseillerService;
 
 @ManagedBean(name="agenceMB")
-@RequestScoped
+@SessionScoped
 public class AgenceBean implements Serializable {
 	
 private static final long serialVersionUID = 1L;
@@ -20,6 +21,7 @@ private static final long serialVersionUID = 1L;
 	private Conseiller conseiller;
 
 	//la couche service : injection du service dans le managedbean
+	//@Autowired si on passe par Spring
 	@ManagedProperty(value="#{conseillerServiceBean}")
 	private IConseillerService conseillerService;
 
@@ -45,7 +47,7 @@ private static final long serialVersionUID = 1L;
 	 */
 	public void addConseiller(Conseiller pConseiller) {
 		System.out.println("===> MB : add conseiller : " + pConseiller);
-		conseillerService.addConseiller(pConseiller);
+		getConseillerService().addConseiller(pConseiller);
 		System.out.println("===> MB : conseiller added, maybe.");
 	}
 	
@@ -54,9 +56,9 @@ private static final long serialVersionUID = 1L;
 	 * @return la liste de tous les conseillers.
 	 */
 	public List<Conseiller> getListeConseillers() {
-		System.out.println("===> MB : getting listeConseillers");
-		System.out.println("===> MB : conseillerService : ");// + conseillerService);
-		listeConseillers = conseillerService.getAllConseillers();
+		System.out.println("===> MB : getting listeConseillers !");
+		System.out.println("===> MB : managed property conseillerService : " + conseillerService);
+		listeConseillers = getConseillerService().getAllConseillers();
 		System.out.println("===> MB : liste recuperee : " + listeConseillers);
 		return listeConseillers;
 	}
@@ -73,12 +75,12 @@ private static final long serialVersionUID = 1L;
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
-	
-	/* getter and setter of the managed property */
+	/* getter and SETTER of the managed property */
 	public IConseillerService getConseillerService() {
 		return conseillerService;
 	}
 	public void setConseillerService(IConseillerService conseillerService) {
+		System.out.println("===> MB : setting conseiller service to " + conseillerService);
 		this.conseillerService = conseillerService;
 	}
 }
