@@ -6,7 +6,7 @@
   <!-- ==================== PAGE DE DEMARRAGE =================== -->
   <!-- ========================================================== -->  
   <welcome-file-list>
-    <welcome-file>distance.xhtml</welcome-file>
+    <welcome-file>accueil.xhtml</welcome-file>
   </welcome-file-list>
   
   <!-- ========================================================== -->
