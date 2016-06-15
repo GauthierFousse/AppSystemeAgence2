@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.adaming.appSystemeAgence.dao.IConseillerDao;
 import com.adaming.appSystemeAgence.modele.Conseiller;
 
-@Service("CityServiceBean")
+@Service("conseillerServiceBean")
 public class ConseillerServiceImpl implements IConseillerService {
 
 	private IConseillerDao conseillerDao;
