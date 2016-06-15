@@ -2,10 +2,12 @@ package com.adaming.appSystemeAgence.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.adaming.appSystemeAgence.dao.IConseillerDao;
 import com.adaming.appSystemeAgence.modele.Conseiller;
 
-
+@Service("CityServiceBean")
 public class ConseillerServiceImpl implements IConseillerService {
 
 	private IConseillerDao conseillerDao;
