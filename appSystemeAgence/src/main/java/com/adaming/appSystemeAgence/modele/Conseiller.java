@@ -1,9 +1,7 @@
 package com.adaming.appSystemeAgence.modele;
 
-import java.util.List;
+import java.io.Serializable;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,8 +14,10 @@ import javax.persistence.Table;
     @AttributeOverride(name="prenom", column=@Column(name="prenom")), 
     @AttributeOverride(name="tel_prive", column=@Column(name="tel_prive"))  
 })*/
-public class Conseiller extends Personne {
+public class Conseiller extends Personne implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Column(name="login")
 	private String login;
 	
@@ -27,7 +27,9 @@ public class Conseiller extends Personne {
 	@Column(name="chiffre_affaire")
 	private double CA;
 	
-	private List<Client> listeClients;
+	/* A faire en one to many, puisque la classe represente SEULEMENT une table.
+	 * private List<Client> listeClients;
+	 */
 	
 	/**
 	 * Constructors
@@ -43,12 +45,10 @@ public class Conseiller extends Personne {
 		this.password = password;
 	}
 
-	public Conseiller(String login, String password,
-			List<Client> listeClients, double cA) {
+	public Conseiller(String login, String password, double cA) {
 		super();
 		this.login = login;
 		this.password = password;
-		this.listeClients = listeClients;
 		CA = cA;
 	}
 
@@ -71,14 +71,6 @@ public class Conseiller extends Personne {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public List<Client> getListeClients() {
-		return listeClients;
-	}
-
-	public void setListeClients(List<Client> listeClients) {
-		this.listeClients = listeClients;
 	}
 
 	public double getCA() {
