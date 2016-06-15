@@ -72,4 +72,12 @@ private static final long serialVersionUID = 1L;
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
+	
+	/* getter and setter of the managed property */
+	public IConseillerService getConseillerService() {
+		return conseillerService;
+	}
+	public void setConseillerService(IConseillerService conseillerService) {
+		this.conseillerService = conseillerService;
+	}
 }
