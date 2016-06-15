@@ -4,20 +4,24 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="conseiller")
-@Table(name="conseillers")  
-/*@AttributeOverrides({  
-    @AttributeOverride(name="id_personne", column=@Column(name="id_personne")),  
-    @AttributeOverride(name="nom", column=@Column(name="nom")), 
-    @AttributeOverride(name="prenom", column=@Column(name="prenom")), 
-    @AttributeOverride(name="tel_prive", column=@Column(name="tel_prive"))  
-})*/
+@Table(name="conseillers")
 public class Conseiller extends Personne implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_conseiller", nullable=false)
+	private int id;
+	
 	@Column(name="login")
 	private String login;
 	
@@ -26,6 +30,12 @@ public class Conseiller extends Personne implements Serializable {
 	
 	@Column(name="chiffre_affaire")
 	private double CA;
+	
+	/////////// ASSOCIATIONS ///////////
+		
+	@OneToOne
+	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
+	private Adresse adresse;
 	
 	/* A faire en one to many, puisque la classe represente SEULEMENT une table.
 	 * private List<Client> listeClients;
@@ -39,17 +49,21 @@ public class Conseiller extends Personne implements Serializable {
 		super();
 	}
 
-	public Conseiller(String login, String password) {
-		super();
-		this.login = login;
-		this.password = password;
-	}
-
-	public Conseiller(String login, String password, double cA) {
+	public Conseiller(String login, String password, double cA, Adresse adresse) {
 		super();
 		this.login = login;
 		this.password = password;
 		CA = cA;
+		this.adresse = adresse;
+	}
+	
+	public Conseiller(int id, String login, String password, double cA, Adresse adresse) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.password = password;
+		CA = cA;
+		this.adresse = adresse;
 	}
 
 	/**
@@ -57,6 +71,22 @@ public class Conseiller extends Personne implements Serializable {
 	 * @return
 	 */
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	
 	public String getLogin() {
 		return login;
 	}

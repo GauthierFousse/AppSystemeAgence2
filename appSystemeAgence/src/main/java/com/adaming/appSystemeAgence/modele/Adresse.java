@@ -33,7 +33,7 @@ public class Adresse implements Serializable {
 	/////////// ASSOCIATIONS ////////////
 	
 	@OneToOne(mappedBy = "adresse")
-	private Personne personne;
+	private Conseiller conseiller;
 	
 	/////////// CONSTRUCTEURS /////////
 	

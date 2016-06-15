@@ -3,30 +3,13 @@ package com.adaming.appSystemeAgence.modele;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-//import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 
-//@MappedSuperclass
-@Entity(name="personne")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@Table(name="personnes")
+@MappedSuperclass
 public abstract class Personne implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_personne", nullable=false)
-	private int id;
-	
 	@Column(name="nom")
 	private String nom;
 	
@@ -36,42 +19,17 @@ public abstract class Personne implements Serializable {
 	@Column(name="tel_prive")
 	private String telPrive;
 	
-	
-	/////////// ASSOCIATIONS ///////////
-	
-	@OneToOne
-	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
-	private Adresse adresse;
-
 	/////////// CONSTRUCTEURS /////////
 	
 	public Personne() {
 		super();
 	}
 
-	public Personne(String nom, String prenom, Adresse adresse, String telPrive) {
+	public Personne(String nom, String prenom, String telPrive) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.adresse = adresse;
 		this.telPrive = telPrive;
-	}
-
-	public Personne(int id, String nom, String prenom, Adresse adresse, String telPrive) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-		this.telPrive = telPrive;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getNom() {
@@ -88,14 +46,6 @@ public abstract class Personne implements Serializable {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public Adresse getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
 	}
 
 	public String getTelPrive() {
