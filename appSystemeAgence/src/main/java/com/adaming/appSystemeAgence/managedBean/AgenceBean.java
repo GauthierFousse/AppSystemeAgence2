@@ -16,7 +16,7 @@ public class AgenceBean implements Serializable {
 	
 private static final long serialVersionUID = 1L;
 	
-	private List<Conseiller> conseillerList;
+	private List<Conseiller> listeConseillers;
 	private Conseiller conseiller;
 
 	//la couche service : injection du service dans le managedbean
@@ -31,44 +31,40 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	/**
-	 * Récupération de la liste des conseillers.
-	 * @return
+	 * Instanciation d'un nouveau conseiller.
 	 */
-	public List<Conseiller> getAllConseillers() {
-		System.out.println("===== Entrée dans la méthode getAllConseillers de AgenceBean.java. =====");
-		conseillerService.getAllConseillers();
-		System.out.println("===== Fin de la méthode getAllConseillers de AgenceBean.java. =====");
-		return conseillerList;
-	}
-
-	/**
-	* Initialisation d'un conseiller.
-	*/
 	public void initConseiller() {
-		// Méthode pompée du projet 10_gestionBibliotheque_DAO.
-		
-		System.out.println("===== Entrée dans la méthode initConseiller de AgenceBean.java. =====");
+		System.out.println("===> MB : initConseiller()");
 		setConseiller(new Conseiller());
-		System.out.println("===== Fin de la méthode initConseiller de AgenceBean.java. =====");
+		System.out.println("===> MB : new conseiller set.");
 	}
 
 	/**
-	 * Ajout d'un conseiller.
+	 * Ajout d'un conseiller dans la BDD.
 	 * @param pConseiller
 	 */
 	public void addConseiller(Conseiller pConseiller) {
-		System.out.println("===== Entrée dans la méthode addConseiller de AgenceBean.java. =====");
+		System.out.println("===> MB : add conseiller : " + pConseiller);
 		conseillerService.addConseiller(pConseiller);
-		System.out.println("===== Fin de la méthode addConseiller de AgenceBean.java. =====");
+		System.out.println("===> MB : conseiller added, maybe.");
 	}
 	
-	
-	/* Acceseurs et mutateurs. */
+	/**
+	 * 
+	 * @return la liste de tous les conseillers.
+	 */
 	public List<Conseiller> getConseillerList() {
-		return conseillerList;
+		System.out.println("===> MB : getting listeConseillers");
+		listeConseillers = conseillerService.getAllConseillers();
+		System.out.println("===> MB : liste recuperee : " + listeConseillers);
+		return listeConseillers;
 	}
-	public void setConseillerList(List<Conseiller> conseillerList) {
-		this.conseillerList = conseillerList;
+	
+	/* 
+	 * autres getters et setters
+	 **/
+	public void setListeConseillers(List<Conseiller> listeConseillers) {
+		this.listeConseillers = listeConseillers;
 	}
 	public Conseiller getConseiller() {
 		return conseiller;

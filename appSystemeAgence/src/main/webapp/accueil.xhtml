@@ -11,49 +11,49 @@
 <body>
 
 	<h:form>
-		<p:dataTable id="liste" value="#{agenceMB.getAllConseiller}"
-			var="conseiller">
+		<p:dataTable id="liste" value="#{agenceMB.listeConseillers}"
+			var="listeConseillers">
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Identifiant" />
 				</f:facet>
-				<h:outputText value="#{conseiller.id}" />
+				<h:outputText value="#{listeConseillers.id}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Nom" />
 				</f:facet>
-				<h:outputText value="#{conseiller.nom}" />
+				<h:outputText value="#{listeConseillers.nom}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Prénom" />
 				</f:facet>
-				<h:outputText value="#{conseiller.prenom}" />
+				<h:outputText value="#{listeConseillers.prenom}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Adresse" />
 				</f:facet>
-				<h:outputText value="#{conseiller.adresse}" />
+				<h:outputText value="#{listeConseillers.adresse}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Téléphone personnel" />
 				</f:facet>
-				<h:outputText value="#{conseiller.telPrive}" />
+				<h:outputText value="#{listeConseillers.telPrive}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Chiffre d'affaire" />
 				</f:facet>
-				<h:outputText value="#{conseiller.CA}" />
+				<h:outputText value="#{listeConseillers.CA}" />
 			</p:column>
 
 		</p:dataTable>
