@@ -2,13 +2,32 @@ package com.adaming.appSystemeAgence.modele;
 
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity(name="conseiller")
+@Table(name="conseillers")  
+@AttributeOverrides({  
+    @AttributeOverride(name="id", column=@Column(name="id")),  
+    @AttributeOverride(name="nom", column=@Column(name="nom")), 
+    @AttributeOverride(name="prenom", column=@Column(name="prenom")), 
+    @AttributeOverride(name="tel_prive", column=@Column(name="tel_prive"))  
+})  
 public class Conseiller {
 	
+	@Column(name="login")
 	private String login;
+	
+	@Column(name="password")
 	private String password;
-	private List<Client> listeClients;
+	
+	@Column(name="chiffre_affaire")
 	private double CA;
-
+	
+	private List<Client> listeClients;
 	
 	/**
 	 * Constructors
