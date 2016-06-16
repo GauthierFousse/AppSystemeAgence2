@@ -24,34 +24,75 @@ public class Proprietaire extends Personne implements Serializable {
 	
 	@Column(name = "tel_travail")
 	private String telTravail;
-	
-//	private List<BienImmobilier> listeBiens;
 
 	/////////// ASSOCIATIONS ///////////
 	
 	@OneToMany(mappedBy = "proprietaire")
-    private Collection<BienImmobilier> listeBiens;
+    private Collection<BienALouer> listeBiensALouer;
 	
-	/* Constructeurs. */
+	@OneToMany(mappedBy = "proprietaire")
+    private Collection<BienAAcheter> listeBiensAcheter;
+	
+	/**
+	 * Constructeurs vide
+	 */
 	public Proprietaire() {
 		super();
 	}
-	public Proprietaire(String telTravail) {
+	/**
+	 * Constructeur sans l'id
+	 * @param telTravail
+	 * @param listeBiensALouer
+	 * @param listeBiensAcheter
+	 */
+	public Proprietaire(String telTravail, Collection<BienALouer> listeBiensALouer,
+			Collection<BienAAcheter> listeBiensAcheter) {
 		super();
 		this.telTravail = telTravail;
+		this.listeBiensALouer = listeBiensALouer;
+		this.listeBiensAcheter = listeBiensAcheter;
 	}
-	public Proprietaire(int id, String telTravail) {
+	/**
+	 * Constructeur plein
+	 * @param id
+	 * @param telTravail
+	 * @param listeBiensALouer
+	 * @param listeBiensAcheter
+	 */
+	public Proprietaire(int id, String telTravail, Collection<BienALouer> listeBiensALouer,
+			Collection<BienAAcheter> listeBiensAcheter) {
 		super();
 		this.id = id;
 		this.telTravail = telTravail;
+		this.listeBiensALouer = listeBiensALouer;
+		this.listeBiensAcheter = listeBiensAcheter;
 	}
-	
-
-	/* Accesseurs et mutateurs. */
+	/*
+	 * GETTERS and SETTERS
+	 */
 	public String getTelTravail() {
 		return telTravail;
 	}
 	public void setTelTravail(String telTravail) {
 		this.telTravail = telTravail;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Collection<BienALouer> getListeBiensALouer() {
+		return listeBiensALouer;
+	}
+	public void setListeBiensALouer(Collection<BienALouer> listeBiensALouer) {
+		this.listeBiensALouer = listeBiensALouer;
+	}
+	public Collection<BienAAcheter> getListeBiensAcheter() {
+		return listeBiensAcheter;
+	}
+	public void setListeBiensAcheter(Collection<BienAAcheter> listeBiensAcheter) {
+		this.listeBiensAcheter = listeBiensAcheter;
+	}
+	
 }

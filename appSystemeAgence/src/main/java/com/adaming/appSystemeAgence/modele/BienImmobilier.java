@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -37,17 +34,19 @@ public abstract class BienImmobilier implements Serializable {
 	@Column(name = "num_contrat")
 	private String numContrat = null;
 
-	/////////// ASSOCIATIONS ///////////
-	
-	@ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn (name = "proprietaire_id", 
-                 referencedColumnName = "id_proprietaire")
-    private Proprietaire proprietaire;
-	
-	/* Constructeurs. */
+	/**
+	 * Constructeur vide
+	 */
 	public BienImmobilier() {
 		super();
 	}
+	/**
+	 * Constructeur plein
+	 * @param statut
+	 * @param dateEntree
+	 * @param dateDisponibilite
+	 * @param revenuCadastral
+	 */
 	public BienImmobilier(int statut, Date dateEntree,
 			Date dateDisponibilite, double revenuCadastral) {
 		super();
