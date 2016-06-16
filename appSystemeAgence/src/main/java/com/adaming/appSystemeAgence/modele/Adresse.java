@@ -38,6 +38,15 @@ public class Adresse implements Serializable {
 	@OneToOne(mappedBy = "adresse")
 	private Proprietaire proprietaire;
 	
+	@OneToOne(mappedBy = "adresse")
+	private Client client;
+	
+	@OneToOne(mappedBy = "adresse")
+	private BienALouer bienALouer;
+	
+	@OneToOne(mappedBy = "adresse")
+	private BienAAcheter bienAAcheter;
+	
 	/////////// CONSTRUCTEURS /////////
 	/**
 	 * Constructeur vide
@@ -45,6 +54,7 @@ public class Adresse implements Serializable {
 	public Adresse() {
 		super();
 	}
+	
 	/////////// CONSEILLER /////////
 	/**
 	 * Constructeur Conseiller sans l'id
@@ -77,6 +87,7 @@ public class Adresse implements Serializable {
 		this.ville = ville;
 		this.conseiller = conseiller;
 	}
+	
 	/////////// PROPRIETAIRE /////////
 	/**
 	 * Constructeur Proprietaire sans l'id
@@ -109,6 +120,102 @@ public class Adresse implements Serializable {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.proprietaire = proprietaire;
+	}
+	
+	/////////// CLIENT /////////
+	/**
+	 * Constructeur client sans id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param client
+	 */
+	public Adresse(String rue, int codePostal, String ville, Client client) {
+		super();
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.client = client;
+	}
+	/**
+	 * Constructeur client charge
+	 * @param id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param client
+	 */
+	public Adresse(int id, String rue, int codePostal, String ville, Client client) {
+		super();
+		this.id = id;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.client = client;
+	}
+	
+	/////////// BIEN A LOUER /////////
+	/**
+	 * Constructeur bien a louer sans id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param bienALouer
+	 */
+	public Adresse(String rue, int codePostal, String ville, BienALouer bienALouer) {
+		super();
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.bienALouer = bienALouer;
+	}
+	/**
+	 * Constructeur bien a louer charge
+	 * @param id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param bienALouer
+	 */
+	public Adresse(int id, String rue, int codePostal, String ville, BienALouer bienALouer) {
+		super();
+		this.id = id;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.bienALouer = bienALouer;
+	}
+	
+	/////////// BIEN A ACHETER /////////
+	/**
+	 * Constructeur bien a acheter sans id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param bienAAcheter
+	 */
+	public Adresse(String rue, int codePostal, String ville, BienAAcheter bienAAcheter) {
+		super();
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.bienAAcheter = bienAAcheter;
+	}
+	/**
+	 * Constructeur bien a acheter charge
+	 * @param id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param bienAAcheter
+	 */
+	public Adresse(int id, String rue, int codePostal, String ville, BienAAcheter bienAAcheter) {
+		super();
+		this.id = id;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.bienAAcheter = bienAAcheter;
 	}
 	
 	
@@ -154,6 +261,27 @@ public class Adresse implements Serializable {
 	}
 	public void setProprietaire(Proprietaire proprietaire) {
 		this.proprietaire = proprietaire;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public BienALouer getBienALouer() {
+		return bienALouer;
+	}
+	public void setBienALouer(BienALouer bienALouer) {
+		this.bienALouer = bienALouer;
+	}
+
+	public BienAAcheter getBienAAcheter() {
+		return bienAAcheter;
+	}
+	public void setBienAAcheter(BienAAcheter bienAAcheter) {
+		this.bienAAcheter = bienAAcheter;
 	}
 
 	

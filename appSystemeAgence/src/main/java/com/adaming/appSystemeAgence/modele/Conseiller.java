@@ -1,6 +1,7 @@
 package com.adaming.appSystemeAgence.modele;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,18 +39,23 @@ public class Conseiller extends Personne implements Serializable {
 	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
 	private Adresse adresse;
 	
-	/* A faire en one to many, puisque la classe represente SEULEMENT une table.
-	 * private List<Client> listeClients;
-	 */
+	@OneToMany(mappedBy = "client")
+    private Collection<Client> listeClients;
+	
 	
 	/**
-	 * Constructors
+	 * Constructor vide
 	 */
-	
 	public Conseiller() {
 		super();
 	}
-
+	/**
+	 * Consturcteur sans id
+	 * @param login
+	 * @param password
+	 * @param cA
+	 * @param adresse
+	 */
 	public Conseiller(String login, String password, double cA, Adresse adresse) {
 		super();
 		this.login = login;
@@ -56,7 +63,14 @@ public class Conseiller extends Personne implements Serializable {
 		CA = cA;
 		this.adresse = adresse;
 	}
-	
+	/**
+	 * Constructeur charge
+	 * @param id
+	 * @param login
+	 * @param password
+	 * @param cA
+	 * @param adresse
+	 */
 	public Conseiller(int id, String login, String password, double cA, Adresse adresse) {
 		super();
 		this.id = id;
@@ -66,15 +80,13 @@ public class Conseiller extends Personne implements Serializable {
 		this.adresse = adresse;
 	}
 
-	/**
+	/*
 	 * Getters / Setters
-	 * @return
 	 */
 
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -82,7 +94,6 @@ public class Conseiller extends Personne implements Serializable {
 	public Adresse getAdresse() {
 		return adresse;
 	}
-
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
@@ -90,7 +101,6 @@ public class Conseiller extends Personne implements Serializable {
 	public String getLogin() {
 		return login;
 	}
-
 	public void setLogin(String login) {
 		this.login = login;
 	}
@@ -98,7 +108,6 @@ public class Conseiller extends Personne implements Serializable {
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -106,9 +115,15 @@ public class Conseiller extends Personne implements Serializable {
 	public double getCA() {
 		return CA;
 	}
-
 	public void setCA(double cA) {
 		CA = cA;
+	}
+	
+	public Collection<Client> getListeClients() {
+		return listeClients;
+	}
+	public void setListeClients(Collection<Client> listeClients) {
+		this.listeClients = listeClients;
 	}
 	
 	

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="bienAAcheter")
@@ -28,7 +29,11 @@ public class BienAAcheter extends BienImmobilier {
 	private String etat;
 	
 	/////////// ASSOCIATIONS ///////////
-		
+	
+	@OneToOne
+	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
+	private Adresse adresse;
+	
 	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn (name = "proprietaire_id", 
 	         referencedColumnName = "id_proprietaire")

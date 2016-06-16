@@ -11,9 +11,6 @@ public abstract class BienImmobilier implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-//	@Column(name = "code_standard")
-//	private int codeStandard;
-	
 	@Column(name = "statut")
 	private int statut;
 	
@@ -26,14 +23,17 @@ public abstract class BienImmobilier implements Serializable {
 	@Column(name = "revenu_cadastral")
 	private double revenuCadastral;
 	
-//	private List<Visite> listeVisites = null;	// Il peut n'y avoir eu aucune visite => nul par défaut.
-	
-//	@Column(name = "client_acquereur")
-//	private Client clientAcquereur = null;		// Il peut n'y avoir pas d'acquéreur => nul par défaut.
-	
 	@Column(name = "num_contrat")
 	private String numContrat = null;
 
+	/* ASSOCIATIONS A FAIRE
+	 * 
+	 * codeStandard
+	 * listeVisites
+	 * Contrat 
+	 * 
+	 */
+	
 	/**
 	 * Constructeur vide
 	 */
