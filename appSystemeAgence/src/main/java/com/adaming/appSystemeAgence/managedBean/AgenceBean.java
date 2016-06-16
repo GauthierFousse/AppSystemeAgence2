@@ -23,7 +23,7 @@ private static final long serialVersionUID = 1L;
 	//la couche service : injection du service dans le managedbean
 	//@Autowired si on passe par Spring
 	@ManagedProperty(value="#{conseillerServiceBean}")
-	private IConseillerService conseillerService;
+	public IConseillerService conseillerService;
 
 	/**
 	 * Constructeur. 
