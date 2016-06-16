@@ -22,7 +22,7 @@ public class Client extends Personne {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_proprietaire")
+	@Column(name = "id_client")
 	private int id;
 	
 	@Column(name = "acquereur")
