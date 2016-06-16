@@ -49,6 +49,6 @@
 	<!-- ==================== PAGE DE DEMARRAGE =================== -->
 	<!-- ========================================================== -->
 	<welcome-file-list>
-		<welcome-file>accueil.jsf</welcome-file>
+		<welcome-file>accueil.xhtml</welcome-file>
 	</welcome-file-list>
 </web-app>
