@@ -94,11 +94,27 @@ public class Proprietaire extends Personne implements Serializable {
 	public void setListeBiensALouer(Collection<BienALouer> listeBiensALouer) {
 		this.listeBiensALouer = listeBiensALouer;
 	}
-	public Collection<BienAAcheter> getListeBiensAcheter() {
+	
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	
+	public Collection<BienAAcheter> getListeBiensAAcheter() {
 		return listeBiensAAcheter;
 	}
-	public void setListeBiensAcheter(Collection<BienAAcheter> listeBiensAcheter) {
-		this.listeBiensAAcheter = listeBiensAcheter;
+	public void setListeBiensAAcheter(Collection<BienAAcheter> listeBiensAAcheter) {
+		this.listeBiensAAcheter = listeBiensAAcheter;
 	}
+	
+	@Override
+	public String toString() {
+		return "Proprietaire [id=" + id + ", telTravail=" + telTravail + ", adresse=" + adresse + ", listeBiensALouer="
+				+ listeBiensALouer + ", listeBiensAAcheter=" + listeBiensAAcheter + "]";
+	}
+	
+	
 	
 }
