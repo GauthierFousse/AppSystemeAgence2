@@ -42,6 +42,11 @@ public class Conseiller extends Personne implements Serializable {
 	@OneToMany(mappedBy = "conseiller")
     private Collection<Client> listeClients;
 	
+	@OneToMany(mappedBy = "conseiller")
+    private Collection<Contrat> listeContrats;
+	
+	@OneToMany(mappedBy = "conseiller")
+    private Collection<Visite> listeVisites;
 	
 	/**
 	 * Constructor vide
@@ -126,6 +131,25 @@ public class Conseiller extends Personne implements Serializable {
 		this.listeClients = listeClients;
 	}
 	
+	public Collection<Contrat> getListeContrats() {
+		return listeContrats;
+	}
+	public void setListeContrats(Collection<Contrat> listeContrats) {
+		this.listeContrats = listeContrats;
+	}
 	
+	public Collection<Visite> getListeVisites() {
+		return listeVisites;
+	}
+	public void setListeVisites(Collection<Visite> listeVisites) {
+		this.listeVisites = listeVisites;
+	}
+	
+	@Override
+	public String toString() {
+		return "Conseiller [id=" + id + ", login=" + login + ", password=" + password + ", CA=" + CA + ", adresse="
+				+ adresse + ", listeClients=" + listeClients + ", listeContrats=" + listeContrats + ", listeVisites="
+				+ listeVisites + "]";
+	}
 	
 }

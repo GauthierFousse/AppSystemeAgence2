@@ -1,5 +1,7 @@
 package com.adaming.appSystemeAgence.modele;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,8 +25,8 @@ public class Client extends Personne {
 	@Column(name = "id_proprietaire")
 	private int id;
 	
-	@Column(name = "tel_travail")
-	private Boolean acquereur;
+	@Column(name = "acquereur")
+	private int acquereur; // boolean
 
 	/////////// ASSOCIATIONS ///////////
 	
@@ -32,15 +35,23 @@ public class Client extends Personne {
 	private Adresse adresse;
 	
 	@ManyToOne (fetch = FetchType.EAGER)
-	@JoinColumn (name = "conseiller_id", 
-	         referencedColumnName = "id_conseiller")
+	@JoinColumn (name = "conseiller_id", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
+	
+	@OneToMany(mappedBy = "client")
+    private Collection<Contrat> listeContrats;
+	
+	@OneToMany(mappedBy = "client")
+    private Collection<Visite> listeVisites;
+	
+	@OneToMany(mappedBy = "client")
+    private Collection<AssociationClientsClassesStandards> listeAssociationClasseStandard;
 	
 	/**
 	 * Constructeur vide
 	 */
 	public Client() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 	/**
 	 * Constructeur sans id
@@ -48,7 +59,7 @@ public class Client extends Personne {
 	 * @param adresse
 	 * @param conseiller
 	 */
-	public Client(Boolean acquereur, Adresse adresse, Conseiller conseiller) {
+	public Client(int acquereur, Adresse adresse, Conseiller conseiller) {
 		super();
 		this.acquereur = acquereur;
 		this.adresse = adresse;
@@ -60,15 +71,27 @@ public class Client extends Personne {
 	 * @param acquereur
 	 * @param adresse
 	 * @param conseiller
+	 * @param listeContrats
+	 * @param listeVisites
+	 * @param listeAssociationClasseStandard
 	 */
-	public Client(int id, Boolean acquereur, Adresse adresse, Conseiller conseiller) {
+	public Client(int id, int acquereur, Adresse adresse, Conseiller conseiller, Collection<Contrat> listeContrats,
+			Collection<Visite> listeVisites,
+			Collection<AssociationClientsClassesStandards> listeAssociationClasseStandard) {
 		super();
 		this.id = id;
 		this.acquereur = acquereur;
 		this.adresse = adresse;
 		this.conseiller = conseiller;
+		this.listeContrats = listeContrats;
+		this.listeVisites = listeVisites;
+		this.listeAssociationClasseStandard = listeAssociationClasseStandard;
 	}
+	
 
+	/*
+	 * GETTERS and SETTERSS
+	 */
 	public int getId() {
 		return id;
 	}
@@ -76,10 +99,10 @@ public class Client extends Personne {
 		this.id = id;
 	}
 
-	public Boolean getAcquereur() {
+	public int getAcquereur() {
 		return acquereur;
 	}
-	public void setAcquereur(Boolean acquereur) {
+	public void setAcquereur(int acquereur) {
 		this.acquereur = acquereur;
 	}
 
@@ -96,6 +119,36 @@ public class Client extends Personne {
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
+	
+	public Collection<Contrat> getListeContrats() {
+		return listeContrats;
+	}
+	public void setListeContrats(Collection<Contrat> listeContrats) {
+		this.listeContrats = listeContrats;
+	}
+	
+	public Collection<Visite> getListeVisites() {
+		return listeVisites;
+	}
+	public void setListeVisites(Collection<Visite> listeVisites) {
+		this.listeVisites = listeVisites;
+	}
+	
+	public Collection<AssociationClientsClassesStandards> getListeAssociationClasseStandard() {
+		return listeAssociationClasseStandard;
+	}
+	public void setListeAssociationClasseStandard(
+			Collection<AssociationClientsClassesStandards> listeAssociationClasseStandard) {
+		this.listeAssociationClasseStandard = listeAssociationClasseStandard;
+	}
+	
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", acquereur=" + acquereur + ", adresse=" + adresse + ", conseiller=" + conseiller
+				+ ", listeContrats=" + listeContrats + ", listeVisites=" + listeVisites
+				+ ", listeAssociationClasseStandard=" + listeAssociationClasseStandard + "]";
+	}
+	
 	
 	
 }

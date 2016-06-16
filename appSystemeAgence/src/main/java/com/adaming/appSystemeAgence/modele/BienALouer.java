@@ -1,5 +1,7 @@
 package com.adaming.appSystemeAgence.modele;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -35,7 +38,7 @@ public class BienALouer extends BienImmobilier {
 	private String typeBail;
 	
 	@Column(name="garniture")
-	private Boolean garniture;
+	private int garniture; // boolean
 	
 	/////////// ASSOCIATIONS ///////////
 	
@@ -44,10 +47,15 @@ public class BienALouer extends BienImmobilier {
 	private Adresse adresse;
 	
 	@ManyToOne (fetch = FetchType.EAGER)
-	@JoinColumn (name = "proprietaire_id", 
-	           referencedColumnName = "id_proprietaire")
+	@JoinColumn (name = "proprietaire_id", referencedColumnName = "id_proprietaire")
 	private Proprietaire proprietaire;
 
+	@OneToMany(mappedBy = "bienALouer")
+    private Collection<Visite> listeVisites;
+	
+	@OneToMany(mappedBy = "bienALouer")
+    private Collection<Contrat> listeContrats;
+	
 	/**
 	 * Constructeur vide
 	 */
@@ -61,30 +69,33 @@ public class BienALouer extends BienImmobilier {
 	 * @param chargesMensuelles
 	 * @param typeBail
 	 * @param garniture
+	 * @param adresse
 	 * @param proprietaire
 	 */
-	public BienALouer(double caution, double loyerMensuel, double chargesMensuelles, String typeBail, Boolean garniture,
-			Proprietaire proprietaire) {
+	public BienALouer(double caution, double loyerMensuel, double chargesMensuelles, String typeBail, int garniture,
+			Adresse adresse, Proprietaire proprietaire) {
 		super();
 		this.caution = caution;
 		this.loyerMensuel = loyerMensuel;
 		this.chargesMensuelles = chargesMensuelles;
 		this.typeBail = typeBail;
 		this.garniture = garniture;
+		this.adresse = adresse;
 		this.proprietaire = proprietaire;
 	}
 	/**
-	 * Constructeur plein
+	 * Constructeur charge
 	 * @param id
 	 * @param caution
 	 * @param loyerMensuel
 	 * @param chargesMensuelles
 	 * @param typeBail
 	 * @param garniture
+	 * @param adresse
 	 * @param proprietaire
 	 */
 	public BienALouer(int id, double caution, double loyerMensuel, double chargesMensuelles, String typeBail,
-			Boolean garniture, Proprietaire proprietaire) {
+			int garniture, Adresse adresse, Proprietaire proprietaire) {
 		super();
 		this.id = id;
 		this.caution = caution;
@@ -92,8 +103,10 @@ public class BienALouer extends BienImmobilier {
 		this.chargesMensuelles = chargesMensuelles;
 		this.typeBail = typeBail;
 		this.garniture = garniture;
+		this.adresse = adresse;
 		this.proprietaire = proprietaire;
 	}
+	
 	
 	/*
 	 * GETTERS and SETTERS
@@ -104,41 +117,76 @@ public class BienALouer extends BienImmobilier {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public double getCaution() {
 		return caution;
 	}
 	public void setCaution(double caution) {
 		this.caution = caution;
 	}
+	
 	public double getLoyerMensuel() {
 		return loyerMensuel;
 	}
 	public void setLoyerMensuel(double loyerMensuel) {
 		this.loyerMensuel = loyerMensuel;
 	}
+	
 	public double getChargesMensuelles() {
 		return chargesMensuelles;
 	}
 	public void setChargesMensuelles(double chargesMensuelles) {
 		this.chargesMensuelles = chargesMensuelles;
 	}
+	
 	public String getTypeBail() {
 		return typeBail;
 	}
 	public void setTypeBail(String typeBail) {
 		this.typeBail = typeBail;
 	}
-	public Boolean getGarniture() {
+	
+	public int getGarniture() {
 		return garniture;
 	}
-	public void setGarniture(Boolean garniture) {
+	public void setGarniture(int garniture) {
 		this.garniture = garniture;
 	}
+	
 	public Proprietaire getProprietaire() {
 		return proprietaire;
 	}
 	public void setProprietaire(Proprietaire proprietaire) {
 		this.proprietaire = proprietaire;
+	}
+	
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	
+	public Collection<Visite> getListeVisites() {
+		return listeVisites;
+	}
+	public void setListeVisites(Collection<Visite> listeVisites) {
+		this.listeVisites = listeVisites;
+	}
+	
+	public Collection<Contrat> getListeContrats() {
+		return listeContrats;
+	}
+	public void setListeContrats(Collection<Contrat> listeContrats) {
+		this.listeContrats = listeContrats;
+	}
+	
+	@Override
+	public String toString() {
+		return "BienALouer [id=" + id + ", caution=" + caution + ", loyerMensuel=" + loyerMensuel
+				+ ", chargesMensuelles=" + chargesMensuelles + ", typeBail=" + typeBail + ", garniture=" + garniture
+				+ ", adresse=" + adresse + ", proprietaire=" + proprietaire + ", listeVisites=" + listeVisites
+				+ ", listeContrats=" + listeContrats + "]";
 	}
 	
 	
