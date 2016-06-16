@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
-import javax.enterprise.context.SessionScoped;
-
+import com.adaming.appSystemeAgence.modele.Adresse;
 import com.adaming.appSystemeAgence.modele.Conseiller;
 import com.adaming.appSystemeAgence.service.IConseillerService;
 
@@ -38,6 +38,7 @@ private static final long serialVersionUID = 1L;
 	public void initConseiller() {
 		System.out.println("===> MB : initConseiller()");
 		setConseiller(new Conseiller());
+		conseiller.setAdresse(new Adresse());
 		System.out.println("===> MB : new conseiller set.");
 	}
 
@@ -45,9 +46,9 @@ private static final long serialVersionUID = 1L;
 	 * Ajout d'un conseiller dans la BDD.
 	 * @param pConseiller
 	 */
-	public void addConseiller(Conseiller pConseiller) {
-		System.out.println("===> MB : add conseiller : " + pConseiller);
-		getConseillerService().addConseiller(pConseiller);
+	public void addConseiller() {
+		System.out.println("===> MB : add conseiller : " + conseiller);
+		getConseillerService().addConseiller(conseiller);
 		System.out.println("===> MB : conseiller added, maybe.");
 	}
 	
