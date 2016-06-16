@@ -37,7 +37,7 @@ public class Proprietaire extends Personne implements Serializable {
     private Collection<BienALouer> listeBiensALouer;
 	
 	@OneToMany(mappedBy = "proprietaire")
-    private Collection<BienAAcheter> listeBiensAcheter;
+    private Collection<BienAAcheter> listeBiensAAcheter;
 	
 	/**
 	 * Constructeurs vide
@@ -49,29 +49,29 @@ public class Proprietaire extends Personne implements Serializable {
 	 * Constructeur sans l'id
 	 * @param telTravail
 	 * @param listeBiensALouer
-	 * @param listeBiensAcheter
+	 * @param listeBiensAAcheter
 	 */
 	public Proprietaire(String telTravail, Collection<BienALouer> listeBiensALouer,
-			Collection<BienAAcheter> listeBiensAcheter) {
+			Collection<BienAAcheter> listeBiensAAcheter) {
 		super();
 		this.telTravail = telTravail;
 		this.listeBiensALouer = listeBiensALouer;
-		this.listeBiensAcheter = listeBiensAcheter;
+		this.listeBiensAAcheter = listeBiensAAcheter;
 	}
 	/**
 	 * Constructeur plein
 	 * @param id
 	 * @param telTravail
 	 * @param listeBiensALouer
-	 * @param listeBiensAcheter
+	 * @param listeBiensAAcheter
 	 */
 	public Proprietaire(int id, String telTravail, Collection<BienALouer> listeBiensALouer,
-			Collection<BienAAcheter> listeBiensAcheter) {
+			Collection<BienAAcheter> listeBiensAAcheter) {
 		super();
 		this.id = id;
 		this.telTravail = telTravail;
 		this.listeBiensALouer = listeBiensALouer;
-		this.listeBiensAcheter = listeBiensAcheter;
+		this.listeBiensAAcheter = listeBiensAAcheter;
 	}
 	/*
 	 * GETTERS and SETTERS
@@ -95,10 +95,10 @@ public class Proprietaire extends Personne implements Serializable {
 		this.listeBiensALouer = listeBiensALouer;
 	}
 	public Collection<BienAAcheter> getListeBiensAcheter() {
-		return listeBiensAcheter;
+		return listeBiensAAcheter;
 	}
 	public void setListeBiensAcheter(Collection<BienAAcheter> listeBiensAcheter) {
-		this.listeBiensAcheter = listeBiensAcheter;
+		this.listeBiensAAcheter = listeBiensAcheter;
 	}
 	
 }
