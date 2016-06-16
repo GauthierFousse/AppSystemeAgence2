@@ -1,12 +1,13 @@
 package com.adaming.appSystemeAgence.service;
 
-import org.jvnet.hk2.annotations.Service;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adaming.appSystemeAgence.dao.ProprietaireDaoImpl;
 import com.adaming.appSystemeAgence.modele.Proprietaire;
 
-@Service(name = "proprietaireServiceBean")
+@Service("proprietaireServiceBean")
 public class ProprietaireServiceImpl implements IProprietaireService {
 
 	@Autowired
