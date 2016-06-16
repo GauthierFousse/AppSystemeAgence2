@@ -56,6 +56,10 @@ public class BienALouer extends BienImmobilier {
 	@OneToMany(mappedBy = "bienALouer")
     private Collection<Contrat> listeContrats;
 	
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn (name = "classe_standard_id", referencedColumnName = "id_classe_standard")
+	private ClasseStandard classeStandard;
+	
 	/**
 	 * Constructeur vide
 	 */
@@ -71,9 +75,10 @@ public class BienALouer extends BienImmobilier {
 	 * @param garniture
 	 * @param adresse
 	 * @param proprietaire
+	 * @param classeStandard
 	 */
 	public BienALouer(double caution, double loyerMensuel, double chargesMensuelles, String typeBail, int garniture,
-			Adresse adresse, Proprietaire proprietaire) {
+			Adresse adresse, Proprietaire proprietaire, ClasseStandard classeStandard) {
 		super();
 		this.caution = caution;
 		this.loyerMensuel = loyerMensuel;
@@ -82,6 +87,7 @@ public class BienALouer extends BienImmobilier {
 		this.garniture = garniture;
 		this.adresse = adresse;
 		this.proprietaire = proprietaire;
+		this.classeStandard = classeStandard;
 	}
 	/**
 	 * Constructeur charge
@@ -93,9 +99,13 @@ public class BienALouer extends BienImmobilier {
 	 * @param garniture
 	 * @param adresse
 	 * @param proprietaire
+	 * @param listeVisites
+	 * @param listeContrats
+	 * @param classeStandard
 	 */
 	public BienALouer(int id, double caution, double loyerMensuel, double chargesMensuelles, String typeBail,
-			int garniture, Adresse adresse, Proprietaire proprietaire) {
+			int garniture, Adresse adresse, Proprietaire proprietaire, Collection<Visite> listeVisites,
+			Collection<Contrat> listeContrats, ClasseStandard classeStandard) {
 		super();
 		this.id = id;
 		this.caution = caution;
@@ -105,6 +115,9 @@ public class BienALouer extends BienImmobilier {
 		this.garniture = garniture;
 		this.adresse = adresse;
 		this.proprietaire = proprietaire;
+		this.listeVisites = listeVisites;
+		this.listeContrats = listeContrats;
+		this.classeStandard = classeStandard;
 	}
 	
 	

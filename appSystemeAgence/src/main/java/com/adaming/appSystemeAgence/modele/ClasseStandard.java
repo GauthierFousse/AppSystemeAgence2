@@ -5,12 +5,9 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -39,9 +36,11 @@ public class ClasseStandard implements Serializable{
 	
 	/////////// ASSOCIATIONS ///////////
 	
-	@ManyToOne (fetch = FetchType.EAGER)
-	@JoinColumn (name = "bien_a_louer_id", referencedColumnName = "id_bien_a_louer")
-	private BienALouer bienALouer;
+	@OneToMany(mappedBy = "classeStandard")
+    private Collection<BienAAcheter> listeBiensALouer;
+	
+	@OneToMany(mappedBy = "classeStandard")
+    private Collection<BienAAcheter> listeBiensAAcheter;
 	
 	@OneToMany(mappedBy = "classeStandard")
     private Collection<AssociationClientsClassesStandards> listeAssociationClient;
@@ -68,23 +67,18 @@ public class ClasseStandard implements Serializable{
 	}
 	/**
 	 * Constructeur charge
-	 * @param id
-	 * @param typeBien
-	 * @param prixMax
-	 * @param superficieMin
-	 * @param modeOffre
-	 * @param bienALouer
-	 * @param listeAssociationClient
 	 */
 	public ClasseStandard(int id, String typeBien, double prixMax, double superficieMin, int modeOffre,
-			BienALouer bienALouer, Collection<AssociationClientsClassesStandards> listeAssociationClient) {
+			Collection<BienAAcheter> listeBiensALouer, Collection<BienAAcheter> listeBiensAAcheter,
+			Collection<AssociationClientsClassesStandards> listeAssociationClient) {
 		super();
 		this.id = id;
 		this.typeBien = typeBien;
 		this.prixMax = prixMax;
 		this.superficieMin = superficieMin;
 		this.modeOffre = modeOffre;
-		this.bienALouer = bienALouer;
+		this.listeBiensALouer = listeBiensALouer;
+		this.listeBiensAAcheter = listeBiensAAcheter;
 		this.listeAssociationClient = listeAssociationClient;
 	}
 	
@@ -119,18 +113,11 @@ public class ClasseStandard implements Serializable{
 		this.superficieMin = superficieMin;
 	}
 	
-	public int isModeOffre() {
+	public int getModeOffre() {
 		return modeOffre;
 	}
 	public void setModeOffre(int modeOffre) {
 		this.modeOffre = modeOffre;
-	}
-	
-	public BienALouer getBienALouer() {
-		return bienALouer;
-	}
-	public void setBienALouer(BienALouer bienALouer) {
-		this.bienALouer = bienALouer;
 	}
 	
 	public Collection<AssociationClientsClassesStandards> getListeAssociationClient() {
@@ -140,11 +127,26 @@ public class ClasseStandard implements Serializable{
 		this.listeAssociationClient = listeAssociationClient;
 	}
 	
+	public Collection<BienAAcheter> getListeBiensALouer() {
+		return listeBiensALouer;
+	}
+	public void setListeBiensALouer(Collection<BienAAcheter> listeBiensALouer) {
+		this.listeBiensALouer = listeBiensALouer;
+	}
+	
+	public Collection<BienAAcheter> getListeBiensAAcheter() {
+		return listeBiensAAcheter;
+	}
+	public void setListeBiensAAcheter(Collection<BienAAcheter> listeBiensAAcheter) {
+		this.listeBiensAAcheter = listeBiensAAcheter;
+	}
+	
 	@Override
 	public String toString() {
 		return "ClasseStandard [id=" + id + ", typeBien=" + typeBien + ", prixMax=" + prixMax + ", superficieMin="
-				+ superficieMin + ", modeOffre=" + modeOffre + ", bienALouer=" + bienALouer
-				+ ", listeAssociationClient=" + listeAssociationClient + "]";
+				+ superficieMin + ", modeOffre=" + modeOffre + ", listeBiensALouer=" + listeBiensALouer
+				+ ", listeBiensAAcheter=" + listeBiensAAcheter + ", listeAssociationClient=" + listeAssociationClient
+				+ "]";
 	}
 	
 }

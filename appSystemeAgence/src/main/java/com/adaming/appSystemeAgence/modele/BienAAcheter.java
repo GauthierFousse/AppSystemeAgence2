@@ -47,6 +47,10 @@ public class BienAAcheter extends BienImmobilier {
 	@OneToMany(mappedBy = "bienALouer")
     private Collection<Contrat> listeContrats;
 	
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn (name = "classe_standard_id", referencedColumnName = "id_classe_standard")
+	private ClasseStandard classeStandard;
+	
 	/**
 	 * Constructeur vide
 	 */
@@ -59,13 +63,16 @@ public class BienAAcheter extends BienImmobilier {
 	 * @param etat
 	 * @param adresse
 	 * @param proprietaire
+	 * @param classeStandard
 	 */
-	public BienAAcheter(double prixAchat, String etat, Adresse adresse, Proprietaire proprietaire) {
+	public BienAAcheter(double prixAchat, String etat, Adresse adresse, Proprietaire proprietaire,
+			ClasseStandard classeStandard) {
 		super();
 		this.prixAchat = prixAchat;
 		this.etat = etat;
 		this.adresse = adresse;
 		this.proprietaire = proprietaire;
+		this.classeStandard = classeStandard;
 	}
 	/**
 	 * Constructeur charge
@@ -74,15 +81,23 @@ public class BienAAcheter extends BienImmobilier {
 	 * @param etat
 	 * @param adresse
 	 * @param proprietaire
+	 * @param listeVisites
+	 * @param listeContrats
+	 * @param classeStandard
 	 */
-	public BienAAcheter(int id, double prixAchat, String etat, Adresse adresse, Proprietaire proprietaire) {
+	public BienAAcheter(int id, double prixAchat, String etat, Adresse adresse, Proprietaire proprietaire,
+			Collection<Visite> listeVisites, Collection<Contrat> listeContrats, ClasseStandard classeStandard) {
 		super();
 		this.id = id;
 		this.prixAchat = prixAchat;
 		this.etat = etat;
 		this.adresse = adresse;
 		this.proprietaire = proprietaire;
+		this.listeVisites = listeVisites;
+		this.listeContrats = listeContrats;
+		this.classeStandard = classeStandard;
 	}
+	
 	
 	/*
 	 * GETTERS and SETTERS
@@ -136,11 +151,18 @@ public class BienAAcheter extends BienImmobilier {
 		this.listeContrats = listeContrats;
 	}
 	
+	public ClasseStandard getClasseStandard() {
+		return classeStandard;
+	}
+	public void setClasseStandard(ClasseStandard classeStandard) {
+		this.classeStandard = classeStandard;
+	}
+	
 	@Override
 	public String toString() {
 		return "BienAAcheter [id=" + id + ", prixAchat=" + prixAchat + ", etat=" + etat + ", adresse=" + adresse
 				+ ", proprietaire=" + proprietaire + ", listeVisites=" + listeVisites + ", listeContrats="
-				+ listeContrats + "]";
+				+ listeContrats + ", classeStandard=" + classeStandard + "]";
 	}
-
+	
 }
