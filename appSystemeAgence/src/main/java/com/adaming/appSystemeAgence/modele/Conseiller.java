@@ -39,7 +39,7 @@ public class Conseiller extends Personne implements Serializable {
 	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
 	private Adresse adresse;
 	
-	@OneToMany(mappedBy = "client")
+	@OneToMany(mappedBy = "conseiller")
     private Collection<Client> listeClients;
 	
 	
