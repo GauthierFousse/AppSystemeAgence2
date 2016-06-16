@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page listeProprietaires.xhtml</title>
+</h:head>
+<body>
+
+	<h:form>
+		<p:dataTable id="liste" value="#{agenceMB.listeProprietaires}" var="proprietaire">
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Identifiant" />
+				</f:facet>
+				<h:outputText value="#{proprietaire.id}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Nom" />
+				</f:facet>
+				<h:outputText value="#{proprietaire.nom}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Prénom" />
+				</f:facet>
+				<h:outputText value="#{proprietaire.prenom}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Adresse" />
+				</f:facet>
+				<h:outputText value="#{proprietaire.adresse}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Téléphone personnel" />
+				</f:facet>
+				<h:outputText value="#{proprietaire.telPrive}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Téléphone professionnel"/>
+				</f:facet>
+				<h:outputText value="#{proprietaire.telTravail}"/>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+	<h:form>
+		<p:commandButton value="Ajouter un propriétaire" id="addProprietaire"
+			action="versFormulaireAjoutProprietaire"
+			actionListener="#{agenceMB.initProprietaire}"
+			styleClass="ui-priority-primary" />
+	</h:form>
+
+</body>
+</html>
