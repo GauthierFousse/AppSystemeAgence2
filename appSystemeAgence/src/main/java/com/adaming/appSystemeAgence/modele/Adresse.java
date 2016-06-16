@@ -35,33 +35,88 @@ public class Adresse implements Serializable {
 	@OneToOne(mappedBy = "adresse")
 	private Conseiller conseiller;
 	
-	/////////// CONSTRUCTEURS /////////
+	@OneToOne(mappedBy = "adresse")
+	private Proprietaire proprietaire;
 	
+	/////////// CONSTRUCTEURS /////////
+	/**
+	 * Constructeur vide
+	 */
 	public Adresse() {
 		super();
 	}
-
-	public Adresse(String rue, int codePostal, String ville) {
+	/////////// CONSEILLER /////////
+	/**
+	 * Constructeur Conseiller sans l'id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param conseiller
+	 * @param proprietaire
+	 */
+	public Adresse(String rue, int codePostal, String ville, Conseiller conseiller) {
 		super();
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
+		this.conseiller = conseiller;
 	}
-
-	public Adresse(int id, String rue, int codePostal, String ville) {
+	/**
+	 * Constructeur Conseiller charge
+	 * @param id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param conseiller
+	 */
+	public Adresse(int id, String rue, int codePostal, String ville, Conseiller conseiller) {
 		super();
 		this.id = id;
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
+		this.conseiller = conseiller;
 	}
-
+	/////////// PROPRIETAIRE /////////
+	/**
+	 * Constructeur Proprietaire sans l'id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param conseiller
+	 * @param proprietaire
+	 */
+	public Adresse(String rue, int codePostal, String ville, Proprietaire proprietaire) {
+		super();
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.proprietaire = proprietaire;
+	}
+	/**
+	 * Constructeur Proprietaire charge
+	 * @param id
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param conseiller
+	 * @param proprietaire
+	 */
+	public Adresse(int id, String rue, int codePostal, String ville, Proprietaire proprietaire) {
+		super();
+		this.id = id;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.proprietaire = proprietaire;
+	}
+	
+	
 	/////////// GETTERS & SETTERS /////////
 	
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -69,7 +124,6 @@ public class Adresse implements Serializable {
 	public String getRue() {
 		return rue;
 	}
-
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
@@ -77,7 +131,6 @@ public class Adresse implements Serializable {
 	public int getCodePostal() {
 		return codePostal;
 	}
-
 	public void setCodePostal(int codePostal) {
 		this.codePostal = codePostal;
 	}
@@ -85,9 +138,23 @@ public class Adresse implements Serializable {
 	public String getVille() {
 		return ville;
 	}
-
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+	
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
+	
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+	public void setProprietaire(Proprietaire proprietaire) {
+		this.proprietaire = proprietaire;
+	}
 
+	
 }

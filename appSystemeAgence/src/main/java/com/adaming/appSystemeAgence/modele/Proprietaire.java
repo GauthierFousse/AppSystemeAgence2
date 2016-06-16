@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "proprietaire")
@@ -26,6 +28,10 @@ public class Proprietaire extends Personne implements Serializable {
 	private String telTravail;
 
 	/////////// ASSOCIATIONS ///////////
+	
+	@OneToOne
+	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
+	private Adresse adresse;
 	
 	@OneToMany(mappedBy = "proprietaire")
     private Collection<BienALouer> listeBiensALouer;
