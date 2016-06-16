@@ -3,6 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+	<!--===================================================================== -->
+	<!--========== RESOLVEUR DE VARIABLES JSF EN BEANS SPRING =============== -->
+	<!--===================================================================== -->
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+
+
 	<!-- Définition des règles de navigation (cf. projet 04_navigation). -->
 	<navigation-rule>
 		<from-view-id>/identificationConseiller.xhtml</from-view-id>
