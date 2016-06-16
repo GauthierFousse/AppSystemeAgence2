@@ -40,7 +40,7 @@ public class ClasseStandard implements Serializable{
 	/////////// ASSOCIATIONS ///////////
 	
 	@ManyToOne (fetch = FetchType.EAGER)
-	@JoinColumn (name = "bien_a_louer_id", referencedColumnName = "id_conseiller")
+	@JoinColumn (name = "bien_a_louer_id", referencedColumnName = "id_bien_a_louer")
 	private BienALouer bienALouer;
 	
 	@OneToMany(mappedBy = "classeStandard")

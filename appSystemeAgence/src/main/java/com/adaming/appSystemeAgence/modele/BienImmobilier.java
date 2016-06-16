@@ -25,14 +25,6 @@ public abstract class BienImmobilier implements Serializable {
 	
 	@Column(name = "num_contrat")
 	private String numContrat = null;
-
-	/* ASSOCIATIONS A FAIRE
-	 * 
-	 * codeStandard
-	 * listeVisites
-	 * Contrat 
-	 * 
-	 */
 	
 	/**
 	 * Constructeur vide
