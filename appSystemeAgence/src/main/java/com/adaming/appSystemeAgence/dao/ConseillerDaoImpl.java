@@ -33,7 +33,7 @@ public class ConseillerDaoImpl implements IConseillerDao {
 	public Boolean isExist(int idConseiller) {
 		Session session = sessionFactory.openSession();
 
-		String hqlReq = "FROM Conseiller WHERE id= :conseillerID";
+		String hqlReq = "FROM conseiller WHERE id= :conseillerID";
 		Query query = session.createQuery(hqlReq);
 		query.setParameter("conseillerID", idConseiller);
 		
@@ -49,7 +49,7 @@ public class ConseillerDaoImpl implements IConseillerDao {
 	public List<Conseiller> getAllConseillers(){
 		Session session = sessionFactory.openSession();
 		
-		String hqlReq = "FROM Conseiller";
+		String hqlReq = "FROM conseiller";
 		
 		Query query = session.createQuery(hqlReq);
 		
