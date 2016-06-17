@@ -40,6 +40,10 @@
 	<navigation-rule>
 		<from-view-id>tableauBord.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>versListeProprietaires</from-outcome>
 			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
