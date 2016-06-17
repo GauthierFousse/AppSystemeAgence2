@@ -9,10 +9,12 @@
 	<title>Tableau de Bord</title>
 </h:head> 
 <body> 
+	
 	<h:form>
+        <h:outputText id="login" value="Welcome #{agenceMB.utilisateur.login} #{agenceMB.utilisateur.prenom} #{agenceMB.utilisateur.nom} "/>
 		<p:commandButton value="Deconexion" 
 						 id="deconnexion"
-						 action="deconnexion"
+						 action="#{agenceMB.logout}"
 						 styleClass="ui-priority-primary" />
 	</h:form>
 	<hr/>
@@ -29,7 +31,7 @@
 	<h:form>
 		<p:commandButton value="Liste des conseillers" 
 						 id="listeConseillers"
-						 action="versListeConseillers"
+						 action="#{agenceMB.logout}"
 						 styleClass="ui-priority-primary" />
 	</h:form>
 </body> 

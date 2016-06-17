@@ -23,6 +23,8 @@ public class AgenceBean implements Serializable {
 	
 private static final long serialVersionUID = 1L;
 	
+	private Conseiller utilisateur;
+
 	private Conseiller conseiller;
 	private List<Conseiller> listeConseillers;
 	
@@ -43,6 +45,7 @@ private static final long serialVersionUID = 1L;
 	 */
 	public AgenceBean() {
 		super();
+		utilisateur = new Conseiller();
 		setConseiller(new Conseiller());
 		conseiller.setAdresse(new Adresse());
 		setProprietaire(new Proprietaire());
@@ -91,8 +94,11 @@ private static final long serialVersionUID = 1L;
 		}
 	}
 	
+	/**
+	 * Login session
+	 * @return
+	 */
 	public String login() {
-		
 		// Récupération du nom d'utilisateur
 //		UIParameter cp = (UIParameter) event.getComponent().findComponent("loginPage_username");
 //		String username = (String) cp.getValue();
@@ -103,8 +109,10 @@ private static final long serialVersionUID = 1L;
 		
 		String username = conseiller.getLogin();
 		String password = conseiller.getPassword();
+		System.out.println("===> MB : login : " + username + " ; " + password);
 		
 		if(conseillerService.isValidConseiller(username, password)){
+			utilisateur = conseiller;
 			return("validationIdentificationConseiller");
 		}else{
 			FacesContext.getCurrentInstance().addMessage(
@@ -114,7 +122,15 @@ private static final long serialVersionUID = 1L;
                     "Please Try Again!"));
 			return "identificationConseiller.xhtml";
 		}
-		
+	}
+	
+	/**
+	 * Logout session
+	 */
+	public String logout() {
+		System.out.println("===> MB : deconnexion de " + utilisateur.getLogin());
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	    return "deconnexion";
 	}
 	
 	/**
@@ -159,9 +175,15 @@ private static final long serialVersionUID = 1L;
 	public Proprietaire getProprietaire() {
 		return proprietaire;
 	}
-
 	public void setProprietaire(Proprietaire proprietaire) {
 		this.proprietaire = proprietaire;
+	}
+
+	public Conseiller getUtilisateur() {
+		return utilisateur;
+	}
+	public void setUtilisateur(Conseiller utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	/* 
