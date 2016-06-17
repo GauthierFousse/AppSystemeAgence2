@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page d'itentification des conseillers</title>
+</h:head>
+<body>
+	
+	        <h:form id="loginForm">          
+            <p:growl id="msg" showDetail="true" life="3000" />
+            <p:panel header="Login" style="width: 360px;">
+
+                <h:panelGrid id="loginPanel" columns="2">
+
+                    <h:outputText value="Username" />
+
+                    <p:inputText id="loginPage_username" value="#{agenceMB.conseiller.login}" ></p:inputText>
+
+                    <p:spacer></p:spacer>
+
+                    <p:message for="loginPage_username" ></p:message>
+
+                    <h:outputText value="Password" />
+
+                    <p:password id="loginPage_password" value="#{agenceMB.conseiller.password}"  feedback="true"></p:password>
+
+                    <p:spacer></p:spacer>
+
+                    <p:message for="loginPage_password"></p:message>
+
+                    <p:spacer></p:spacer>
+
+                    <p:commandButton action="#{agenceMB.login}" value="Login" update="loginForm" ajax="true"></p:commandButton>
+
+                </h:panelGrid>
+
+            </p:panel>
+
+        </h:form>
+	
+</body>
+</html>
