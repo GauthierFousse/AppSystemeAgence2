@@ -1,6 +1,8 @@
 package com.adaming.appSystemeAgence.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,25 @@ public class ProprietaireServiceImpl implements IProprietaireService {
 		proprietaireDao.addProprietaire(proprietaire);
 		System.out.println("===== Sortie de la méthode ajouterProprietaire de ProprietaireServiceImpl. =====");
 	}
+
+	@Override
+	public void updateProprietaire(Proprietaire proprietaire) {
+		
+		proprietaireDao.updateProprietaire(proprietaire);
+	}
+
+	@Override
+	public List<Proprietaire> getAllProprietaires() {
+		
+		return proprietaireDao.getAllProprietaires();
+	}
+
+	@Override
+	public void deleteProprietaire(int id) {
+		
+		proprietaireDao.deleteProprietaire(id);
+	}
+	
+	
 
 }
