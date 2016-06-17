@@ -31,6 +31,8 @@ public class ConseillerDaoImpl implements IConseillerDao {
 	 */
 	@Transactional(readOnly = true)
 	public List<Conseiller> getAllConseillers(){
+		System.out.println("=====> DAO : getting all the conseillers.");
+		
 		Session session = sessionFactory.openSession();
 		
 		String hqlReq = "FROM conseiller";
@@ -46,9 +48,13 @@ public class ConseillerDaoImpl implements IConseillerDao {
 	/**
 	 * Ajoute un conseiller à la bdd
 	 */
-	public void addConseiller(Conseiller pConseiller) {
+	public boolean addConseiller(Conseiller pConseiller) {
+		System.out.println("=====> DAO : adding conseiller : " + pConseiller);
+		
 		Session session = sessionFactory.openSession();
 		session.save(pConseiller);
+		
+		return true;
 	}
 
 
@@ -56,6 +62,7 @@ public class ConseillerDaoImpl implements IConseillerDao {
 	 * Retoune un conseiller définis par son id
 	 */
 	public Conseiller getConseillerByID(int idConseiller) {
+		System.out.println("=====> DAO : getting conseiller id#" + idConseiller);
 		
 		Session session = sessionFactory.openSession();
 
@@ -72,7 +79,9 @@ public class ConseillerDaoImpl implements IConseillerDao {
 	 * Vérifie l'existence du conseiller
 	 */
 	@Transactional(readOnly = true)
-	public Boolean isExistConseiller(int idConseiller) {
+	public boolean isExistConseiller(int idConseiller) {
+		System.out.println("=====> DAO : isExist : " + idConseiller);
+		
 		Session session = sessionFactory.openSession();
 
 		String hqlReq = "FROM conseiller WHERE id= :conseillerID";
@@ -81,14 +90,16 @@ public class ConseillerDaoImpl implements IConseillerDao {
 		
 		// query.uniqueResult returns a single instance that matches the query, 
 		// or null if the query returns no results
-		return (query.uniqueResult()!=null);
+		return (query.uniqueResult()!= null);
 	}
 	
 	/**
 	 * Vérifie l'existence du conseiller
 	 */
 	@Transactional(readOnly = true)
-	public Boolean isValidConseiller(String pUserName, String pPassword) {
+	public boolean isValidConseiller(String pUserName, String pPassword) {
+		System.out.println("=====> DAO : isValid : " + pUserName + " ; " + pPassword);
+		
 		Session session = sessionFactory.openSession();
 
 		String hqlReq = "FROM conseiller WHERE login= :login and password= :password";
@@ -98,7 +109,7 @@ public class ConseillerDaoImpl implements IConseillerDao {
 		
 		// query.uniqueResult returns a single instance that matches the query, 
 		// or null if the query returns no results
-		return (query.uniqueResult()!=null);
+		return (query.uniqueResult()!= null);
 	}
 
 }

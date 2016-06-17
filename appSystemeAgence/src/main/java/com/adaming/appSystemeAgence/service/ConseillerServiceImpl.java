@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.appSystemeAgence.dao.IConseillerDao;
 import com.adaming.appSystemeAgence.modele.Conseiller;
@@ -26,26 +25,40 @@ public class ConseillerServiceImpl implements IConseillerService {
 	 * Ajout d'un conseiller
 	 */
 	public void addConseiller(Conseiller pConseiller) {
-		System.out.println("===== Entree dans la methode addConseiller de ConseillerServiceImpl.java. =====");
-		conseillerDao.addConseiller(pConseiller);
-		System.out.println("===== Sortie de la methode addConseiller de ConseillerServiceImpl.java. =====");
+		System.out.println("====> Service: adding Conseiller : " + pConseiller);
+		if (conseillerDao.addConseiller(pConseiller)){
+			System.out.println("====> Service: Conseiller added with success.");
+		} else {
+			System.out.println("====> Service: Conseiller added with success.");
+		}
 	}
 	
 	/**
-	 * Vérifie l'existence du conseiller
+	 * Vérifie l'existence de l'id conseiller
 	 */
 	public Boolean isExistConseiller(int idConseiller) {
-		System.out.println("===== Entree dans la methode isExistConseiller de ConseillerServiceImpl.java. =====");
+		System.out.println("====> Service: isExist Conseiller id#" + idConseiller);
 		Boolean isExist = conseillerDao.isExistConseiller(idConseiller);
-		System.out.println("===== Sortie de la methode isExistConseiller de ConseillerServiceImpl.java. =====");
+		if (isExist){
+			System.out.println("====> Service: Conseiller id#" + idConseiller + " exists.");
+		} else {
+			System.out.println("====> Service: Conseiller id#" + idConseiller + " does NOT exist.");
+		}
 		return isExist;
 		
 	}
 
+	/**
+	 * Verifie l'existance du login et password conseiller dans la BDD.
+	 */
 	public Boolean isValidConseiller(String pUserName, String pPassword) {
-		System.out.println("===== Entree dans la methode isValidConseiller de ConseillerServiceImpl.java. =====");
+		System.out.println("====> Service: isValid Conseiller " + pUserName + " ; " + pPassword);
 		Boolean isValid = conseillerDao.isValidConseiller(pUserName, pPassword);
-		System.out.println("===== Sortie de la methode isValidConseiller de ConseillerServiceImpl.java. =====");
+		if (isValid){
+			System.out.println("====> Service: Conseiller " + pUserName + " ; " + pPassword + " is valid.");
+		} else {
+			System.out.println("====> Service: Conseiller " + pUserName + " ; " + pPassword + " is NOT valid.");
+		}
 		return isValid;
 	}
 	

@@ -9,12 +9,12 @@ public interface IConseillerDao {
 	
 	public List<Conseiller> getAllConseillers();
 	
-	public void addConseiller(Conseiller pConseiller);
+	public boolean addConseiller(Conseiller pConseiller);
 	
 	public Conseiller getConseillerByID(int idConseiller);
 	
-	Boolean isExistConseiller(int idConseiller);
+	public boolean isExistConseiller(int idConseiller);
 	
-	Boolean isValidConseiller(String pUserName, String pPassword);
+	public boolean isValidConseiller(String pUserName, String pPassword);
 
 }
