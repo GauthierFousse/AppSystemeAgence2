@@ -3,6 +3,7 @@ package com.adaming.appSystemeAgence.modele;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Conseiller extends Personne implements Serializable {
 	
 	/////////// ASSOCIATIONS ///////////
 		
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
 	private Adresse adresse;
 	

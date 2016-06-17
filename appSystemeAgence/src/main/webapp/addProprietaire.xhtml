@@ -19,11 +19,11 @@
 			<p:outputLabel for="prenom" value="Prénom" />
 			<p:inputText id="prenom" value="#{agenceMB.proprietaire.prenom}" />
 
-			<p:outputLabel for="tel" value="Téléphone personnel" />
-			<p:inputText id="tel" value="#{agenceMB.proprietaire.telPrive}" />
+			<p:outputLabel for="telPers" value="Téléphone personnel" />
+			<p:inputText id="telPers" value="#{agenceMB.proprietaire.telPrive}" />
 
-			<p:outputLabel for="tel" value="Téléphone professionnel" />
-			<p:inputText id="tel" value="#{agenceMB.proprietaire.telTravail}" />
+			<p:outputLabel for="telPro" value="Téléphone professionnel" />
+			<p:inputText id="telPro" value="#{agenceMB.proprietaire.telTravail}" />
 
 			<p:spacer height="10" />
 		</h:panelGrid>
@@ -44,20 +44,6 @@
 		</h:panelGrid>
 
 		<p:separator />
-		<h3>Données de connexion</h3>
-		<h:panelGrid columns="2" id="matchGrid" cellpadding="5">
-
-			<p:outputLabel for="login" value="Identifiant" />
-			<p:inputText id="login" value="#{agenceMB.proprietaire.login}" />
-
-			<h:outputLabel for="pwd1" value="Mot de passe" />
-			<p:password id="pwd1" value="#{agenceMB.proprietaire.password}"
-				match="pwd2" label="Password 1" required="true" feedback="true" />
-
-			<h:outputLabel for="pwd2" value="Confirmation du mot de passe : " />
-			<p:password id="pwd2" value="#{agenceMB.proprietaire.password}"
-				label="Password 2" required="true" feedback="true" />
-		</h:panelGrid>
 
 		<h:panelGrid columns="2" cellpadding="5">
 			<p:commandButton value="Retourner à la liste" type="submit" action="deAddProprietaireVersListeProprietaires"/>
