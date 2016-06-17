@@ -46,10 +46,16 @@
 		<p:separator />
 
 		<h:panelGrid columns="2" cellpadding="5">
-			<p:commandButton value="Retourner à la liste" type="submit" action="deAddProprietaireVersListeProprietaires"/>
-			<p:commandButton value="Valider" action="validationAjoutProprietaire"
-				type="submit" actionListener="#{agenceMB.addProprietaire}"
-				styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
+			<p:commandButton id="retourListeProprietaires"
+							 value="Retourner à la liste"
+							 action="versListeProprietaires"/>
+			<p:commandButton id="valider"
+							 value="Valider" 
+							 action="versListeProprietaires"
+							 type="submit" 
+							 actionListener="#{agenceMB.addProprietaire}"
+							 styleClass="ui-priority-primary" 
+							 update="matchGrid" ajax="false" />
 		</h:panelGrid>
 
 	</h:form>
