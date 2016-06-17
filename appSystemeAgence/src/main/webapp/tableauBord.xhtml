@@ -12,7 +12,7 @@
 	
 	<h:form>
         <h:outputText id="login" value="Welcome #{agenceMB.utilisateur.login} #{agenceMB.utilisateur.prenom} #{agenceMB.utilisateur.nom} "/>
-		<p:commandButton value="Deconexion" 
+		<p:commandButton value="Deconnexion" 
 						 id="deconnexion"
 						 action="#{agenceMB.logout}"
 						 styleClass="ui-priority-primary" />
@@ -31,7 +31,7 @@
 	<h:form>
 		<p:commandButton value="Liste des conseillers" 
 						 id="listeConseillers"
-						 action="#{agenceMB.logout}"
+						 action="versListeConseillers"
 						 styleClass="ui-priority-primary" />
 	</h:form>
 </body> 
