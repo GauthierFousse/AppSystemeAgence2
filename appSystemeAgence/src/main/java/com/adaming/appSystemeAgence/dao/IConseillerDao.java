@@ -6,10 +6,15 @@ import com.adaming.appSystemeAgence.modele.Conseiller;
 
 public interface IConseillerDao {
 	
-	Boolean isExist(int idConseiller);
 	
 	public List<Conseiller> getAllConseillers();
 	
 	public void addConseiller(Conseiller pConseiller);
+	
+	public Conseiller getConseillerByID(int idConseiller);
+	
+	Boolean isExistConseiller(int idConseiller);
+	
+	Boolean isValidConseiller(String pUserName, String pPassword);
 
 }

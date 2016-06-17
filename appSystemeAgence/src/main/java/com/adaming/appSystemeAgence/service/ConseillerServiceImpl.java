@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.appSystemeAgence.dao.IConseillerDao;
 import com.adaming.appSystemeAgence.modele.Conseiller;
@@ -25,8 +26,28 @@ public class ConseillerServiceImpl implements IConseillerService {
 	 * Ajout d'un conseiller
 	 */
 	public void addConseiller(Conseiller pConseiller) {
-		System.out.println("===== Entrée dans la méthode addConseiller de ConseillerServiceImpl.java. =====");
+		System.out.println("===== Entree dans la methode addConseiller de ConseillerServiceImpl.java. =====");
 		conseillerDao.addConseiller(pConseiller);
-		System.out.println("===== Sortie de la méthode addConseiller de ConseillerServiceImpl.java. =====");
+		System.out.println("===== Sortie de la methode addConseiller de ConseillerServiceImpl.java. =====");
 	}
+	
+	/**
+	 * VÃ©rifie l'existence du conseiller
+	 */
+	public Boolean isExistConseiller(int idConseiller) {
+		System.out.println("===== Entree dans la methode isExistConseiller de ConseillerServiceImpl.java. =====");
+		Boolean isExist = conseillerDao.isExistConseiller(idConseiller);
+		System.out.println("===== Sortie de la methode isExistConseiller de ConseillerServiceImpl.java. =====");
+		return isExist;
+		
+	}
+
+	public Boolean isValidConseiller(String pUserName, String pPassword) {
+		System.out.println("===== Entree dans la methode isValidConseiller de ConseillerServiceImpl.java. =====");
+		Boolean isValid = conseillerDao.isValidConseiller(pUserName, pPassword);
+		System.out.println("===== Sortie de la methode isValidConseiller de ConseillerServiceImpl.java. =====");
+		return isValid;
+	}
+	
+	
 }
