@@ -10,13 +10,14 @@
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
 
-
-	<!-- Définition des règles de navigation (cf. projet 04_navigation). -->
+	<!--===================================================================== -->
+	<!--========== REGLES DE NAVIGATION ===================================== -->
+	<!--===================================================================== -->
 	<navigation-rule>
 		<from-view-id>/identificationConseiller.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>validationIdentificationConseiller</from-outcome>
-			<to-view-id>/accueil.xhtml</to-view-id>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
@@ -35,31 +36,27 @@
 			<to-view-id>/accueil.xhtml?faces-redirect=true</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
-	<!-- Redirection du tableau de bord vers la page d'affichage des propriétaires. -->
+	
 	<navigation-rule>
 		<from-view-id>tableauBord.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>versListeProprietaires</from-outcome>
 			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/accueil.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
-
-	<!-- Redirection de la page d'affichage des propriétaires vers la page d'ajout 
-		d'un propriétaire. -->
+	
 	<navigation-rule>
 		<from-view-id>listeProprietaires.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>versFormulaireAjoutProprietaire</from-outcome>
 			<to-view-id>/addProprietaire.xhtml</to-view-id>
 		</navigation-case>
-	</navigation-rule>
-
-		<!-- Redirection de la page d'identification du conseiller vers son tableau de bord. -->
-	<navigation-rule>
-		<from-view-id>identification.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>dIdentidicationATableauDeBord</from-outcome>
+			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
