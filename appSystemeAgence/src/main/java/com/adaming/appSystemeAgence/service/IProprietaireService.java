@@ -6,11 +6,11 @@ import com.adaming.appSystemeAgence.modele.Proprietaire;
 
 public interface IProprietaireService {
 
-	public void ajouterProprietaire (Proprietaire proprietaire);
+	public boolean addProprietaire (Proprietaire proprietaire);
 	
-	public void updateProprietaire (Proprietaire proprietaire);
+	public boolean updateProprietaire (Proprietaire proprietaire);
 	
 	public List<Proprietaire> getAllProprietaires();
 	
-	public void deleteProprietaire(int id);
+	public boolean deleteProprietaire(int id);
 }

@@ -13,7 +13,9 @@ import javax.faces.event.ActionEvent;
 
 import com.adaming.appSystemeAgence.modele.Adresse;
 import com.adaming.appSystemeAgence.modele.Conseiller;
+import com.adaming.appSystemeAgence.modele.Proprietaire;
 import com.adaming.appSystemeAgence.service.IConseillerService;
+import com.adaming.appSystemeAgence.service.IProprietaireService;
 
 @ManagedBean(name="agenceMB")
 @SessionScoped
@@ -21,21 +23,28 @@ public class AgenceBean implements Serializable {
 	
 private static final long serialVersionUID = 1L;
 	
-	private List<Conseiller> listeConseillers;
 	private Conseiller conseiller;
-
-	//la couche service : injection du service dans le managedbean
-	//@Autowired si on passe par Spring
+	private List<Conseiller> listeConseillers;
+	
+	private Proprietaire proprietaire;
+	private List<Proprietaire> listeProprietaires;
+	
+	/*
+	 * injection des service dans le managedbean
+	 */
 	@ManagedProperty(value="#{conseillerServiceBean}")
 	private IConseillerService conseillerService;
-
+	
+	@ManagedProperty(value="#{proprietaireServiceBean}")
+	private IProprietaireService proprietaireService;
+	
 	/**
 	 * Constructeur. 
 	 */
 	public AgenceBean() {
 		super();
-		setConseiller(new Conseiller());
-		conseiller.setAdresse(new Adresse());
+//		setConseiller(new Conseiller());
+//		conseiller.setAdresse(new Adresse());
 	}
 	
 	/**
@@ -47,27 +56,37 @@ private static final long serialVersionUID = 1L;
 		conseiller.setAdresse(new Adresse());
 		System.out.println("===> MB : new conseiller set.");
 	}
+	/**
+	 * Instanciation d'un nouveau Proprietaire.
+	 */
+	public void initProprietaire() {
+		System.out.println("===> MB : initProprietaire()");
+		setProprietaire(new Proprietaire());
+		proprietaire.setAdresse(new Adresse());
+		System.out.println("===> MB : new Proprietaire set.");
+	}
 
 	/**
 	 * Ajout d'un conseiller dans la BDD.
-	 * @param pConseiller
 	 */
 	public void addConseiller() {
 		System.out.println("===> MB : add conseiller : " + conseiller);
-		getConseillerService().addConseiller(conseiller);
-		System.out.println("===> MB : conseiller added, maybe.");
+		if (getConseillerService().addConseiller(conseiller)){
+			System.out.println("===> MB : conseiller added with success");
+		} else {
+			System.out.println("===> MB : conseiller FAILED to add.");
+		}
 	}
-	
 	/**
-	 * 
-	 * @return la liste de tous les conseillers.
+	 * Ajout d'un proprietaire dans la BDD.
 	 */
-	public List<Conseiller> getListeConseillers() {
-		System.out.println("===> MB : getting listeConseillers !");
-		System.out.println("===> MB : managed property conseillerService : " + conseillerService);
-		listeConseillers = getConseillerService().getAllConseillers();
-		System.out.println("===> MB : liste recuperee : " + listeConseillers);
-		return listeConseillers;
+	public void addProprietaire() {
+		System.out.println("===> MB : add Proprietaire : " + proprietaire);
+		if (getProprietaireService().addProprietaire(proprietaire)){
+			System.out.println("===> MB : Proprietaire added with success");
+		} else {
+			System.out.println("===> MB : Proprietaire FAILED to add.");
+		}
 	}
 	
 	public String login() {
@@ -96,6 +115,29 @@ private static final long serialVersionUID = 1L;
 		
 	}
 	
+	/**
+	 * 
+	 * @return la liste de tous les conseillers.
+	 */
+	public List<Conseiller> getListeConseillers() {
+		System.out.println("===> MB : getting listeConseillers");
+		System.out.println("===> MB : managed property conseillerService : " + conseillerService);
+		listeConseillers = getConseillerService().getAllConseillers();
+		System.out.println("===> MB : liste recuperee : " + listeConseillers);
+		return listeConseillers;
+	}
+	/**
+	 * 
+	 * @return la liste des Proprietaire
+	 */
+	public List<Proprietaire> getListeProprietaires() {
+		System.out.println("===> MB : getting listeProprietaires");
+		System.out.println("===> MB : managed property proprietaireService : " + proprietaireService);
+		listeProprietaires = getProprietaireService().getAllProprietaires();
+		System.out.println("===> MB : liste recuperee : " + listeProprietaires);
+		return listeProprietaires;
+	}
+	
 	/* 
 	 * autres getters et setters
 	 **/
@@ -108,7 +150,21 @@ private static final long serialVersionUID = 1L;
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
-	/* getter and SETTER of the managed property */
+	
+	public void setListeProprietaires(List<Proprietaire> listeProprietaires) {
+		this.listeProprietaires = listeProprietaires;
+	}
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+
+	public void setProprietaire(Proprietaire proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+
+	/* 
+	 * getter and SETTER of the managed properties
+	 */
 	public IConseillerService getConseillerService() {
 		return conseillerService;
 	}
@@ -116,4 +172,13 @@ private static final long serialVersionUID = 1L;
 		System.out.println("===> MB : setting conseiller service to " + conseillerService);
 		this.conseillerService = conseillerService;
 	}
+
+	public IProprietaireService getProprietaireService() {
+		return proprietaireService;
+	}
+	public void setProprietaireService(IProprietaireService proprietaireService) {
+		this.proprietaireService = proprietaireService;
+	}
+	
+	
 }

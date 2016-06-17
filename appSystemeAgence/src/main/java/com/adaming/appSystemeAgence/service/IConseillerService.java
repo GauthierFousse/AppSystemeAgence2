@@ -8,7 +8,7 @@ import com.adaming.appSystemeAgence.modele.Conseiller;
 public interface IConseillerService {
 	
 	public List<Conseiller> getAllConseillers();
-	public void addConseiller(Conseiller pConseiller);
-	public Boolean isExistConseiller(int idConseiller);
-	public Boolean isValidConseiller(String pUserName, String pPassword);
+	public boolean addConseiller(Conseiller pConseiller);
+	public boolean isExistConseiller(int idConseiller);
+	public boolean isValidConseiller(String pUserName, String pPassword);
 }

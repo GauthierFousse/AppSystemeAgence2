@@ -24,19 +24,22 @@ public class ConseillerServiceImpl implements IConseillerService {
 	/**
 	 * Ajout d'un conseiller
 	 */
-	public void addConseiller(Conseiller pConseiller) {
+	public boolean addConseiller(Conseiller pConseiller) {
 		System.out.println("====> Service: adding Conseiller : " + pConseiller);
 		if (conseillerDao.addConseiller(pConseiller)){
 			System.out.println("====> Service: Conseiller added with success.");
+			return true;
 		} else {
 			System.out.println("====> Service: Conseiller added with success.");
+			return false;
 		}
+		
 	}
 	
 	/**
 	 * Vérifie l'existence de l'id conseiller
 	 */
-	public Boolean isExistConseiller(int idConseiller) {
+	public boolean isExistConseiller(int idConseiller) {
 		System.out.println("====> Service: isExist Conseiller id#" + idConseiller);
 		Boolean isExist = conseillerDao.isExistConseiller(idConseiller);
 		if (isExist){
@@ -51,7 +54,7 @@ public class ConseillerServiceImpl implements IConseillerService {
 	/**
 	 * Verifie l'existance du login et password conseiller dans la BDD.
 	 */
-	public Boolean isValidConseiller(String pUserName, String pPassword) {
+	public boolean isValidConseiller(String pUserName, String pPassword) {
 		System.out.println("====> Service: isValid Conseiller " + pUserName + " ; " + pPassword);
 		Boolean isValid = conseillerDao.isValidConseiller(pUserName, pPassword);
 		if (isValid){

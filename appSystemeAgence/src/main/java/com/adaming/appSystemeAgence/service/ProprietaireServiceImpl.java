@@ -18,24 +18,28 @@ public class ProprietaireServiceImpl implements IProprietaireService {
 	/**
 	 * Ajout d'un propriétaire dans la base de données.
 	 */
-	public void ajouterProprietaire(Proprietaire proprietaire) {
+	public boolean addProprietaire(Proprietaire proprietaire) {
 		System.out.println("====> Service : ajout Proprietaire");
 		if (proprietaireDao.addProprietaire(proprietaire)) {
 			System.out.println("====> Service : ajout success.");
+			return true;
 		} else {
 			System.out.println("====> Service : ajout fail.");
+			return false;
 		}
 	}
 
 	/**
 	 * MAJ proprietaire
 	 */
-	public void updateProprietaire(Proprietaire proprietaire) {
+	public boolean updateProprietaire(Proprietaire proprietaire) {
 		System.out.println("====> Service : update Proprietaire");
 		if (proprietaireDao.updateProprietaire(proprietaire)) {
 			System.out.println("====> Service : update success.");
+			return true;
 		} else {
 			System.out.println("====> Service : update fail.");
+			return false;
 		}
 	}
 
@@ -50,12 +54,14 @@ public class ProprietaireServiceImpl implements IProprietaireService {
 	/**
 	 * Supprime un proprietaire
 	 */
-	public void deleteProprietaire(int id) {
+	public boolean deleteProprietaire(int id) {
 		System.out.println("====> Service : delete Proprietaire");
 		if (proprietaireDao.deleteProprietaire(id)) {
 			System.out.println("====> Service : delete success.");
+			return true;
 		} else {
 			System.out.println("====> Service : delete fail.");
+			return false;
 		}
 	}
 	
