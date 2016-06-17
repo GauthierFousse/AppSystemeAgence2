@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page addProprietaire.xhtml</title>
+</h:head>
+
+<body>
+	<h:form>
+		<h3 style="margin-top: 0px">Identité</h3>
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel for="nom" value="Nom" />
+			<p:inputText id="nom" value="#{agenceMB.proprietaire.nom}" />
+
+			<p:outputLabel for="prenom" value="Prénom" />
+			<p:inputText id="prenom" value="#{agenceMB.proprietaire.prenom}" />
+
+			<p:outputLabel for="tel" value="Téléphone personnel" />
+			<p:inputText id="tel" value="#{agenceMB.proprietaire.telPrive}" />
+
+			<p:outputLabel for="tel" value="Téléphone professionnel" />
+			<p:inputText id="tel" value="#{agenceMB.proprietaire.telTravail}" />
+
+			<p:spacer height="10" />
+		</h:panelGrid>
+
+		<p:separator />
+		<h3>Adresse</h3>
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel for="rue" value="Rue" />
+			<p:inputText id="rue" value="#{agenceMB.proprietaire.adresse.rue}" />
+
+			<p:outputLabel for="codePostal" value="Code postal" />
+			<p:inputText id="codePostal"
+				value="#{agenceMB.proprietaire.adresse.codePostal}" />
+
+			<p:outputLabel for="ville" value="Ville" />
+			<p:inputText id="ville"
+				value="#{agenceMB.proprietaire.adresse.ville}" />
+		</h:panelGrid>
+
+		<p:separator />
+		<h3>Données de connexion</h3>
+		<h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+
+			<p:outputLabel for="login" value="Identifiant" />
+			<p:inputText id="login" value="#{agenceMB.proprietaire.login}" />
+
+			<h:outputLabel for="pwd1" value="Mot de passe" />
+			<p:password id="pwd1" value="#{agenceMB.proprietaire.password}"
+				match="pwd2" label="Password 1" required="true" feedback="true" />
+
+			<h:outputLabel for="pwd2" value="Confirmation du mot de passe : " />
+			<p:password id="pwd2" value="#{agenceMB.proprietaire.password}"
+				label="Password 2" required="true" feedback="true" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:commandButton value="Retourner à la liste" type="submit" action="deAddProprietaireVersListeProprietaires"/>
+			<p:commandButton value="Valider" action="validationAjoutProprietaire"
+				type="submit" actionListener="#{agenceMB.addProprietaire}"
+				styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
+		</h:panelGrid>
+
+	</h:form>
+
+</body>
+</html>

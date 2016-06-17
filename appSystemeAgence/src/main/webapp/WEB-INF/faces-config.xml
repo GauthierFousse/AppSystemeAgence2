@@ -10,13 +10,14 @@
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
 
-
-	<!-- Définition des règles de navigation (cf. projet 04_navigation). -->
+	<!--===================================================================== -->
+	<!--========== REGLES DE NAVIGATION ===================================== -->
+	<!--===================================================================== -->
 	<navigation-rule>
 		<from-view-id>/identificationConseiller.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>validationIdentificationConseiller</from-outcome>
-			<to-view-id>/accueil.xhtml</to-view-id>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
@@ -33,6 +34,34 @@
 		<navigation-case>
 			<from-outcome>validationAjoutConseiller</from-outcome>
 			<to-view-id>/accueil.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>tableauBord.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/accueil.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>listeProprietaires.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>versFormulaireAjoutProprietaire</from-outcome>
+			<to-view-id>/addProprietaire.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
