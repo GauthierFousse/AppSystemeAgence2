@@ -75,10 +75,19 @@
 	</h:form>
 
 	<h:form>
-		<p:commandButton value="Ajouter conseiller" id="addConseiller"
-			action="versFormulaireAjoutConseiller"
-			actionListener="#{agenceMB.initConseiller()}"
-			styleClass="ui-priority-primary" />
+		<p:commandButton value="Ajouter conseiller" 
+					     id="addConseiller"
+						 action="versFormulaireAjoutConseiller"
+						 actionListener="#{agenceMB.initConseiller()}"
+						 styleClass="ui-priority-primary" />
+	</h:form>
+	<hr/>
+	<br/>
+	<h:form>
+		<p:commandButton value="Tableau de Bord" 
+						 id="tableauBord"
+						 action="versTableauBord"
+						 styleClass="ui-priority-primary" />
 	</h:form>
 
 </body>

@@ -27,6 +27,10 @@
 			<from-outcome>versFormulaireAjoutConseiller</from-outcome>
 			<to-view-id>/addConseiller.xhtml?faces-redirect=true</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
