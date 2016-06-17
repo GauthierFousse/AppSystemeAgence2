@@ -25,19 +25,20 @@ public class ProprietaireDaoImpl implements IProprietaireDao {
 	/**
 	 * Ajout d'un propriétaire à la base de données.
 	 */
-	public void addProprietaire(Proprietaire proprietaire) {
-		System.out.println("===== Entrée dans la méthode addProprietaire de ProprietaireDaoImpl. =====");
+	public boolean addProprietaire(Proprietaire proprietaire) {
+		System.out.println("=====> DAO : addProprietaire : " + proprietaire);
 		Session session = sf.openSession();
 		session.save(proprietaire);
-		System.out.println("===== Sortie de la méthode addProprietaire de ProprietaireDaoImpl. =====");
+		return true;
 	}
 
 
 	/**
 	 * recuération de tous les proprios
 	 */
-	@Override
 	public List<Proprietaire> getAllProprietaires() {
+		System.out.println("=====> DAO : getting all the proprietaires");
+		
 		Session session = sf.openSession();
 		
 		String hqlReq = "FROM proprietaire";
@@ -55,20 +56,19 @@ public class ProprietaireDaoImpl implements IProprietaireDao {
 	/**
 	 * Maj d'un proprio
 	 */
-	@Override
-	public void updateProprietaire(Proprietaire proprietaire) {
-		
+	public boolean updateProprietaire(Proprietaire proprietaire) {
+		System.out.println("=====> DAO : update Proprietaire : " + proprietaire);
 		Session session = sf.openSession();
 		session.update(proprietaire);
-		
+		return true;
 	}
 
 
 	/**
 	 * suppression d'un proprio par l'id
 	 */
-	@Override
-	public void deleteProprietaire(int id) {
+	public boolean deleteProprietaire(int id) {
+		System.out.println("=====> DAO : deleting prorpietaire id#" + id);
 		
 		Session session = sf.openSession();
 		
@@ -78,7 +78,13 @@ public class ProprietaireDaoImpl implements IProprietaireDao {
 		
 		int result = query.executeUpdate();
 		
-		System.out.println(" Nombre de proprietaires supprimés : =========> " + result);
+		System.out.println("=====> DAO : " + result + "proprietaires supprimes.");
+		
+		if (result > 0) {
+			return true;
+		} else {
+			return true;
+		}
 		
 	}
 }

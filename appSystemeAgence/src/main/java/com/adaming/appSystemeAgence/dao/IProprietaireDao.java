@@ -5,12 +5,12 @@ import com.adaming.appSystemeAgence.modele.Proprietaire;
 
 public interface IProprietaireDao {
 
-	public void addProprietaire (Proprietaire proprietaire);
+	public boolean addProprietaire (Proprietaire proprietaire);
 	
 	public List<Proprietaire> getAllProprietaires();
 	
-	public void updateProprietaire (Proprietaire proprietaire);
+	public boolean updateProprietaire (Proprietaire proprietaire);
 	
-	public void deleteProprietaire (int id);
+	public boolean deleteProprietaire (int id);
 	
 }

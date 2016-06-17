@@ -19,27 +19,44 @@ public class ProprietaireServiceImpl implements IProprietaireService {
 	 * Ajout d'un propriétaire dans la base de données.
 	 */
 	public void ajouterProprietaire(Proprietaire proprietaire) {
-		System.out.println("===== Entrée dans la méthode ajouterProprietaire de ProprietaireServiceImpl. =====");
-		proprietaireDao.addProprietaire(proprietaire);
-		System.out.println("===== Sortie de la méthode ajouterProprietaire de ProprietaireServiceImpl. =====");
+		System.out.println("====> Service : ajout Proprietaire");
+		if (proprietaireDao.addProprietaire(proprietaire)) {
+			System.out.println("====> Service : ajout success.");
+		} else {
+			System.out.println("====> Service : ajout fail.");
+		}
 	}
 
-	@Override
+	/**
+	 * MAJ proprietaire
+	 */
 	public void updateProprietaire(Proprietaire proprietaire) {
-		
-		proprietaireDao.updateProprietaire(proprietaire);
+		System.out.println("====> Service : update Proprietaire");
+		if (proprietaireDao.updateProprietaire(proprietaire)) {
+			System.out.println("====> Service : update success.");
+		} else {
+			System.out.println("====> Service : update fail.");
+		}
 	}
 
-	@Override
+	/**
+	 * return the list of all the proprietaires
+	 */
 	public List<Proprietaire> getAllProprietaires() {
-		
+		System.out.println("====> Service : getting all proprietaires");
 		return proprietaireDao.getAllProprietaires();
 	}
 
-	@Override
+	/**
+	 * Supprime un proprietaire
+	 */
 	public void deleteProprietaire(int id) {
-		
-		proprietaireDao.deleteProprietaire(id);
+		System.out.println("====> Service : delete Proprietaire");
+		if (proprietaireDao.deleteProprietaire(id)) {
+			System.out.println("====> Service : delete success.");
+		} else {
+			System.out.println("====> Service : delete fail.");
+		}
 	}
 	
 	
