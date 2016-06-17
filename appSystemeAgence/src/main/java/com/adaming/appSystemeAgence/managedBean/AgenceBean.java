@@ -43,8 +43,10 @@ private static final long serialVersionUID = 1L;
 	 */
 	public AgenceBean() {
 		super();
-//		setConseiller(new Conseiller());
-//		conseiller.setAdresse(new Adresse());
+		setConseiller(new Conseiller());
+		conseiller.setAdresse(new Adresse());
+		setProprietaire(new Proprietaire());
+		proprietaire.setAdresse(new Adresse());
 	}
 	
 	/**
