@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.appSystemeAgence.modele.Client;
 
@@ -16,6 +17,10 @@ public class ClientDaoImpl implements IClientDao {
 	@Autowired
 	private SessionFactory sf;	// Récupération de la fabrique de session.
 	
+	/**
+	 * Récupération de la liste de tous les clients.
+	 */
+	@Transactional(readOnly = true)
 	public List<Client> getAllClients() {
 		System.out.println("=====> DAO : getAllClients");
 		

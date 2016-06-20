@@ -57,6 +57,10 @@
 			<from-outcome>versListeConseillers</from-outcome>
 			<to-view-id>/listeConseillers.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>deTableauDeBordAListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
@@ -92,6 +96,14 @@
 		<navigation-case>
 			<from-outcome>validationModificationProprietaire</from-outcome>
 			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/listeClients.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>deListeClientsADetailClient</from-outcome>
+			<to-view-id>/detailClient.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
