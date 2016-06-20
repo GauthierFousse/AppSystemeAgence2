@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Liste des biens immobilier</title>
+</h:head>
+<body>
+
+	<ui:composition template="/template/layout.xhtml">
+	
+		<ui:define name="content">
+
+			<h:form>
+				<p:dataTable id="liste" value="#{agenceMB.listeBiens}"
+					var="bien">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="n° contrat" />
+						</f:facet>
+						<h:outputText value="#{bien.numContrat}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="statut" />
+						</f:facet>
+						<h:outputText value="#{bien.statut}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="ID de l'adresse" />
+						</f:facet>
+						<h:outputText value="#{bien.adresse.id}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Adresse : " />
+						</f:facet>
+						<h:outputText value="#{bien.adresse.rue}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{bien.adresse.codePostal}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{bien.adresse.ville}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="disponibilite" />
+						</f:facet>
+						<h:outputText value="#{bien.dateDisponibilite}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Proprietaire : " />
+						</f:facet>
+						<h:outputText value="#{proprietaire.nom}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{proprietaire.prenom}" />
+					</p:column>
+
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="date d'entree" />
+						</f:facet>
+						<h:outputText value="#{bien.dateEntree}" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+
+			<h:form>
+				<p:commandButton value="Ajouter bien" id="addBien"
+					action="versFormulaireAjoutBien"
+					actionListener="#{agenceMB.initBien()}"
+					styleClass="ui-priority-primary" />
+			</h:form>
+
+		</ui:define>
+		
+	</ui:composition>
+
+</body>
+</html>

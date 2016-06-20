@@ -11,9 +11,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import com.adaming.appSystemeAgence.modele.Adresse;
+import com.adaming.appSystemeAgence.modele.BienImmobilier;
 import com.adaming.appSystemeAgence.modele.Client;
 import com.adaming.appSystemeAgence.modele.Conseiller;
 import com.adaming.appSystemeAgence.modele.Proprietaire;
+import com.adaming.appSystemeAgence.service.IBienService;
 import com.adaming.appSystemeAgence.service.IClientService;
 import com.adaming.appSystemeAgence.service.IConseillerService;
 import com.adaming.appSystemeAgence.service.IProprietaireService;
@@ -35,24 +37,38 @@ private static final long serialVersionUID = 1L;
 	private Client client;
 	private List<Client> listeClients;
 	
+	private BienImmobilier bien;
+	private List<BienImmobilier> listeBiens;
+	
 	/*
 	 * Injection des services dans le managedbean.
 	 */
 	@ManagedProperty(value="#{conseillerServiceBean}")
 	private IConseillerService conseillerService;
+	
 	@ManagedProperty(value="#{proprietaireServiceBean}")
 	private IProprietaireService proprietaireService;
+	
 	@ManagedProperty(value="#{clientServiceBean}")
 	private IClientService clientService;
+	
+	@ManagedProperty(value="#{bienServiceBean}")
+	private IBienService bienService;
 	
 	/**
 	 * Constructeur. 
 	 */
 	public AgenceBean() {
 		super();
+		
 		utilisateur = new Conseiller();
+		
 		setConseiller(new Conseiller());
 		conseiller.setAdresse(new Adresse());
+		
+		setProprietaire(new Proprietaire());
+		proprietaire.setAdresse(new Adresse());
+		
 		setProprietaire(new Proprietaire());
 		proprietaire.setAdresse(new Adresse());
 	}
@@ -182,12 +198,22 @@ private static final long serialVersionUID = 1L;
 	 * @return
 	 */
 	public List<Client> getListeClients() {
-		System.out.println("===== AgenceBean.java : entrée dans la méthode getListeClients. =====");
-		System.out.println("===> AgenceBean.java : l'argument clientService existe : " + clientService + " =====");
+		System.out.println("===> MB : getting listeClients");
+		System.out.println("===> MB : managed property clientService : " + clientService);
 		listeClients = getClientService().getAllClients();
-		System.out.println("===> AgenceBean.java : listeClients récupérée : " + listeClients + " =====");
-		System.out.println("===== AgenceBean.java : sortie dans la méthode getListeClients. =====");
+		System.out.println("===> MB : liste recuperee : " + listeClients);
 		return listeClients;
+	}
+	/**
+	 * 
+	 * @return la liste de tous les biens
+	 */
+	public List<BienImmobilier> getListeBiens() {
+		System.out.println("===> MB : getting listeBiens");
+		System.out.println("===> MB : managed property bienService : " + bienService);
+		listeBiens = getBienService().getAllBiens();
+		System.out.println("===> MB : liste recuperee : " + listeBiens);
+		return listeBiens;
 	}
 	
 	/* 
@@ -223,16 +249,24 @@ private static final long serialVersionUID = 1L;
 	public Client getClient() {
 		return client;
 	}
-
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
 	public void setListeClients(List<Client> listeClients) {
 		this.listeClients = listeClients;
 	}
 	
+	public BienImmobilier getBien() {
+		return bien;
+	}
+	public void setBien(BienImmobilier bien) {
+		this.bien = bien;
+	}
+	public void setListeBiens(List<BienImmobilier> listeBiens) {
+		this.listeBiens = listeBiens;
+	}
 
+	
 	/* 
 	 * getter and SETTER of the managed properties
 	 */
@@ -251,13 +285,20 @@ private static final long serialVersionUID = 1L;
 		this.proprietaireService = proprietaireService;
 	}
 
-	
 	public IClientService getClientService() {
 		return clientService;
 	}
-
 	public void setClientService(IClientService clientService) {
 		this.clientService = clientService;
 	}
+
+	public IBienService getBienService() {
+		return bienService;
+	}
+	public void setBienService(IBienService bienService) {
+		this.bienService = bienService;
+	}
+	
+	
 	
 }
