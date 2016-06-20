@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:x="http://java.sun.com/jsp/jstl/xml">
+
+<h:head>
+	<title>Page detailClient.xhtml</title>
+</h:head>
+
+<body>
+	<ui:composition template="/template/layoutTableauBord.xhtml">
+		<ui:define name="content">
+			<h:outputStylesheet library="css" name="style.css" />
+
+			<hr />
+			<br />
+
+			<h:form>
+				<h:inputHidden id="id" value="#{agenceMB.client.id}" />
+
+				<h:panelGrid>
+
+					<h:outputText value="Identifiant : #{agenceMB.client.id}" />
+					<h:outputText value="Nom : #{agenceMB.client.nom}" />
+					<h:outputText value="Prénom : #{agenceMB.client.prenom}" />
+					<h:outputText value="Téléphone personnel : #{agenceMB.client.telPrive}" />
+					<h:outputText value="Acquéreur : #{agenceMB.client.id}" />
+
+
+					<h:outputText value="Titre" />
+					<h:inputText value="#{gestionLivresMB.livre.titre}" />
+
+					<h:outputText value="Auteur" />
+					<h:inputText value="#{gestionLivresMB.livre.auteur}" />
+
+					<h:outputText value="Disponibilité" />
+					<h:selectBooleanCheckbox
+						value="#{gestionLivresMB.livre.disponibilite}" />
+
+				</h:panelGrid>
+
+				<h:messages id="errors" layout="table" />
+
+				<h:commandButton value="Sauvegarder" action="listeLivres"
+					actionListener="#{gestionLivresMB.saveLivre}" />
+
+			</h:form>
+
+			<br />
+			<br />
+			<h:form>
+				<p:commandButton value="Retour vers la liste des clients"
+					id="boutonDetailClient" action="deDetailClientAListeClient"
+					styleClass="ui-priority-primary" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

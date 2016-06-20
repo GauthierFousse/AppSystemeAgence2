@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page listeClients.xhtml</title>
+</h:head>
+<body>
+
+	<ui:composition template="/template/layoutLogged.xhtml">
+		<ui:define name="content">
+			<h:outputStylesheet library="css" name="style.css" />
+
+			<h:form>
+
+				<p:dataTable id="liste" value="#{agenceMB.listeClients}"
+					var="client">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Identifiant" />
+						</f:facet>
+						<h:outputText value="#{client.id}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{client.nom}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Prénom" />
+						</f:facet>
+						<h:outputText value="#{client.prenom}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Détail client" />
+						</f:facet>
+						<h:commandLink id="edit" action="deListeClientsADetailClient"
+							actionListener="#{agenceMB.selectClient}">
+							<f:param id="detailId" name="id" value="#{client.id}" />
+							<h:outputText value="Afficher les détails du client" />
+						</h:commandLink>
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+
+			<h:form>
+				<p:commandButton value="Ajouter client" id="addClient"
+					action="deListeClientsAFormulaireAjoutClient"
+					actionListener="#{agenceMB.initClient()}"
+					styleClass="ui-priority-primary" />
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

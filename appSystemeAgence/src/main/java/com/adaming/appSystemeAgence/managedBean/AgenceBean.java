@@ -8,13 +8,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIParameter;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import com.adaming.appSystemeAgence.modele.Adresse;
+import com.adaming.appSystemeAgence.modele.Client;
 import com.adaming.appSystemeAgence.modele.Conseiller;
 import com.adaming.appSystemeAgence.modele.Proprietaire;
+import com.adaming.appSystemeAgence.service.IClientService;
 import com.adaming.appSystemeAgence.service.IConseillerService;
 import com.adaming.appSystemeAgence.service.IProprietaireService;
 
@@ -32,14 +32,18 @@ private static final long serialVersionUID = 1L;
 	private Proprietaire proprietaire;
 	private List<Proprietaire> listeProprietaires;
 	
+	private Client client;
+	private List<Client> listeClients;
+	
 	/*
-	 * injection des service dans le managedbean
+	 * Injection des services dans le managedbean.
 	 */
 	@ManagedProperty(value="#{conseillerServiceBean}")
 	private IConseillerService conseillerService;
-	
 	@ManagedProperty(value="#{proprietaireServiceBean}")
 	private IProprietaireService proprietaireService;
+	@ManagedProperty(value="#{clientServiceBean}")
+	private IClientService clientService;
 	
 	/**
 	 * Constructeur. 
@@ -173,6 +177,18 @@ private static final long serialVersionUID = 1L;
 		System.out.println("===> MB : liste recuperee : " + listeProprietaires);
 		return listeProprietaires;
 	}
+	/**
+	 * Récupération de la liste de tous les clients.
+	 * @return
+	 */
+	public List<Client> getListeClients() {
+		System.out.println("===== AgenceBean.java : entrée dans la méthode getListeClients. =====");
+		System.out.println("===> AgenceBean.java : l'argument clientService existe : " + clientService + " =====");
+		listeClients = getClientService().getAllClients();
+		System.out.println("===> AgenceBean.java : listeClients récupérée : " + listeClients + " =====");
+		System.out.println("===== AgenceBean.java : sortie dans la méthode getListeClients. =====");
+		return listeClients;
+	}
 	
 	/* 
 	 * autres getters et setters
@@ -203,6 +219,19 @@ private static final long serialVersionUID = 1L;
 	public void setUtilisateur(Conseiller utilisateur) {
 		this.utilisateur = utilisateur;
 	}
+	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public void setListeClients(List<Client> listeClients) {
+		this.listeClients = listeClients;
+	}
+	
 
 	/* 
 	 * getter and SETTER of the managed properties
@@ -221,6 +250,14 @@ private static final long serialVersionUID = 1L;
 	public void setProprietaireService(IProprietaireService proprietaireService) {
 		this.proprietaireService = proprietaireService;
 	}
+
 	
+	public IClientService getClientService() {
+		return clientService;
+	}
+
+	public void setClientService(IClientService clientService) {
+		this.clientService = clientService;
+	}
 	
 }
