@@ -25,13 +25,15 @@ public class ClientDaoImpl implements IClientDao {
 		System.out.println("=====> DAO : getAllClients");
 		
 		Session session = sf.openSession();		// Ouverture de la session.
+		System.out.println("===== ClientDaoImpl.java - Méthode getAllClients - Session ouverte. =====");
 		String hqlReq = "FROM client";
 		Query requete = session.createQuery(hqlReq);
+		System.out.println("===== ClientDaoImpl.java - Méthode getAllClients - Requête créée. =====");
 		
 		@SuppressWarnings("unchecked")
 		List<Client> listeClients = requete.list();
 		
-		System.out.println("=====> DAO : listeClients : " + listeClients);
+		System.out.println("=====> DAO : listeClients existe : " + (listeClients != null));
 		
 		return listeClients;
 	}

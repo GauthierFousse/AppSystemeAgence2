@@ -142,12 +142,14 @@ public class Client extends Personne {
 		this.listeAssociationClasseStandard = listeAssociationClasseStandard;
 	}
 	
-	@Override
-	public String toString() {
-		return "Client [id=" + id + ", acquereur=" + acquereur + ", adresse=" + adresse + ", conseiller=" + conseiller
-				+ ", listeContrats=" + listeContrats + ", listeVisites=" + listeVisites
-				+ ", listeAssociationClasseStandard=" + listeAssociationClasseStandard + "]";
-	}
+	
+	
+//	@Override
+//	public String toString() {
+//		return "Client [id=" + id + ", acquereur=" + acquereur + ", adresse=" + adresse + ", conseiller=" + conseiller
+//				+ ", listeContrats=" + listeContrats + ", listeVisites=" + listeVisites
+//				+ ", listeAssociationClasseStandard=" + listeAssociationClasseStandard + "]";
+//	}
 	
 	
 	
