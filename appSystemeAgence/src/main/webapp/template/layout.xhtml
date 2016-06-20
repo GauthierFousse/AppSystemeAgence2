@@ -18,7 +18,7 @@
 			<ui:include src="/template/header.xhtml" />
 			<h:panelGroup>
 				<h:outputText id="login"
-					value="Welcome #{agenceMB.utilisateur.prenom} #{agenceMB.utilisateur.nom} " />
+					value="Welcome #{agenceMB.utilisateur.login}, #{agenceMB.utilisateur.prenom} #{agenceMB.utilisateur.nom} " />
 
 				<p:commandButton value="Deconnexion" id="deconnexion"
 					action="#{agenceMB.logout}" styleClass="ui-priority-primary" />
