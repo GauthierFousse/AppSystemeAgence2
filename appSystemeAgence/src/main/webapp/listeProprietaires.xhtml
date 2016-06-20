@@ -9,9 +9,10 @@
 	<title>Page listeProprietaires.xhtml</title>
 </h:head>
 <body>
-	<ui:composition template="/template/layoutLogged.xhtml">
+	<ui:composition template="/template/layout.xhtml">
+	
 		<ui:define name="content">
-			<h:outputStylesheet library="css" name="style.css" />
+		
 			<h:form>
 				<p:dataTable id="liste" value="#{agenceMB.listeProprietaires}"
 					var="proprietaire">
@@ -85,7 +86,10 @@
 				<p:commandButton value="Tableau de bord" id="tableauBord"
 					action="versTableauBord" styleClass="ui-priority-primary" />
 			</h:form>
+			
 		</ui:define>
+		
 	</ui:composition>
+	
 </body>
 </html>

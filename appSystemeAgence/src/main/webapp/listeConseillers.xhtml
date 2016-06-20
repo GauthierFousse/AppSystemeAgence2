@@ -11,11 +11,10 @@
 <body>
 
 	<ui:composition template="/template/layoutLogged.xhtml">
+	
 		<ui:define name="content">
-			<h:outputStylesheet library="css" name="style.css" />
 
 			<h:form>
-
 				<p:dataTable id="liste" value="#{agenceMB.listeConseillers}"
 					var="conseiller">
 
@@ -74,8 +73,6 @@
 					</p:column>
 
 				</p:dataTable>
-
-
 			</h:form>
 
 			<h:form>
@@ -86,6 +83,7 @@
 			</h:form>
 
 		</ui:define>
+		
 	</ui:composition>
 
 </body>

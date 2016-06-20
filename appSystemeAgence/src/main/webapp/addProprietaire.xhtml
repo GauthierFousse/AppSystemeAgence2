@@ -10,9 +10,10 @@
 </h:head>
 
 <body>
-	<ui:composition template="/template/layoutLogged.xhtml">
+	<ui:composition template="/template/layout.xhtml">
+	
 		<ui:define name="content">
-			<h:outputStylesheet library="css" name="style.css" />
+		
 			<h:form>
 				<h3 style="margin-top: 0px">Identité</h3>
 				<h:panelGrid columns="2" cellpadding="5">
@@ -59,7 +60,10 @@
 				</h:panelGrid>
 
 			</h:form>
+			
 		</ui:define>
+		
 	</ui:composition>
+	
 </body>
 </html>
