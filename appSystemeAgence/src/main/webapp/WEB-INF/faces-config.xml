@@ -39,6 +39,10 @@
 			<to-view-id>/listeConseillers.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>versListeClients</from-outcome>
 			<to-view-id>/listeClients.xhtml</to-view-id>
 		</navigation-case>
