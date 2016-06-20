@@ -14,47 +14,48 @@
 	
 		<ui:define name="content">
 
+			<!-- ================ BIEN A ACHETER ===== -->
 			<h:form>
-				<p:dataTable id="liste" value="#{agenceMB.listeBiens}"
-					var="bien">
+				<p:dataTable id="liste" value="#{agenceMB.listeBiensAAcheter}"
+					var="bienAAcheter">
 
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="n° contrat" />
 						</f:facet>
-						<h:outputText value="#{bien.numContrat}" />
+						<h:outputText value="#{bienAAcheter.numContrat}" />
 					</p:column>
 					
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="statut" />
 						</f:facet>
-						<h:outputText value="#{bien.statut}" />
+						<h:outputText value="#{bienAAcheter.statut}" />
 					</p:column>
 					
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="ID de l'adresse" />
 						</f:facet>
-						<h:outputText value="#{bien.adresse.id}" />
+						<h:outputText value="#{bienAAcheter.adresse.id}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Adresse : " />
 						</f:facet>
-						<h:outputText value="#{bien.adresse.rue}" />
+						<h:outputText value="#{bienAAcheter.adresse.rue}" />
 						<h:outputText value=" " />
-						<h:outputText value="#{bien.adresse.codePostal}" />
+						<h:outputText value="#{bienAAcheter.adresse.codePostal}" />
 						<h:outputText value=" " />
-						<h:outputText value="#{bien.adresse.ville}" />
+						<h:outputText value="#{bienAAcheter.adresse.ville}" />
 					</p:column>
 					
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="disponibilite" />
 						</f:facet>
-						<h:outputText value="#{bien.dateDisponibilite}" />
+						<h:outputText value="#{bienAAcheter.dateDisponibilite}" />
 					</p:column>
 					
 					<p:column>
@@ -71,7 +72,71 @@
 						<f:facet name="header">
 							<h:outputText value="date d'entree" />
 						</f:facet>
-						<h:outputText value="#{bien.dateEntree}" />
+						<h:outputText value="#{bienAAcheter.dateEntree}" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+			
+			<!-- ================ BIEN A LOUER ===== -->
+			<h:form>
+				<p:dataTable id="liste" value="#{agenceMB.listeBiensALouer"
+					var="bienALouer">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="n° contrat" />
+						</f:facet>
+						<h:outputText value="#{bienALouer.numContrat}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="statut" />
+						</f:facet>
+						<h:outputText value="#{bienALouer.statut}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="ID de l'adresse" />
+						</f:facet>
+						<h:outputText value="#{bienALouer.adresse.id}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Adresse : " />
+						</f:facet>
+						<h:outputText value="#{bienALouer.adresse.rue}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{bienALouer.adresse.codePostal}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{bienALouer.adresse.ville}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="disponibilite" />
+						</f:facet>
+						<h:outputText value="#{bienALouer.dateDisponibilite}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Proprietaire : " />
+						</f:facet>
+						<h:outputText value="#{proprietaire.nom}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{proprietaire.prenom}" />
+					</p:column>
+
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="date d'entree" />
+						</f:facet>
+						<h:outputText value="#{bienALouer.dateEntree}" />
 					</p:column>
 
 				</p:dataTable>
