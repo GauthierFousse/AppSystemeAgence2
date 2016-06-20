@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adaming.appSystemeAgence.dao.IBienDao;
+import com.adaming.appSystemeAgence.modele.BienAAcheter;
+import com.adaming.appSystemeAgence.modele.BienALouer;
 import com.adaming.appSystemeAgence.modele.BienImmobilier;
 
 @Service("bienServiceBean")
@@ -18,19 +20,14 @@ public class BienServiceImpl implements IBienService, Serializable {
 	@Autowired
 	private IBienDao bienDao;
 	
-	public List<BienImmobilier> getAllBiens() {
-		System.out.println("====> Service: getting all Biens.");
-		
-		List<BienImmobilier> listeBiens = new ArrayList<BienImmobilier>();
-		
-		for(BienImmobilier bien : bienDao.getAllBiensAAcheter()) {
-			listeBiens.add(bien);
-		}
-		for(BienImmobilier bien : bienDao.getAllBiensALouer()) {
-			listeBiens.add(bien);
-		}
-		
-		return listeBiens;
+	public List<BienALouer> getAllBiensALouer() {
+		System.out.println("====> Service: getting all Biens a louer.");
+		return getAllBiensALouer();
+	}
+	
+	public List<BienAAcheter> getAllBiensAAcheter() {
+		System.out.println("====> Service: getting all Biens a acheter.");
+		return getAllBiensAAcheter();
 	}
 
 	public BienImmobilier getBienById(int pId) {
