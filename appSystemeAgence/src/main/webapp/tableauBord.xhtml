@@ -10,27 +10,29 @@
 </h:head> 
 <body> 
 	<ui:composition template="/template/layoutTableauBord.xhtml">
+	
 		<ui:define name="content">
-			<h:outputStylesheet library="css" name="style.css"/>
 
-	<hr/>
-	<br/>
-	Liste des visites (a faire)<br/>
-	<br/>
-	<h:form>
-		<p:commandButton value="Liste des propriétaires" 
-						 id="listeProprietaires"
-						 action="versListeProprietaires"
-						 styleClass="ui-priority-primary" />
-	</h:form>
-	<br/>
-	<h:form>
-		<p:commandButton value="Liste des conseillers" 
-						 id="listeConseillers"
-						 action="versListeConseillers"
-						 styleClass="ui-priority-primary" />
-	</h:form>
-	</ui:define>
+			<hr/>
+			<br/>
+			Liste des visites (a faire)<br/>
+			<br/>
+			<h:form>
+				<p:commandButton value="Liste des propriétaires" 
+								 id="listeProprietaires"
+								 action="versListeProprietaires"
+								 styleClass="ui-priority-primary" />
+			</h:form>
+			<br/>
+			<h:form>
+				<p:commandButton value="Liste des conseillers" 
+								 id="listeConseillers"
+								 action="versListeConseillers"
+								 styleClass="ui-priority-primary" />
+			</h:form>
+			
+		</ui:define>
+		
 	</ui:composition>
 </body> 
 </html>
