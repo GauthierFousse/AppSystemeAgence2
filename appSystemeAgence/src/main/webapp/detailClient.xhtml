@@ -11,13 +11,11 @@
 </h:head>
 
 <body>
-	<ui:composition template="/template/layoutTableauBord.xhtml">
+	<ui:composition template="/template/layout.xhtml">
 		<ui:define name="content">
-			<h:outputStylesheet library="css" name="style.css" />
-
+<!-- 			<h:outputStylesheet library="css" name="style.css" /> -->
 			<hr />
 			<br />
-
 			<h:form>
 				<h:inputHidden id="id" value="#{agenceMB.client.id}" />
 
@@ -48,7 +46,6 @@
 					actionListener="#{gestionLivresMB.saveLivre}" />
 
 			</h:form>
-
 			<br />
 			<br />
 			<h:form>
@@ -56,6 +53,7 @@
 					id="boutonDetailClient" action="deDetailClientAListeClient"
 					styleClass="ui-priority-primary" />
 			</h:form>
+			
 		</ui:define>
 	</ui:composition>
 </body>
