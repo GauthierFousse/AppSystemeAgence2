@@ -9,14 +9,10 @@
 	<title>Tableau de Bord</title>
 </h:head> 
 <body> 
-	
-	<h:form>
-        <h:outputText id="login" value="Welcome #{agenceMB.utilisateur.login} #{agenceMB.utilisateur.prenom} #{agenceMB.utilisateur.nom} "/>
-		<p:commandButton value="Deconnexion" 
-						 id="deconnexion"
-						 action="#{agenceMB.logout}"
-						 styleClass="ui-priority-primary" />
-	</h:form>
+	<ui:composition template="/template/layoutTableauBord.xhtml">
+		<ui:define name="content">
+			<h:outputStylesheet library="css" name="style.css"/>
+
 	<hr/>
 	<br/>
 	Liste des visites (a faire)<br/>
@@ -34,5 +30,7 @@
 						 action="versListeConseillers"
 						 styleClass="ui-priority-primary" />
 	</h:form>
+	</ui:define>
+	</ui:composition>
 </body> 
 </html>

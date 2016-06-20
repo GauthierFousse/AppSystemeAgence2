@@ -6,73 +6,87 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Page listeProprietaires.xhtml</title>
+	<title>Liste des conseillers</title>
 </h:head>
 <body>
+
 	<ui:composition template="/template/layoutLogged.xhtml">
 		<ui:define name="content">
 			<h:outputStylesheet library="css" name="style.css" />
+
 			<h:form>
-				<p:dataTable id="liste" value="#{agenceMB.listeProprietaires}"
-					var="proprietaire">
+
+				<p:dataTable id="liste" value="#{agenceMB.listeConseillers}"
+					var="conseiller">
 
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Identifiant" />
 						</f:facet>
-						<h:outputText value="#{proprietaire.id}" />
+						<h:outputText value="#{conseiller.id}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Nom" />
 						</f:facet>
-						<h:outputText value="#{proprietaire.nom}" />
+						<h:outputText value="#{conseiller.nom}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Prénom" />
 						</f:facet>
-						<h:outputText value="#{proprietaire.prenom}" />
+						<h:outputText value="#{conseiller.prenom}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Adresse" />
+							<h:outputText value="ID de l'adresse" />
 						</f:facet>
-						<h:outputText value="#{proprietaire.adresse}" />
+						<h:outputText value="#{conseiller.adresse.id}" />
 					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Adresse : " />
+						</f:facet>
+						<h:outputText value="#{conseiller.adresse.rue}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{conseiller.adresse.codePostal}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{conseiller.adresse.ville}" />
+					</p:column>
+
 
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Téléphone personnel" />
 						</f:facet>
-						<h:outputText value="#{proprietaire.telPrive}" />
+						<h:outputText value="#{conseiller.telPrive}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Téléphone professionnel" />
+							<h:outputText value="Chiffre d'affaire" />
 						</f:facet>
-						<h:outputText value="#{proprietaire.telTravail}" />
+						<h:outputText value="#{conseiller.CA}" />
 					</p:column>
 
 				</p:dataTable>
+
+
 			</h:form>
 
 			<h:form>
-				<p:commandButton value="Ajouter un propriétaire"
-					id="addProprietaire" action="versFormulaireAjoutProprietaire"
-					actionListener="#{agenceMB.initProprietaire}"
+				<p:commandButton value="Ajouter conseiller" id="addConseiller"
+					action="versFormulaireAjoutConseiller"
+					actionListener="#{agenceMB.initConseiller()}"
 					styleClass="ui-priority-primary" />
 			</h:form>
-			<hr />
-			<h:form>
-				<p:commandButton value="Tableau de bord" id="tableauBord"
-					action="versTableauBord" styleClass="ui-priority-primary" />
-			</h:form>
+
 		</ui:define>
 	</ui:composition>
+
 </body>
 </html>

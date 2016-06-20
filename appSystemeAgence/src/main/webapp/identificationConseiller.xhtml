@@ -6,41 +6,51 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Page d'itentification des conseillers</title>
+	<title>Page d'identification des conseillers</title>
 </h:head>
+
 <body>
-	
-	        <h:form id="loginForm">          
-            <p:growl id="msg" showDetail="true" life="3000" />
-            <p:panel header="Login" style="width: 360px;">
+	<ui:composition template="/template/layout.xhtml">
+		<ui:define name="content">
+			<h:outputStylesheet library="css" name="style.css" />
+			
+			
+			<h:form id="loginForm">
+				<p:growl id="msg" showDetail="true" life="3000" />
+				<p:panel header="Identification du conseiller" style="width: 360px;">
 
-                <h:panelGrid id="loginPanel" columns="2">
+					<h:panelGrid id="loginPanel" columns="2" styleClass="pannelGridCenter">
 
-                    <h:outputText value="Username" />
+						<h:outputText value="Username" />
 
-                    <p:inputText id="loginPage_username" value="#{agenceMB.conseiller.login}" ></p:inputText>
+						<p:inputText id="loginPage_username"
+							value="#{agenceMB.conseiller.login}"></p:inputText>
 
-                    <p:spacer></p:spacer>
+						<p:spacer></p:spacer>
 
-                    <p:message for="loginPage_username" ></p:message>
+						<p:message for="loginPage_username"></p:message>
 
-                    <h:outputText value="Password" />
+						<h:outputText value="Password" />
 
-                    <p:password id="loginPage_password" value="#{agenceMB.conseiller.password}"  feedback="true"></p:password>
+						<p:password id="loginPage_password"
+							value="#{agenceMB.conseiller.password}" feedback="false"></p:password>
 
-                    <p:spacer></p:spacer>
+						<p:spacer></p:spacer>
 
-                    <p:message for="loginPage_password"></p:message>
+						<p:message for="loginPage_password"></p:message>
 
-                    <p:spacer></p:spacer>
+						<p:spacer></p:spacer>
 
-                    <p:commandButton action="#{agenceMB.login}" value="Login" update="loginForm" ajax="true"></p:commandButton>
+						<p:commandButton action="#{agenceMB.login}" value="Login"
+							update="loginForm" ajax="true"></p:commandButton>
 
-                </h:panelGrid>
+					</h:panelGrid>
 
-            </p:panel>
+				</p:panel>
 
-        </h:form>
-	
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </body>
+
 </html>

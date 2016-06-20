@@ -9,59 +9,64 @@
 	<title>Page accueil.xhtml</title>
 </h:head>
 <body>
-	<h:form>
-		<h3 style="margin-top:0px">Identité</h3>
-		<h:panelGrid columns="2" cellpadding="5">
-			<p:outputLabel for="nom" value="Nom: " />
-			<p:inputText id="nom" value="#{agenceMB.conseiller.nom}" />
+	<ui:composition template="/template/layoutLogged.xhtml">
+		<ui:define name="content">
+			<h:outputStylesheet library="css" name="style.css" />
+			<h:form>
+				<h3 style="margin-top: 0px">Identité</h3>
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="nom" value="Nom: " />
+					<p:inputText id="nom" value="#{agenceMB.conseiller.nom}" />
 
-			<p:outputLabel for="prenom" value="Prenom: " />
-			<p:inputText id="prenom" value="#{agenceMB.conseiller.prenom}" />
+					<p:outputLabel for="prenom" value="Prenom: " />
+					<p:inputText id="prenom" value="#{agenceMB.conseiller.prenom}" />
 
-			<p:outputLabel for="tel" value="Telephone Prive: " />
-			<p:inputText id="tel" value="#{agenceMB.conseiller.telPrive}" />
+					<p:outputLabel for="tel" value="Telephone Prive: " />
+					<p:inputText id="tel" value="#{agenceMB.conseiller.telPrive}" />
 
-			<p:spacer height="10" />
-		</h:panelGrid>
+					<p:spacer height="10" />
+				</h:panelGrid>
 
-		<p:separator />
-		<h3>Adresse</h3>
-		<h:panelGrid columns="2" cellpadding="5">
-		<p:outputLabel for="rue" value="Rue: " />
-		<p:inputText id="rue" value="#{agenceMB.conseiller.adresse.rue}" />
+				<p:separator />
+				<h3>Adresse</h3>
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="rue" value="Rue: " />
+					<p:inputText id="rue" value="#{agenceMB.conseiller.adresse.rue}" />
 
-		<p:outputLabel for="codePostal" value="Code Postal: " />
-		<p:inputText id="codePostal"
-			value="#{agenceMB.conseiller.adresse.codePostal}" />
+					<p:outputLabel for="codePostal" value="Code Postal: " />
+					<p:inputText id="codePostal"
+						value="#{agenceMB.conseiller.adresse.codePostal}" />
 
-		<p:outputLabel for="ville" value="Ville: " />
-		<p:inputText id="ville" value="#{agenceMB.conseiller.adresse.ville}" />
-		</h:panelGrid>
+					<p:outputLabel for="ville" value="Ville: " />
+					<p:inputText id="ville"
+						value="#{agenceMB.conseiller.adresse.ville}" />
+				</h:panelGrid>
 
-		<p:separator />
-		<h3>Données de connexion</h3>
-		<h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+				<p:separator />
+				<h3>Données de connexion</h3>
+				<h:panelGrid columns="2" id="matchGrid" cellpadding="5">
 
-			<p:outputLabel for="login" value="Login: " />
-			<p:inputText id="login" value="#{agenceMB.conseiller.login}" />
+					<p:outputLabel for="login" value="Login: " />
+					<p:inputText id="login" value="#{agenceMB.conseiller.login}" />
 
-			<h:outputLabel for="pwd1" value="Mot de passe : " />
-			<p:password id="pwd1" value="#{agenceMB.conseiller.password}"
-				match="pwd2" label="Password 1" required="true" feedback="true" />
+					<h:outputLabel for="pwd1" value="Mot de passe : " />
+					<p:password id="pwd1" value="#{agenceMB.conseiller.password}"
+						match="pwd2" label="Password 1" required="true" feedback="true" />
 
-			<h:outputLabel for="pwd2" value="Confirmation Mot de passe : " />
-			<p:password id="pwd2" value="#{agenceMB.conseiller.password}"
-				label="Password 2" required="true" feedback="true" />
-		</h:panelGrid>
+					<h:outputLabel for="pwd2" value="Confirmation Mot de passe : " />
+					<p:password id="pwd2" value="#{agenceMB.conseiller.password}"
+						label="Password 2" required="true" feedback="false" />
+				</h:panelGrid>
 
-		<h:panelGrid columns="2" cellpadding="5">
-			<p:commandButton value="Reset" type="reset" />
-			<p:commandButton value="Submit" action="validationAjoutConseiller"
-				type="submit" actionListener="#{agenceMB.addConseiller}"
-				styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
-		</h:panelGrid>
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:commandButton value="Reset" type="reset" />
+					<p:commandButton value="Submit" action="validationAjoutConseiller"
+						type="submit" actionListener="#{agenceMB.addConseiller}"
+						styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
+				</h:panelGrid>
 
-	</h:form>
-
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </body>
 </html>
