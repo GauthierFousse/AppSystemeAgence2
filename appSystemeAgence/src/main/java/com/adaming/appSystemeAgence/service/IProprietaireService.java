@@ -13,4 +13,6 @@ public interface IProprietaireService {
 	public List<Proprietaire> getAllProprietaires();
 	
 	public boolean deleteProprietaire(int id);
+	
+	public Proprietaire getProprietaireById(int id);
 }

@@ -69,12 +69,28 @@
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>versFormulaireModifierProprietaire</from-outcome>
+			<to-view-id>/updateProprietaire.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
 		<from-view-id>/addProprietaire.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>updateProprietaire.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>deUpdateProprietaireVersListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>validationModificationProprietaire</from-outcome>
 			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

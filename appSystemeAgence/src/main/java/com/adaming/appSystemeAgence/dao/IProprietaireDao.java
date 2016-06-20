@@ -13,4 +13,6 @@ public interface IProprietaireDao {
 	
 	public boolean deleteProprietaire (int id);
 	
+	public Proprietaire getProprietaireById(int id);
+	
 }

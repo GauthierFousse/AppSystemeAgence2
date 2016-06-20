@@ -2,6 +2,7 @@ package com.adaming.appSystemeAgence.managedBean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -92,6 +93,23 @@ private static final long serialVersionUID = 1L;
 		} else {
 			System.out.println("===> MB : Proprietaire FAILED to add.");
 		}
+	}
+	
+	public void selectProprietaire(){
+		//recup du parametre id de <f:param>
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		int idProp = Integer.parseInt(params.get("id"));
+		System.out.println("====> PARAM ID : " + idProp);
+		
+		//on va chercher le proprio à update avec son id
+		Proprietaire proprietaire1 = getProprietaireService().getProprietaireById(idProp);
+		System.out.println("=====> PROPRIETAIRE RECUPERERE : "+ proprietaire1);
+		setProprietaire(proprietaire1);
+	}
+	
+	public void updateProprietaire() {
+		getProprietaireService().updateProprietaire(proprietaire);
+		System.out.println("===> MB : UPDATE Proprietaire : " + proprietaire);
 	}
 	
 	/**

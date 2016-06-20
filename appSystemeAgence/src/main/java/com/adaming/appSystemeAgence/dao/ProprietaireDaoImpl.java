@@ -58,6 +58,7 @@ public class ProprietaireDaoImpl implements IProprietaireDao {
 	 */
 	public boolean updateProprietaire(Proprietaire proprietaire) {
 		System.out.println("=====> DAO : update Proprietaire : " + proprietaire);
+		//sf.getCurrentSession().merge(proprietaire);
 		Session session = sf.openSession();
 		session.update(proprietaire);
 		return true;
@@ -85,6 +86,25 @@ public class ProprietaireDaoImpl implements IProprietaireDao {
 		} else {
 			return true;
 		}
+		
+	}
+
+
+	public Proprietaire getProprietaireById(int id) {
+
+System.out.println("=====> DAO : getting proprietaire by id");
+		
+		Session session = sf.openSession();
+		
+		String hqlReq = "FROM proprietaire WHERE id= :pId";
+		
+		Query query = session.createQuery(hqlReq);
+		query.setParameter("pId", id);
+		
+		Proprietaire prop = (Proprietaire) query.uniqueResult();
+		
+		
+		return prop;
 		
 	}
 }

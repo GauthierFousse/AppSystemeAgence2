@@ -64,6 +64,11 @@ public class ProprietaireServiceImpl implements IProprietaireService {
 			return false;
 		}
 	}
+
+	public Proprietaire getProprietaireById(int id) {
+		return proprietaireDao.getProprietaireById(id);
+		return null;
+	}
 	
 	
 

@@ -57,6 +57,19 @@
 						</f:facet>
 						<h:outputText value="#{proprietaire.telTravail}" />
 					</p:column>
+					
+					<p:column>
+				<f:facet name="header">
+					<h:outputText value="Modifier le proprietaire"/>
+				</f:facet>
+				
+				<p:commandButton value="Modifier" id="modifProprietaire"
+					action="versFormulaireModifierProprietaire"
+					actionListener="#{agenceMB.selectProprietaire()}"
+					styleClass="ui-priority-primary" >
+						<f:param id="editId" name="id" value="#{proprietaire.id}"/>
+				</p:commandButton>
+			</p:column>
 
 				</p:dataTable>
 			</h:form>
