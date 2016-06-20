@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.appSystemeAgence.modele.Proprietaire;
 
@@ -60,7 +61,32 @@ public class ProprietaireDaoImpl implements IProprietaireDao {
 		System.out.println("=====> DAO : update Proprietaire : " + proprietaire);
 		//sf.getCurrentSession().merge(proprietaire);
 		Session session = sf.openSession();
-		session.update(proprietaire);
+		//session.saveOrUpdate(proprietaire);
+		
+		String hqlUpdate = "UPDATE proprietaire p SET p.nom = :pNom , p.prenom = :pPrenom , p.telPrive = :pTel_prive , p.telTravail = :pTel_travail WHERE p.id = :pID";
+		Query query = session.createQuery(hqlUpdate);
+		query.setParameter("pNom", proprietaire.getNom());
+		query.setParameter("pPrenom", proprietaire.getPrenom());
+		query.setParameter("pTel_prive", proprietaire.getTelPrive());
+		query.setParameter("pTel_travail", proprietaire.getTelTravail());
+		query.setParameter("pID", proprietaire.getId());
+		
+		int result = query.executeUpdate();
+		
+		System.out.println("=====> DAO : " + result + "proprietaire (sans adresse) MAJ.");
+		
+		String hqlUpdate2 = "Update adresse a SET a.rue = :aRue , a.codePostal = :aCodePostal , a.ville = :aVille WHERE a.id = :aID ";
+		Query query2 = session.createQuery(hqlUpdate2);
+		query2.setParameter("aRue", proprietaire.getAdresse().getRue());
+		query2.setParameter("aCodePostal", proprietaire.getAdresse().getCodePostal());
+		query2.setParameter("aVille", proprietaire.getAdresse().getVille());
+		query2.setParameter("aID", proprietaire.getAdresse().getId());
+		
+		int result2 = query2.executeUpdate();
+		
+		System.out.println("=====> DAO : " + result2 + " adresse proprietaire MAJ.");
+		System.out.println("=====> Id adresse : " + proprietaire.getAdresse().getId());
+		
 		return true;
 	}
 

@@ -40,9 +40,13 @@
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Adresse" />
+							<h:outputText value="Adresse : " />
 						</f:facet>
-						<h:outputText value="#{proprietaire.adresse}" />
+						<h:outputText value="#{proprietaire.adresse.rue}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{proprietaire.adresse.codePostal}" />
+						<h:outputText value=" " />
+						<h:outputText value="#{proprietaire.adresse.ville}" />
 					</p:column>
 
 					<p:column>
@@ -82,10 +86,6 @@
 					styleClass="ui-priority-primary" />
 			</h:form>
 			<hr />
-			<h:form>
-				<p:commandButton value="Tableau de bord" id="tableauBord"
-					action="versTableauBord" styleClass="ui-priority-primary" />
-			</h:form>
 			
 		</ui:define>
 		
