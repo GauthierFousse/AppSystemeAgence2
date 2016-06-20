@@ -11,6 +11,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import com.adaming.appSystemeAgence.modele.Adresse;
+import com.adaming.appSystemeAgence.modele.BienAAcheter;
+import com.adaming.appSystemeAgence.modele.BienALouer;
 import com.adaming.appSystemeAgence.modele.BienImmobilier;
 import com.adaming.appSystemeAgence.modele.Client;
 import com.adaming.appSystemeAgence.modele.Conseiller;
@@ -37,8 +39,11 @@ private static final long serialVersionUID = 1L;
 	private Client client;
 	private List<Client> listeClients;
 	
-	private BienImmobilier bien;
-	private List<BienImmobilier> listeBiens;
+	private BienALouer bienALouer;
+	private List<BienALouer> listeBiensALouer;
+	
+	private BienAAcheter bienAAcheter;
+	private List<BienAAcheter> listeBiensAAcheter;
 	
 	/*
 	 * Injection des services dans le managedbean.
@@ -69,8 +74,11 @@ private static final long serialVersionUID = 1L;
 		setProprietaire(new Proprietaire());
 		proprietaire.setAdresse(new Adresse());
 		
-		setProprietaire(new Proprietaire());
-		proprietaire.setAdresse(new Adresse());
+		setBienALouer(new BienALouer());
+		bienALouer.setAdresse(new Adresse());
+		
+		setBienAAcheter(new BienAAcheter());
+		bienAAcheter.setAdresse(new Adresse());
 	}
 	
 	/**
@@ -90,6 +98,24 @@ private static final long serialVersionUID = 1L;
 		setProprietaire(new Proprietaire());
 		proprietaire.setAdresse(new Adresse());
 		System.out.println("===> MB : new Proprietaire set.");
+	}
+	/**
+	 * Instanciation d'un nouveau Bien a louer.
+	 */
+	public void initBienALouer() {
+		System.out.println("===> MB : initBienALouer()");
+		setBienALouer(new BienALouer());
+		bienALouer.setAdresse(new Adresse());
+		System.out.println("===> MB : new Bien a louer set.");
+	}
+	/**
+	 * Instanciation d'un nouveau Bien a acheter.
+	 */
+	public void initBienAAcheter() {
+		System.out.println("===> MB : initBienALouer()");
+		setBienAAcheter(new BienAAcheter());
+		bienAAcheter.setAdresse(new Adresse());
+		System.out.println("===> MB : new Bien a acheter set.");
 	}
 
 	/**
@@ -115,18 +141,24 @@ private static final long serialVersionUID = 1L;
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void selectProprietaire(){
 		//recup du parametre id de <f:param>
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		int idProp = Integer.parseInt(params.get("id"));
-		System.out.println("====> PARAM ID : " + idProp);
+		System.out.println("===> MB : PARAM ID : " + idProp);
 		
 		//on va chercher le proprio à update avec son id
 		Proprietaire proprietaire1 = getProprietaireService().getProprietaireById(idProp);
-		System.out.println("=====> PROPRIETAIRE RECUPERERE : "+ proprietaire1);
+		System.out.println("===> MB : PROPRIETAIRE RECUPERERE : "+ proprietaire1);
 		setProprietaire(proprietaire1);
 	}
 	
+	/**
+	 * 
+	 */
 	public void updateProprietaire() {
 		getProprietaireService().updateProprietaire(proprietaire);
 		System.out.println("===> MB : UPDATE Proprietaire : " + proprietaire);
@@ -150,7 +182,7 @@ private static final long serialVersionUID = 1L;
 		System.out.println("===> MB : login : " + username + " ; " + password);
 		
 		if(conseillerService.isValidConseiller(username, password)){
-			utilisateur = conseiller;
+			utilisateur = conseiller; //get conseiller by login A FAIRE !
 			return("validationIdentificationConseiller");
 		}else{
 			FacesContext.getCurrentInstance().addMessage(
@@ -208,12 +240,23 @@ private static final long serialVersionUID = 1L;
 	 * 
 	 * @return la liste de tous les biens
 	 */
-	public List<BienImmobilier> getListeBiens() {
-		System.out.println("===> MB : getting listeBiens");
+	public List<BienALouer> getListeBiensALoeur() {
+		System.out.println("===> MB : getting listeBiensALouer");
 		System.out.println("===> MB : managed property bienService : " + bienService);
-		listeBiens = getBienService().getAllBiens();
-		System.out.println("===> MB : liste recuperee : " + listeBiens);
-		return listeBiens;
+		listeBiensALouer = getBienService().getAllBiensALouer();
+		System.out.println("===> MB : liste recuperee : " + listeBiensALouer);
+		return listeBiensALouer;
+	}
+	/**
+	 * 
+	 * @return la liste de tous les biens
+	 */
+	public List<BienALouer> getListeBiensAAcheter() {
+		System.out.println("===> MB : getting listeBiensAAcheter");
+		System.out.println("===> MB : managed property bienService : " + bienService);
+		listeBiensAAcheter = getBienService().getAllBiensAAcheter();
+		System.out.println("===> MB : liste recuperee : " + listeBiensAAcheter);
+		return listeBiensALouer;
 	}
 	
 	/* 
@@ -256,14 +299,24 @@ private static final long serialVersionUID = 1L;
 		this.listeClients = listeClients;
 	}
 	
-	public BienImmobilier getBien() {
-		return bien;
+	public BienALouer getBienALouer() {
+		return bienALouer;
 	}
-	public void setBien(BienImmobilier bien) {
-		this.bien = bien;
+	public void setBienALouer(BienALouer bienALouer) {
+		this.bienALouer = bienALouer;
 	}
-	public void setListeBiens(List<BienImmobilier> listeBiens) {
-		this.listeBiens = listeBiens;
+	public void setListeBiensALouer(List<BienALouer> listeBiensALouer) {
+		this.listeBiensALouer = listeBiensALouer;
+	}
+	
+	public BienAAcheter getBienAAcheter() {
+		return bienAAcheter;
+	}
+	public void setBienAAcheter(BienAAcheter bienAAcheter) {
+		this.bienAAcheter = bienAAcheter;
+	}
+	public void setListeBiensAAcheter(List<BienAAcheter> listeBiensAAcheter) {
+		this.listeBiensAAcheter = listeBiensAAcheter;
 	}
 
 	
