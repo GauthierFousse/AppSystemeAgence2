@@ -224,6 +224,26 @@ public class AgenceBean implements Serializable {
 	}
 
 	/**
+	 * Récupération de l'identifiant du client choisi dans la page etrecherche du client correspondant dans la base de données.
+	 */
+	public void selectClient() {
+		/* Récupération du paramètre id de <f:param>. */
+		Map<String, String> params = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
+		int idClient = Integer.parseInt(params.get("id"));
+		System.out
+				.println("===== AgenceBean.java, méthode selectClient - idClient : "
+						+ idClient + ". =====");
+
+		/* Recherche du client à afficher par son identifiant. */
+		Client client = getClientService().getClientById(idClient);
+		System.out
+				.println("===== AgenceBean.java, méthode selectClient - Client récupéré : "
+						+ client + ". =====");
+		setClient(client);
+	}
+	
+	/**
 	 * 
 	 */
 	public void updateProprietaire() {
@@ -455,6 +475,11 @@ public class AgenceBean implements Serializable {
 		this.classeStandardService = classeStandardService;
 	}
 
+	public String acquisition(int a) {
+		if (a == 1)
+			return "oui";
+		return "non";
+	}
 
 
 
