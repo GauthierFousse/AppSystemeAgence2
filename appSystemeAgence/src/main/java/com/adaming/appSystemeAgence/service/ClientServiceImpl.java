@@ -30,5 +30,12 @@ public class ClientServiceImpl implements IClientService {
 		return false;
 	}
 
+	public Client getClientById(int pId) {
+		System.out.println("===== ClientServiceImpl.java - Entrée dans la méthode getClientById avec le paramètre pId = " + pId + ". =====");
+		Client client = clientDao.getClientById(pId);
+		System.out.println("===== ClientServiceImpl.java - Sortie la méthode getClientById avec un client : " + (client != null) + ". =====");
+		return null;
+	}
+
 	
 }

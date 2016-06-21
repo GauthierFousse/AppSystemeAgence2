@@ -8,4 +8,5 @@ public interface IClientService {
 
 	public List<Client> getAllClients();
 	public boolean addClient(Client pClient);
+	public Client getClientById (int pId);
 }
