@@ -74,17 +74,17 @@
 										toggleOrientation="vertical">
 										<h:panelGrid columns="2">
 
-											<p:outputLabel for="prenom" value="Prenom: " />
+											<p:outputLabel for="prenom" value="Prénom : " />
 											<h:outputText id="prenom"
 												value="#{agenceMB.utilisateur.prenom}" />
 
 
-											<p:outputLabel for="nom" value="Nom: " />
+											<p:outputLabel for="nom" value="Nom : " />
 											<h:outputText id="nom" value="#{agenceMB.utilisateur.nom}" />
 
 
 
-											<p:outputLabel for="tel" value="Telephone Prive: " />
+											<p:outputLabel for="tel" value="Téléphone privé : " />
 											<h:outputText id="tel"
 												value="#{agenceMB.utilisateur.telPrive}" />
 
@@ -98,16 +98,16 @@
 										toggleOrientation="vertical">
 										<h:panelGrid columns="2">
 
-											<p:outputLabel for="rue" value="Rue: " />
+											<p:outputLabel for="rue" value="Rue : " />
 											<h:outputText id="rue"
 												value="#{agenceMB.utilisateur.adresse.rue}" />
 
-											<p:outputLabel for="codePostal" value="Code Postal: " />
+											<p:outputLabel for="codePostal" value="Code postal : " />
 											<h:outputText id="codePostal"
 												value="#{agenceMB.utilisateur.adresse.codePostal}"
 												required="true" />
 
-											<p:outputLabel for="ville" value="Ville: " />
+											<p:outputLabel for="ville" value="Ville : " />
 											<h:outputText id="ville"
 												value="#{agenceMB.utilisateur.adresse.ville}" />
 
@@ -119,7 +119,7 @@
 										toggleOrientation="vertical">
 										<h:panelGrid columns="2">
 
-											<p:outputLabel for="login" value="Login: " />
+											<p:outputLabel for="login" value="Identifiant : " />
 											<h:outputText id="login"
 												value="#{agenceMB.utilisateur.login}" />
 										</h:panelGrid>
@@ -127,7 +127,9 @@
 									<p:spacer height="20" />
 
 									<h:panelGrid columns="3">
-										<p:commandButton value="Edit" />
+										<p:commandButton id="modifier" value="Modifier" action="versFormulaireAjoutConseiller" actionListener="#{agenceMB.selectConseiller}">
+											<f:param id="modifierConseiller" name="id" value="#{utilisateur.id}"></f:param>
+										</p:commandButton>
 									</h:panelGrid>
 
 								</h:form>

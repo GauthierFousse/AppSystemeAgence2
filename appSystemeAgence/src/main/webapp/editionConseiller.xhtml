@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page editionConseiller.xhtml</title>
+</h:head>
+
+<body>
+
+	<ui:composition template="/templates/layout.xhtml">
+	
+		<ui:define name="content">
+
+			<h:form>
+		
+				<h:inputHidden id="id" value="#{agenceMB.conseiller.id}"/>
+	
+				<h3 style="margin-top: 0px">Modification des informations du conseiller</h3>
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="nom" value="Nom" />
+					<p:inputText id="nom" value="#{agenceMB.conseiller.nom}" />
+					
+					<p:outputLabel for="prenom" value="Prénom" />
+					<p:inputText id="prenom" value="#{agenceMB.conseiller.prenom}" />
+					
+					<p:outputLabel for="telPers" value="Téléphone personnel" />
+					<p:inputText id="telPers" value="#{agenceMB.conseiller.telPrive}" />
+					
+					<p:spacer height="10" />
+				</h:panelGrid>
+
+				<p:separator />
+				<h3>Adresse</h3>
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="rue" value="Rue" />
+					<p:inputText id="rue" value="#{agenceMB.conseiller.adresse.rue}" />
+
+					<p:outputLabel for="codePostal" value="Code postal" />
+					<p:inputText id="codePostal"
+						value="#{agenceMB.conseiller.adresse.codePostal}" />
+
+					<p:outputLabel for="ville" value="Ville" />
+					<p:inputText id="ville"
+						value="#{agenceMB.conseiller.adresse.ville}" />
+				</h:panelGrid>
+
+				<p:separator />
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="login" value="Identifiant" />
+					<p:inputText id="login" value="#{agenceMB.conseiller.login}" />
+
+					<p:outputLabel for="nouveauMdp" value="Nouveau mot de passe" />
+					<p:inputText id="nouveauMdp" value="#{agenceMB.conseiller.password}" />
+				</h:panelGrid>
+				
+				<p:separator />
+
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:commandButton value="Retourner à la liste" type="submit" action="deUpdateProprietaireVersListeProprietaires"/>
+					<p:commandButton value="Valider" action="validationModificationProprietaire" type="submit" actionListener="#{agenceMB.updateProprietaire}" styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
+				</h:panelGrid>
+
+			</h:form>
+			
+		</ui:define>
+		
+	</ui:composition>
+	
+</body>
+</html>

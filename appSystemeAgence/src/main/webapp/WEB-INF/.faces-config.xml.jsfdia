@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#identificationConseiller.xhtml"
+  PATH="/identificationConseiller.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#identificationConseiller.xhtml:0" NAME="item"
+   PATH="/identificationConseiller.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="validationIdentificationConseiller::#tableauBord.xhtml"
+    NAME="output" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml"
+    TITLE="validationIdentificationConseiller" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listeConseillers.xhtml"
+  PATH="/listeConseillers.xhtml" SHAPE="272,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#listeConseillers.xhtml:0" NAME="item"
+   PATH="/listeConseillers.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="versFormulaireAjoutConseiller::#addConseiller.xhtml?faces-redirect=true"
+    NAME="output" PATH="/addConseiller.xhtml?faces-redirect=true"
+    TARGET="rules:#addConseiller.xhtml?faces-redirect=true"
+    TITLE="versFormulaireAjoutConseiller" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versTableauBord::#tableauBord.xhtml"
+    NAME="output1" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml" TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeProprietaires::#listeProprietaires.xhtml"
+    NAME="output2" PATH="/listeProprietaires.xhtml"
+    TARGET="rules:#listeProprietaires.xhtml"
+    TITLE="versListeProprietaires" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeConseillers::#listeConseillers.xhtml" NAME="output3"
+    PATH="/listeConseillers.xhtml"
+    TARGET="rules:#listeConseillers.xhtml" TITLE="versListeConseillers" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeBiens::#listeBiens.xhtml"
+    NAME="output4" PATH="/listeBiens.xhtml"
+    TARGET="rules:#listeBiens.xhtml" TITLE="versListeBiens" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeClients::#listeClients.xhtml"
+    NAME="output5" PATH="/listeClients.xhtml"
+    TARGET="rules:#listeClients.xhtml" TITLE="versListeClients" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="verslisteClassesStandards::#listeClassesStandards.xhtml"
+    NAME="output6" PATH="/listeClassesStandards.xhtml"
+    TARGET="rules:#listeClassesStandards.xhtml"
+    TITLE="verslisteClassesStandards" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#addConseiller.xhtml"
+  PATH="/addConseiller.xhtml" SHAPE="32,481,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addConseiller.xhtml:0" NAME="item"
+   PATH="/addConseiller.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="validationAjoutConseiller::#listeConseillers.xhtml?faces-redirect=true"
+    NAME="output" PATH="/listeConseillers.xhtml?faces-redirect=true"
+    TARGET="rules:#listeConseillers.xhtml?faces-redirect=true"
+    TITLE="validationAjoutConseiller" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versTableauBord::#tableauBord.xhtml?faces-redirect=true"
+    NAME="output1" PATH="/tableauBord.xhtml?faces-redirect=true"
+    TARGET="rules:#tableauBord.xhtml?faces-redirect=true"
+    TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:tableauBord.xhtml" PATH="tableauBord.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:tableauBord.xhtml:0" NAME="item"
+   PATH="tableauBord.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="deconnexion::#identificationConseiller.xhtml" NAME="output"
+    PATH="/identificationConseiller.xhtml"
+    TARGET="rules:#identificationConseiller.xhtml" TITLE="deconnexion" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeProprietaires::#listeProprietaires.xhtml"
+    NAME="output1" PATH="/listeProprietaires.xhtml"
+    TARGET="rules:#listeProprietaires.xhtml"
+    TITLE="versListeProprietaires" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeConseillers::#listeConseillers.xhtml" NAME="output2"
+    PATH="/listeConseillers.xhtml"
+    TARGET="rules:#listeConseillers.xhtml" TITLE="versListeConseillers" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeBiens::#listeBiens.xhtml"
+    NAME="output3" PATH="/listeBiens.xhtml"
+    TARGET="rules:#listeBiens.xhtml" TITLE="versListeBiens" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeClients::#listeClients.xhtml"
+    NAME="output4" PATH="/listeClients.xhtml"
+    TARGET="rules:#listeClients.xhtml" TITLE="versListeClients" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="verslisteClassesStandards::#listeClassesStandards.xhtml"
+    NAME="output5" PATH="/listeClassesStandards.xhtml"
+    TARGET="rules:#listeClassesStandards.xhtml"
+    TITLE="verslisteClassesStandards" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versTableauBord::#tableauBord.xhtml"
+    NAME="output6" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml" TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:listeProprietaires.xhtml"
+  PATH="listeProprietaires.xhtml" SHAPE="24,208,50,153" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:listeProprietaires.xhtml:0" NAME="item"
+   PATH="listeProprietaires.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="versFormulaireAjoutProprietaire::#addProprietaire.xhtml"
+    NAME="output" PATH="/addProprietaire.xhtml"
+    TARGET="rules:#addProprietaire.xhtml"
+    TITLE="versFormulaireAjoutProprietaire" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versTableauBord::#tableauBord.xhtml"
+    NAME="output1" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml" TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versFormulaireModifierProprietaire::#updateProprietaire.xhtml"
+    NAME="output2" PATH="/updateProprietaire.xhtml"
+    TARGET="rules:#updateProprietaire.xhtml"
+    TITLE="versFormulaireModifierProprietaire" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeProprietaires::#listeProprietaires.xhtml"
+    NAME="output3" PATH="/listeProprietaires.xhtml"
+    TARGET="rules:#listeProprietaires.xhtml"
+    TITLE="versListeProprietaires" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeConseillers::#listeConseillers.xhtml" NAME="output4"
+    PATH="/listeConseillers.xhtml"
+    TARGET="rules:#listeConseillers.xhtml" TITLE="versListeConseillers" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeBiens::#listeBiens.xhtml"
+    NAME="output5" PATH="/listeBiens.xhtml"
+    TARGET="rules:#listeBiens.xhtml" TITLE="versListeBiens" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeClients::#listeClients.xhtml"
+    NAME="output6" PATH="/listeClients.xhtml"
+    TARGET="rules:#listeClients.xhtml" TITLE="versListeClients" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="verslisteClassesStandards::#listeClassesStandards.xhtml"
+    NAME="output7" PATH="/listeClassesStandards.xhtml"
+    TARGET="rules:#listeClassesStandards.xhtml"
+    TITLE="verslisteClassesStandards" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#addProprietaire.xhtml"
+  PATH="/addProprietaire.xhtml" SHAPE="272,209,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addProprietaire.xhtml:0" NAME="item"
+   PATH="/addProprietaire.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeProprietaires::#listeProprietaires.xhtml" NAME="output"
+    PATH="/listeProprietaires.xhtml"
+    TARGET="rules:#listeProprietaires.xhtml"
+    TITLE="versListeProprietaires" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versTableauBord::#tableauBord.xhtml"
+    NAME="output1" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml" TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#addConseiller.xhtml?faces-redirect=true"
+  PATH="/addConseiller.xhtml?faces-redirect=true" SHAPE="512,337,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#tableauBord.xhtml" PATH="/tableauBord.xhtml"
+  SHAPE="512,193,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#listeConseillers.xhtml?faces-redirect=true"
+  PATH="/listeConseillers.xhtml?faces-redirect=true" SHAPE="240,497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#listeProprietaires.xhtml"
+  PATH="/listeProprietaires.xhtml" SHAPE="512,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#updateProprietaire.xhtml"
+  PATH="/updateProprietaire.xhtml" SHAPE="272,385,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:updateProprietaire.xhtml"
+  PATH="updateProprietaire.xhtml" SHAPE="272,385,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:updateProprietaire.xhtml:0" NAME="item"
+   PATH="updateProprietaire.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="deUpdateProprietaireVersListeProprietaires::#listeProprietaires.xhtml"
+    NAME="output" PATH="/listeProprietaires.xhtml"
+    TARGET="rules:#listeProprietaires.xhtml"
+    TITLE="deUpdateProprietaireVersListeProprietaires" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="validationModificationProprietaire::#listeProprietaires.xhtml"
+    NAME="output1" PATH="/listeProprietaires.xhtml"
+    TARGET="rules:#listeProprietaires.xhtml"
+    TITLE="validationModificationProprietaire" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versTableauBord::#tableauBord.xhtml"
+    NAME="output2" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml" TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listeClients.xhtml"
+  PATH="/listeClients.xhtml" SHAPE="640,657,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#listeClients.xhtml:0" NAME="item"
+   PATH="/listeClients.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="deListeClientsADetailClient::#detailClient.xhtml" NAME="output"
+    PATH="/detailClient.xhtml" TARGET="rules:#detailClient.xhtml"
+    TITLE="deListeClientsADetailClient" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versTableauBord::#tableauBord.xhtml"
+    NAME="output1" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml" TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeProprietaires::#listeProprietaires.xhtml"
+    NAME="output2" PATH="/listeProprietaires.xhtml"
+    TARGET="rules:#listeProprietaires.xhtml"
+    TITLE="versListeProprietaires" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeConseillers::#listeConseillers.xhtml" NAME="output3"
+    PATH="/listeConseillers.xhtml"
+    TARGET="rules:#listeConseillers.xhtml" TITLE="versListeConseillers" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeBiens::#listeBiens.xhtml"
+    NAME="output4" PATH="/listeBiens.xhtml"
+    TARGET="rules:#listeBiens.xhtml" TITLE="versListeBiens" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeClients::#listeClients.xhtml"
+    NAME="output5" PATH="/listeClients.xhtml"
+    TARGET="rules:#listeClients.xhtml" TITLE="versListeClients" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="verslisteClassesStandards::#listeClassesStandards.xhtml"
+    NAME="output6" PATH="/listeClassesStandards.xhtml"
+    TARGET="rules:#listeClassesStandards.xhtml"
+    TITLE="verslisteClassesStandards" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#addClients.xhtml" PATH="/addClients.xhtml"
+  SHAPE="368,673,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addClients.xhtml:0" NAME="item"
+   PATH="/addClients.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="versListeClients::#listeClients.xhtml"
+    NAME="output" PATH="/listeClients.xhtml"
+    TARGET="rules:#listeClients.xhtml" TITLE="versListeClients" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versTableauBord::#tableauBord.xhtml"
+    NAME="output1" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml" TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listeBiens.xhtml" PATH="/listeBiens.xhtml"
+  SHAPE="368,1425,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#listeBiens.xhtml:0" NAME="item"
+   PATH="/listeBiens.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="versFormulaireAjoutBien::#ajouterBien.xhtml"
+    NAME="output" PATH="/ajouterBien.xhtml"
+    TARGET="rules:#ajouterBien.xhtml" TITLE="versFormulaireAjoutBien" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versTableauBord::#tableauBord.xhtml"
+    NAME="output1" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml" TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeProprietaires::#listeProprietaires.xhtml"
+    NAME="output2" PATH="/listeProprietaires.xhtml"
+    TARGET="rules:#listeProprietaires.xhtml"
+    TITLE="versListeProprietaires" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeConseillers::#listeConseillers.xhtml" NAME="output3"
+    PATH="/listeConseillers.xhtml"
+    TARGET="rules:#listeConseillers.xhtml" TITLE="versListeConseillers" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeBiens::#listeBiens.xhtml"
+    NAME="output4" PATH="/listeBiens.xhtml"
+    TARGET="rules:#listeBiens.xhtml" TITLE="versListeBiens" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeClients::#listeClients.xhtml"
+    NAME="output5" PATH="/listeClients.xhtml"
+    TARGET="rules:#listeClients.xhtml" TITLE="versListeClients" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="verslisteClassesStandards::#listeClassesStandards.xhtml"
+    NAME="output6" PATH="/listeClassesStandards.xhtml"
+    TARGET="rules:#listeClassesStandards.xhtml"
+    TITLE="verslisteClassesStandards" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listeClassesStandards.xhtml"
+  PATH="/listeClassesStandards.xhtml" SHAPE="96,1409,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#listeClassesStandards.xhtml:0" NAME="item"
+   PATH="/listeClassesStandards.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="versTableauBord::#tableauBord.xhtml"
+    NAME="output" PATH="/tableauBord.xhtml"
+    TARGET="rules:#tableauBord.xhtml" TITLE="versTableauBord" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeProprietaires::#listeProprietaires.xhtml"
+    NAME="output1" PATH="/listeProprietaires.xhtml"
+    TARGET="rules:#listeProprietaires.xhtml"
+    TITLE="versListeProprietaires" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="versListeConseillers::#listeConseillers.xhtml" NAME="output2"
+    PATH="/listeConseillers.xhtml"
+    TARGET="rules:#listeConseillers.xhtml" TITLE="versListeConseillers" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeBiens::#listeBiens.xhtml"
+    NAME="output3" PATH="/listeBiens.xhtml"
+    TARGET="rules:#listeBiens.xhtml" TITLE="versListeBiens" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="versListeClients::#listeClients.xhtml"
+    NAME="output4" PATH="/listeClients.xhtml"
+    TARGET="rules:#listeClients.xhtml" TITLE="versListeClients" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#tableauBord.xhtml?faces-redirect=true"
+  PATH="/tableauBord.xhtml?faces-redirect=true" SHAPE="256,1729,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ajouterBien.xhtml" PATH="/ajouterBien.xhtml"
+  SHAPE="640,1409,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#detailClient.xhtml"
+  PATH="/detailClient.xhtml" SHAPE="912,673,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
