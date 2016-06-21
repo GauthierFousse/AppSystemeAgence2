@@ -13,7 +13,7 @@
 	<!--===================================================================== -->
 	<!--========== REGLES DE NAVIGATION ===================================== -->
 	<!--===================================================================== -->
-	
+
 	<!--=================== IDENTIFICATION ========================== -->
 	<navigation-rule>
 		<from-view-id>/identificationConseiller.xhtml</from-view-id>
@@ -61,7 +61,7 @@
 		<from-view-id>/listeConseillers.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>versFormulaireAjoutConseiller</from-outcome>
-			<to-view-id>/addConseiller.xhtml?faces-redirect=true</to-view-id>
+			<to-view-id>/addConseiller.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
@@ -93,14 +93,14 @@
 		<from-view-id>/addConseiller.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>validationAjoutConseiller</from-outcome>
-			<to-view-id>/listeConseillers.xhtml?faces-redirect=true</to-view-id>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
-			<to-view-id>/tableauBord.xhtml?faces-redirect=true</to-view-id>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<!--=================== PROPRIETAIRES ========================== -->
 	<navigation-rule>
 		<from-view-id>listeProprietaires.xhtml</from-view-id>
@@ -137,7 +137,7 @@
 			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/addProprietaire.xhtml</from-view-id>
 		<navigation-case>
@@ -149,7 +149,7 @@
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>updateProprietaire.xhtml</from-view-id>
 		<navigation-case>
@@ -164,9 +164,9 @@
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
-		
+
 	</navigation-rule>
-	
+
 	<!--=================== CLIENTS ========================== -->
 	<navigation-rule>
 		<from-view-id>/listeClients.xhtml</from-view-id>
@@ -199,7 +199,7 @@
 			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/addClients.xhtml</from-view-id>
 		<navigation-case>
@@ -211,7 +211,7 @@
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<!--=================== BIENS ========================== -->
 	<navigation-rule>
 		<from-view-id>/listeBiens.xhtml</from-view-id>
@@ -244,8 +244,8 @@
 			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
-		<!--=================== CLASSES STANDARDS ========================== -->
+
+	<!--=================== CLASSES STANDARDS ========================== -->
 	<navigation-rule>
 		<from-view-id>/listeClassesStandards.xhtml</from-view-id>
 		<navigation-case>
@@ -267,6 +267,10 @@
 		<navigation-case>
 			<from-outcome>versListeClients</from-outcome>
 			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
