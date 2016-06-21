@@ -161,7 +161,9 @@
 									<f:facet name="footer">
 										<p:commandButton value="Valider" update="growl"
 											actionListener="#{agenceMB.addClasseStandard}"
-											oncomplete="handleLoginRequest(xhr, status, args)" />
+											oncomplete="handleLoginRequest(xhr, status, args)" >
+											<f:ajax render="liste"/>
+											</p:commandButton>
 									</f:facet>
 								</h:panelGrid>
 							</p:dialog>
