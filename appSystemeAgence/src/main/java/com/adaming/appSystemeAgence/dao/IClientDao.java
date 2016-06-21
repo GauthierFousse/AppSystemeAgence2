@@ -9,4 +9,5 @@ public interface IClientDao {
 public List<Client> getAllClients();
 	
 public boolean addClient(Client pClient);
+public Client getClientById (int pId);
 }

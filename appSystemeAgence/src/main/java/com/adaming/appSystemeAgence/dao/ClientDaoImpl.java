@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.appSystemeAgence.modele.Client;
+import com.adaming.appSystemeAgence.modele.Proprietaire;
 
 @Repository
 public class ClientDaoImpl implements IClientDao {
@@ -42,6 +43,20 @@ public class ClientDaoImpl implements IClientDao {
 		System.out.println("=====> DAO : add Client : " + pClient);
 		System.out.println("=====> DAO : add Client : methode a faire.");
 		return false;
+	}
+
+	public Client getClientById(int pId) {
+		System.out.println("===== ClientDaoImpl.java - Entrée dans la méthode getClientById avec le paramètre pId = " + pId + ". =====");
+		
+		Session session = sf.openSession();
+		String hqlReq = "FROM client WHERE id= :clientId";
+		Query requete = session.createQuery(hqlReq);
+		requete.setParameter("clientId", pId);
+		Client client = (Client) requete.uniqueResult();
+		
+		System.out.println("===== ClientDaoImpl.java - Sortie la méthode getClientById avec un client : " + (client != null) + ". =====");
+		
+		return client;
 	}
 
 }
