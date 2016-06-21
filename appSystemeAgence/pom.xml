@@ -238,10 +238,22 @@
   			<artifactId>cdi-api</artifactId>
   			<version>1.0</version>
   		</dependency>
-		
+
+	<!-- THEME GLASSFISH -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>humanity</artifactId>
+			<version>1.0.6</version>
+		</dependency>
+
 	</dependencies>
 
-
-
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>Prime Repo</name>
+			<url>http://repository.primefaces.org</url>
+		</repository>
+	</repositories>
 
 </project>
