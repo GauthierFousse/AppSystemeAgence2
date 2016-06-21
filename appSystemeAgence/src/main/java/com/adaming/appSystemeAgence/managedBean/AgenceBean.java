@@ -251,6 +251,15 @@ public class AgenceBean implements Serializable {
 		System.out.println("===> MB : UPDATE Proprietaire : " + proprietaire);
 	}
 
+	public void deleteProprietaire() {
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		int idProp = Integer.parseInt(params.get("id"));
+		System.out.println("===> MB DELETE PROPRIO : PARAM ID : " + idProp);
+		getProprietaireService().deleteProprietaire(idProp);
+		//System.out.println("===> dans DELETE get ALL :");
+		//getListeProprietaires();
+	}
+	
 	/**
 	 * Login session
 	 * @return

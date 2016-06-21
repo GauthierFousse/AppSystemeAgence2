@@ -95,17 +95,27 @@ public class ProprietaireDaoImpl implements IProprietaireDao {
 	 * suppression d'un proprio par l'id
 	 */
 	public boolean deleteProprietaire(int id) {
+		
 		System.out.println("=====> DAO : deleting prorpietaire id#" + id);
 		
 		Session session = sf.openSession();
+		
+		//Recuperation du proprietaire pour avoir l'id_adresse
+		Proprietaire prop = getProprietaireById(id);
 		
 		String hqlDelete = "DELETE FROM proprietaire p WHERE p.id = :pID";
 		Query query = session.createQuery(hqlDelete);
 		query.setParameter("pID", id);
 		
 		int result = query.executeUpdate();
-		
 		System.out.println("=====> DAO : " + result + "proprietaires supprimes.");
+		
+		String hqlDelete2 = "DELETE FROM adresse a WHERE a.id = :aID";
+		Query query2 = session.createQuery(hqlDelete2);
+		query2.setParameter("aID", prop.getAdresse().getId());
+		
+		int result2 = query2.executeUpdate();
+		System.out.println("=====> DAO : " + result2 + "proprietaires supprimes.");
 		
 		if (result > 0) {
 			return true;
