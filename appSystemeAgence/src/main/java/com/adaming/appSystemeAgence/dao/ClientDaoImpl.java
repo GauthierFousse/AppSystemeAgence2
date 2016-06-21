@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.appSystemeAgence.modele.Client;
-import com.adaming.appSystemeAgence.modele.Proprietaire;
 
 @Repository
 public class ClientDaoImpl implements IClientDao {
