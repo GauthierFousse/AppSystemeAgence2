@@ -92,7 +92,8 @@ public class AgenceBean implements Serializable {
 		bienAAcheter.setAdresse(new Adresse());
 
 		classeStandard = new ClasseStandard();
-	}
+		classeStandard.setTypeBien(" ");	
+		}
 
 	/**
 	 * Instanciation d'un nouveau conseiller.
@@ -137,6 +138,7 @@ public class AgenceBean implements Serializable {
 	public void initClasseStandard() {
 		System.out.println("===> MB : initClasseStandard()");
 		classeStandard = new ClasseStandard();
+		classeStandard.setTypeBien(" ");
 		System.out.println("===> MB : new classeStandard set.");
 	}
 
@@ -194,15 +196,16 @@ public class AgenceBean implements Serializable {
 	/**
 	 * Suppression d'une classe standard dans la BDD.
 	 */
-	public void removeClasseStandard() {
+	public void removeClasseStandard(ActionEvent e) {
+		System.out.println("!!!!!!!!!!! removeClasseStandard !!!!!!!!!!!!!!!");
 		//recup du parametre id de <f:param>
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		int idClasseStandard = Integer.parseInt(params.get("ID"));
+		int idClasseStandard = Integer.parseInt(params.get("classeStdId"));
 		System.out.println("===> MB : PARAM ID : " + idClasseStandard);
 
 		//on va supprimer la classeStandard de la Bdd
 		
-		getClasseStandardService().deleteClasseStandardById(idClasseStandard);
+		classeStandardService.deleteClasseStandardById(idClasseStandard);
 		System.out.println("===> MB : PROPRIETAIRE SUPPRIME : "+ idClasseStandard);
 
 	}   
@@ -224,21 +227,21 @@ public class AgenceBean implements Serializable {
 	}
 
 	/**
-	 * Récupération de l'identifiant du client choisi dans la page etrecherche du client correspondant dans la base de données.
+	 * Rï¿½cupï¿½ration de l'identifiant du client choisi dans la page etrecherche du client correspondant dans la base de donnï¿½es.
 	 */
 	public void selectClient() {
-		/* Récupération du paramètre id de <f:param>. */
+		/* Rï¿½cupï¿½ration du paramï¿½tre id de <f:param>. */
 		Map<String, String> params = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap();
 		int idClient = Integer.parseInt(params.get("id"));
 		System.out
-				.println("===== AgenceBean.java, méthode selectClient - idClient : "
+				.println("===== AgenceBean.java, mï¿½thode selectClient - idClient : "
 						+ idClient + ". =====");
 
-		/* Recherche du client à afficher par son identifiant. */
+		/* Recherche du client ï¿½ afficher par son identifiant. */
 		Client client = getClientService().getClientById(idClient);
 		System.out
-				.println("===== AgenceBean.java, méthode selectClient - Client récupéré : "
+				.println("===== AgenceBean.java, mï¿½thode selectClient - Client rï¿½cupï¿½rï¿½ : "
 						+ client + ". =====");
 		setClient(client);
 	}
