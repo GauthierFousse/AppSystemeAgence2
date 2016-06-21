@@ -83,14 +83,14 @@
 						
 						<!-- <p:growl id="message" showDetail="true" /> update="message"-->
  
-    						<p:commandButton value="Supprimer" action="versListeProrios"  actionListener="#{agenceMB.deleteProprietaire}" >
+    						<p:commandButton value="Supprimer" update="@all" action="versListeProrios"  actionListener="#{agenceMB.deleteProprietaire}" >
     							<f:param id="deleteId" name="id" value="#{proprietaire.id}"/>
         						<p:confirm header="Confirmation" message="Supprimer définitivement ?" icon="ui-icon-alert" />
     						</p:commandButton>
  
     						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-        						<p:commandButton value="Oui" action="listeProprietaires" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-        						<p:commandButton value="Non" action="versFormulaireModifierProprietaire" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        						<p:commandButton value="Oui" action="versListeProrios" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        						<p:commandButton value="Non" action="versListeProrios" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
     						</p:confirmDialog>
 					</p:column>
 
