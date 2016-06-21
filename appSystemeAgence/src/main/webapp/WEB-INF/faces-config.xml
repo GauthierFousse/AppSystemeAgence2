@@ -46,6 +46,14 @@
 			<from-outcome>versListeClients</from-outcome>
 			<to-view-id>/listeClients.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<!--=================== CONSEILLERS ========================== -->
@@ -59,6 +67,26 @@
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
@@ -66,6 +94,10 @@
 		<navigation-case>
 			<from-outcome>validationAjoutConseiller</from-outcome>
 			<to-view-id>/listeConseillers.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml?faces-redirect=true</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -84,6 +116,26 @@
 			<from-outcome>versFormulaireModifierProprietaire</from-outcome>
 			<to-view-id>/updateProprietaire.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
@@ -91,6 +143,10 @@
 		<navigation-case>
 			<from-outcome>versListeProprietaires</from-outcome>
 			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -104,6 +160,11 @@
 			<from-outcome>validationModificationProprietaire</from-outcome>
 			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
+		
 	</navigation-rule>
 	
 	<!--=================== CLIENTS ========================== -->
@@ -117,14 +178,95 @@
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/addClients.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<!--=================== BIENS ========================== -->
 	<navigation-rule>
 		<from-view-id>/listeBiens.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>versFormulaireAjoutBien</from-outcome>
+			<to-view-id>/ajouterBien.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+		<!--=================== CLASSES STANDARDS ========================== -->
+	<navigation-rule>
+		<from-view-id>/listeClassesStandards.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

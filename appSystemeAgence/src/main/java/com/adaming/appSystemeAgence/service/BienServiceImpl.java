@@ -22,12 +22,12 @@ public class BienServiceImpl implements IBienService, Serializable {
 	
 	public List<BienALouer> getAllBiensALouer() {
 		System.out.println("====> Service: getting all Biens a louer.");
-		return getAllBiensALouer();
+		return bienDao.getAllBiensALouer();
 	}
 	
 	public List<BienAAcheter> getAllBiensAAcheter() {
 		System.out.println("====> Service: getting all Biens a acheter.");
-		return getAllBiensAAcheter();
+		return bienDao.getAllBiensAAcheter();
 	}
 
 	public BienImmobilier getBienById(int pId) {

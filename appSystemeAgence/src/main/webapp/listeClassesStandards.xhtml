@@ -6,21 +6,22 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Tableau de Bord</title>
+	<title>Liste des conseillers</title>
 </h:head>
 <body>
+
 	<ui:composition template="/templates/layoutTableauBord.xhtml">
+
 		<ui:define name="content">
-			<h:outputStylesheet library="css" name="style.css" />
 
 			<h:form>
 
 				<p:growl id="growl1" showSummary="true" showDetail="true"></p:growl>
 
 				<p:layout fullPage="false">
-					
+
 					<!-- §§§§§§§§§§§§§§§§§§§§ NORTH §§§§§§§§§§§§§§§§§§§§ -->
-					
+
 					<p:layoutUnit position="north">
 						<h:panelGroup>
 							<h:outputText
@@ -30,9 +31,9 @@
 								styleClass="bold" style="float: right; padding-right: 30px;"></h:outputText>
 						</h:panelGroup>
 					</p:layoutUnit>
-					
+
 					<!-- §§§§§§§§§§§§§§§§§§§§ WEST §§§§§§§§§§§§§§§§§§§§ -->
-					
+
 					<p:layoutUnit position="west" resizable="true" size="200"
 						minSize="40" maxSize="300" style="border: 0;">
 						<p:panel header="Navigation" styleClass="containerPanel"
@@ -65,95 +66,125 @@
 					</p:layoutUnit>
 
 					<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
-					
+
 					<p:layoutUnit position="center" resizable="true" style="border: 0;">
 						<div>
-							<p:dataTable id="liste" value="#{agenceMB.listeClients}"
-								var="client">
+							<p:dataTable id="liste" value="#{agenceMB.listeClasseStandard}"
+								var="classeStandard">
 
 								<f:facet name="header">
 									<p:row>
-										<p:column colspan="4">Liste des clients</p:column>
+										<p:column colspan="7">Liste des classes standards</p:column>
 									</p:row>
 								</f:facet>
 
 								<p:column>
 									<f:facet name="header">
-										<h:outputText value="Identifiant" />
+										<h:outputText value="ID" />
 									</f:facet>
-									<h:outputText value="#{client.id}" />
+									<h:outputText value="#{classeStandard.id}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
-										<h:outputText value="Nom" />
+										<h:outputText value="Type de bien" />
 									</f:facet>
-									<h:outputText value="#{client.nom}" />
+									<h:outputText value="#{classeStandard.typeBien}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
-										<h:outputText value="Prénom" />
+										<h:outputText value="Prix max" />
 									</f:facet>
-									<h:outputText value="#{client.prenom}" />
+									<h:outputText value="#{classeStandard.prixMax}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
-										<h:outputText value="Détails client" />
+										<h:outputText value="Superficie min" />
 									</f:facet>
-									<p:fieldset legend="" toggleable="true" toggleSpeed="500"
-										collapsed="true" style="border: 0;">
-
-										<h:panelGrid columns="2" cellpadding="5" style="border: 0;">
-											<p:outputLabel for="telPrive" value="Telephone prive: " />
-											<h:outputText id="telPrive" value="#{client.telPrive}" />
-
-											<p:outputLabel for="rue" value="Rue: " />
-											<h:outputText id="rue" value="#{client.adresse.rue}" />
-
-											<p:outputLabel for="codePostal" value="Code Postal: " />
-											<h:outputText id="codePostal"
-												value="#{client.adresse.codePostal}" required="true" />
-
-											<p:outputLabel for="ville" value="Ville: " />
-											<h:outputText id="ville" value="#{client.adresse.ville}" />
-
-											<p:outputLabel for="acquereur" value="Acquereur: " />
-											<h:outputText id="acquereur" value="#{client.acquereur}" />
-
-										</h:panelGrid>
-										
-										
-										<p:commandButton value="Plus de détails" id="detailsClient"
-											action="deListeClientsADetailClient"
-											actionListener="#{agenceMB.selectClient}" />
-										
-									</p:fieldset>
+									<h:outputText value="#{classeStandard.superficieMin}" />
 								</p:column>
-								
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Mode de l'offre" />
+									</f:facet>
+									<h:outputText value="#{classeStandard.modeOffre}" />
+								</p:column>
+
+								<p:column>
+									<p:commandButton icon="ui-icon-trash"
+										actionListener="#{agenceMB.removeClasseStandard}" style="float: centere;">
+										
+									</p:commandButton>
+								</p:column>
+
 							</p:dataTable>
 						</div>
 
 						<p:spacer height="10" />
 
-						<h:panelGrid>
-							<p:commandButton value="Ajouter client" id="addClient"
-								action="deListeClientsAFormulaireAjoutClient"
-								actionListener="#{agenceMB.initClient()}"
+						<div>
+							<p:commandButton value="Ajouter une classe standard"
+								id="addClasse" onclick="PF('dlg').show();"
+								actionListener="#{agenceMB.initClasseStandard}"
 								styleClass="ui-priority-primary" />
-						</h:panelGrid>
+
+							<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+							<p:dialog header="Ajout d'une classe standard" widgetVar="dlg"
+								resizable="false">
+								<h:panelGrid columns="2" cellpadding="5">
+									<h:outputLabel for="typeBien" value="Type de bien :" />
+									<p:inputText id="typeBien"
+										value="#{agenceMB.classeStandard.typeBien}" required="true"
+										label="typeBien" />
+
+									<h:outputLabel for="superficieMin" value="Superficie min :" />
+									<p:inputText id="superficieMin"
+										value="#{agenceMB.classeStandard.superficieMin}"
+										required="true" label="superficieMin" />
+
+									<h:outputLabel for="prixMax" value="Prix max :" />
+									<p:inputText id="prixMax"
+										value="#{agenceMB.classeStandard.prixMax}" required="true"
+										label="prixMax" />
+
+									<h:outputLabel for="modeOffre" value="mode de l'Offre :" />
+									<p:inputText id="modeOffre"
+										value="#{agenceMB.classeStandard.modeOffre}" required="true"
+										label="modeOffre" />
+
+									<f:facet name="footer">
+										<p:commandButton value="Valider" update="growl"
+											actionListener="#{agenceMB.addClasseStandard}"
+											oncomplete="handleLoginRequest(xhr, status, args)" />
+									</f:facet>
+								</h:panelGrid>
+							</p:dialog>
+						</div>
+
+						<script type="text/javascript">
+							function handleLoginRequest(xhr, status, args) {
+								if (!args.validForm) {
+									PF('dlg').jq.effect("shake", {
+										times : 5
+									}, 100);
+								} else {
+									PF('dlg').hide();
+									$('#loginLink').fadeOut();
+								}
+							}
+						</script>
 					</p:layoutUnit>
 
 				</p:layout>
 
-
 			</h:form>
+
 		</ui:define>
 	</ui:composition>
+
 </body>
 </html>
-
-
-
-

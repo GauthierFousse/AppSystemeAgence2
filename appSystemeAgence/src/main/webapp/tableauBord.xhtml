@@ -1,52 +1,156 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title>Tableau de Bord</title>
-</h:head> 
-<body> 
-	<ui:composition template="/template/layoutTableauBord.xhtml">
-	
+</h:head>
+<body>
+	<ui:composition template="/templates/layoutTableauBord.xhtml">
 		<ui:define name="content">
+			<h:outputStylesheet library="css" name="style.css" />
 
-			<hr/>
-			<br/>
-			Liste des visites (a faire)<br/>
-			<br/>
 			<h:form>
-				<p:commandButton value="Liste des propriétaires" 
-								 id="listeProprietaires"
-								 action="versListeProprietaires"
-								 styleClass="ui-priority-primary" />
+				<p:growl id="growl1" showSummary="true" showDetail="true"></p:growl>
+				
+				<p:layout fullPage="false">
+					
+					<!-- §§§§§§§§§§§§§§§§§§§§ NORTH §§§§§§§§§§§§§§§§§§§§ -->
+					
+					<p:layoutUnit position="north">
+						<h:panelGroup>
+							<h:outputText
+								value="Tableau de bord de #{agenceMB.utilisateur.prenom} #{agenceMB.utilisateur.nom}"
+								styleClass="bold" style="float: left; padding-right: 30px;"></h:outputText>
+							<h:outputText value="CA = #{agenceMB.utilisateur.CA} €"
+								styleClass="bold" style="float: right; padding-right: 30px;"></h:outputText>
+						</h:panelGroup>
+					</p:layoutUnit>
+					
+					<!-- §§§§§§§§§§§§§§§§§§§§ WEST §§§§§§§§§§§§§§§§§§§§ -->
+					
+					<p:layoutUnit position="west" resizable="true" size="200"
+						minSize="40" maxSize="300" style="border: 0;">
+						<p:panel header="Navigation" styleClass="containerPanel"
+							style="text-align:center;">
+							<h:panelGrid>
+								<p:commandButton value="Vos informations"
+									id="informationsConseilers" action="versTableauBord" styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste des conseillers"
+									id="listeConseillers" action="versListeConseillers"
+									styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste des propriétaires"
+									id="listeProprietaires" action="versListeProprietaires"
+									styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste des clients" id="listeClients"
+									action="versListeClients" styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste des biens" id="listeBiens"
+									action="versListeBiens" styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste de classes standards"
+									id="listeClassesStandards" action="verslisteClassesStandards"
+									styleClass="ui-priority-primary" />
+
+							</h:panelGrid>
+						</p:panel>
+					</p:layoutUnit>
+
+					<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
+					
+					<p:layoutUnit position="center" resizable="true" style="border: 0;">
+						<p:tabView>
+
+							<p:tab title="Informations personnelles">
+
+								<h:form>
+									<p:fieldset legend="Identité" collapsed="false" toggleable="true"
+										toggleOrientation="vertical">
+										<h:panelGrid columns="2">
+
+											<p:outputLabel for="prenom" value="Prenom: " />
+											<h:outputText id="prenom"
+												value="#{agenceMB.utilisateur.prenom}" />
+
+
+											<p:outputLabel for="nom" value="Nom: " />
+											<h:outputText id="nom" value="#{agenceMB.utilisateur.nom}" />
+
+
+
+											<p:outputLabel for="tel" value="Telephone Prive: " />
+											<h:outputText id="tel"
+												value="#{agenceMB.utilisateur.telPrive}" />
+
+										</h:panelGrid>
+									</p:fieldset>
+									<p:spacer height="20" />
+
+
+
+									<p:fieldset legend="Adresse" collapsed="false" toggleable="true"
+										toggleOrientation="vertical">
+										<h:panelGrid columns="2">
+
+											<p:outputLabel for="rue" value="Rue: " />
+											<h:outputText id="rue"
+												value="#{agenceMB.utilisateur.adresse.rue}" />
+
+											<p:outputLabel for="codePostal" value="Code Postal: " />
+											<h:outputText id="codePostal"
+												value="#{agenceMB.utilisateur.adresse.codePostal}"
+												required="true" />
+
+											<p:outputLabel for="ville" value="Ville: " />
+											<h:outputText id="ville"
+												value="#{agenceMB.utilisateur.adresse.ville}" />
+
+										</h:panelGrid>
+									</p:fieldset>
+									<p:spacer height="20" />
+
+									<p:fieldset legend="Login" collapsed="false" toggleable="true"
+										toggleOrientation="vertical">
+										<h:panelGrid columns="2">
+
+											<p:outputLabel for="login" value="Login: " />
+											<h:outputText id="login"
+												value="#{agenceMB.utilisateur.login}" />
+										</h:panelGrid>
+									</p:fieldset>
+									<p:spacer height="20" />
+
+									<h:panelGrid columns="3">
+										<p:commandButton value="Edit" />
+									</h:panelGrid>
+
+								</h:form>
+							</p:tab>
+
+							<p:tab title="Liste des ventes réalisées">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText value="Francis Ford Coppola's legendary..." />
+								</h:panelGrid>
+							</p:tab>
+							<p:tab title="Liste des visites">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText value="After a break of more than 15 years..." />
+								</h:panelGrid>
+							</p:tab>
+						</p:tabView>
+					</p:layoutUnit>
+
+				</p:layout>
+
+
 			</h:form>
-			<br/>
-			<h:form>
-				<p:commandButton value="Liste des conseillers" 
-								 id="listeConseillers"
-								 action="versListeConseillers"
-								 styleClass="ui-priority-primary" />
-			</h:form>
-			<br/>
-			<h:form>
-				<p:commandButton value="Liste des biens" 
-								 id="listeBiens"
-								 action="versListeBiens"
-								 styleClass="ui-priority-primary" />
-			</h:form>
-			<br/>
-			<h:form>
-				<p:commandButton value="Liste des clients" 
-								 id="listeClients"
-								 action="versListeClients"
-								 styleClass="ui-priority-primary" />
-			</h:form>
-			
 		</ui:define>
-		
 	</ui:composition>
-</body> 
+</body>
 </html>

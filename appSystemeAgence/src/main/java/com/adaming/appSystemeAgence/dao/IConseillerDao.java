@@ -11,10 +11,16 @@ public interface IConseillerDao {
 	
 	public boolean addConseiller(Conseiller pConseiller);
 	
+	public void deleteConseiller(Conseiller pConseiller);
+	
+	public void deleteConseillerById(int idConseiller);
+	
 	public Conseiller getConseillerByID(int idConseiller);
 	
 	public boolean isExistConseiller(int idConseiller);
 	
 	public boolean isValidConseiller(String pUserName, String pPassword);
+	
+	public Conseiller getConseillerByLogin(String pUserName, String pPassword);
 
 }

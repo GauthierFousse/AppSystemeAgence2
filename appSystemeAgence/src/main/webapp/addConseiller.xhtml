@@ -9,7 +9,7 @@
 	<title>Page accueil.xhtml</title>
 </h:head>
 <body>
-	<ui:composition template="/template/layout.xhtml">
+	<ui:composition template="/templates/layout.xhtml">
 	
 		<ui:define name="content">
 
@@ -17,7 +17,9 @@
 				<h3 style="margin-top: 0px">Identité</h3>
 				<h:panelGrid columns="2" cellpadding="5">
 					<p:outputLabel for="nom" value="Nom: " />
-					<p:inputText id="nom" value="#{agenceMB.conseiller.nom}" />
+					<p:inputText id="nom" value="#{agenceMB.conseiller.nom}"
+						required="true" />
+
 
 					<p:outputLabel for="prenom" value="Prenom: " />
 					<p:inputText id="prenom" value="#{agenceMB.conseiller.prenom}" />
@@ -40,12 +42,14 @@
 
 					<p:outputLabel for="ville" value="Ville: " />
 					<p:inputText id="ville"
-						value="#{agenceMB.conseiller.adresse.ville}" />
-				</h:panelGrid>
+						value="#{agenceMB.conseiller.adresse.ville}" required="true" />
 
-				<p:separator />
-				<h3>Données de connexion</h3>
-				<h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+
+					<p:spacer height="10" />
+					<p:spacer height="10" />
+
+					<h3>Données de connexion</h3>
+					<h:outputText />
 
 					<p:outputLabel for="login" value="Login: " />
 					<p:inputText id="login" value="#{agenceMB.conseiller.login}" />
@@ -57,9 +61,13 @@
 					<h:outputLabel for="pwd2" value="Confirmation Mot de passe : " />
 					<p:password id="pwd2" value="#{agenceMB.conseiller.password}"
 						label="Password 2" required="true" feedback="false" />
-				</h:panelGrid>
 
-				<h:panelGrid columns="2" cellpadding="5">
+
+					<p:spacer height="10" />
+					<p:spacer height="10" />
+
+				</h:panelGrid>
+				<h:panelGrid columns="2">
 					<p:commandButton value="Reset" type="reset" />
 					<p:commandButton value="Submit" action="validationAjoutConseiller"
 						type="submit" actionListener="#{agenceMB.addConseiller}"

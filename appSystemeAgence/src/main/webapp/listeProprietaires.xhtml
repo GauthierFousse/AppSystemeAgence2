@@ -9,87 +9,156 @@
 	<title>Page listeProprietaires.xhtml</title>
 </h:head>
 <body>
-	<ui:composition template="/template/layout.xhtml">
-	
+	<ui:composition template="/templates/layoutTableauBord.xhtml">
+
 		<ui:define name="content">
-		
-			<h:form>
-				<p:dataTable id="liste" value="#{agenceMB.listeProprietaires}"
-					var="proprietaire">
 
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Identifiant" />
-						</f:facet>
-						<h:outputText value="#{proprietaire.id}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Nom" />
-						</f:facet>
-						<h:outputText value="#{proprietaire.nom}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Prénom" />
-						</f:facet>
-						<h:outputText value="#{proprietaire.prenom}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Adresse : " />
-						</f:facet>
-						<h:outputText value="#{proprietaire.adresse.rue}" />
-						<h:outputText value=" " />
-						<h:outputText value="#{proprietaire.adresse.codePostal}" />
-						<h:outputText value=" " />
-						<h:outputText value="#{proprietaire.adresse.ville}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Téléphone personnel" />
-						</f:facet>
-						<h:outputText value="#{proprietaire.telPrive}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Téléphone professionnel" />
-						</f:facet>
-						<h:outputText value="#{proprietaire.telTravail}" />
-					</p:column>
-					
-					<p:column>
-				<f:facet name="header">
-					<h:outputText value="Modifier le proprietaire"/>
-				</f:facet>
-				
-				<p:commandButton value="Modifier" id="modifProprietaire"
-					action="versFormulaireModifierProprietaire"
-					actionListener="#{agenceMB.selectProprietaire()}"
-					styleClass="ui-priority-primary" >
-						<f:param id="editId" name="id" value="#{proprietaire.id}"/>
-				</p:commandButton>
-			</p:column>
-
-				</p:dataTable>
-			</h:form>
 
 			<h:form>
-				<p:commandButton value="Ajouter un propriétaire"
-					id="addProprietaire" action="versFormulaireAjoutProprietaire"
-					actionListener="#{agenceMB.initProprietaire}"
-					styleClass="ui-priority-primary" />
+
+				<p:growl id="growl1" showSummary="true" showDetail="true"></p:growl>
+
+				<p:layout fullPage="false">
+
+					<!-- §§§§§§§§§§§§§§§§§§§§ NORTH §§§§§§§§§§§§§§§§§§§§ -->
+
+					<p:layoutUnit position="north">
+						<h:panelGroup>
+							<h:outputText
+								value="Tableau de bord de #{agenceMB.utilisateur.prenom} #{agenceMB.utilisateur.nom}"
+								styleClass="bold" style="float: left; padding-right: 30px;"></h:outputText>
+							<h:outputText value="CA = #{agenceMB.utilisateur.CA} €"
+								styleClass="bold" style="float: right; padding-right: 30px;"></h:outputText>
+						</h:panelGroup>
+					</p:layoutUnit>
+
+					<!-- §§§§§§§§§§§§§§§§§§§§ WEST §§§§§§§§§§§§§§§§§§§§ -->
+
+					<p:layoutUnit position="west" resizable="true" size="200"
+						minSize="40" maxSize="300" style="border: 0;">
+						<p:panel header="Navigation" styleClass="containerPanel"
+							style="text-align:center;">
+							<h:panelGrid>
+								<p:commandButton value="Vos informations"
+									id="informationsConseilers" action="versTableauBord"
+									styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste des conseillers"
+									id="listeConseillers" action="versListeConseillers"
+									styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste des propriétaires"
+									id="listeProprietaires" action="versListeProprietaires"
+									styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste des clients" id="listeClients"
+									action="versListeClients" styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste des biens" id="listeBiens"
+									action="versListeBiens" styleClass="ui-priority-primary" />
+
+								<p:commandButton value="Liste de classes standards"
+									id="listeClassesStandards" action="verslisteClassesStandards"
+									styleClass="ui-priority-primary" />
+
+							</h:panelGrid>
+						</p:panel>
+					</p:layoutUnit>
+
+					<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
+
+					<p:layoutUnit position="center" resizable="true" style="border: 0;">
+						<div>
+							<p:dataTable id="liste" value="#{agenceMB.listeProprietaires}"
+								var="proprietaire">
+
+								<f:facet name="header">
+									<p:row>
+										<p:column colspan="7">Liste des propriétaires</p:column>
+									</p:row>
+								</f:facet>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Identifiant" />
+									</f:facet>
+									<h:outputText value="#{proprietaire.id}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Nom" />
+									</f:facet>
+									<h:outputText value="#{proprietaire.nom}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Prénom" />
+									</f:facet>
+									<h:outputText value="#{proprietaire.prenom}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Adresse" />
+									</f:facet>
+									<h:outputText value="#{proprietaire.adresse.rue}" />
+									<h:outputText value=" " />
+									<h:outputText value="#{proprietaire.adresse.codePostal}" />
+									<h:outputText value=" " />
+									<h:outputText value="#{proprietaire.adresse.ville}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Téléphone personnel" />
+									</f:facet>
+									<h:outputText value="#{proprietaire.telPrive}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Téléphone professionnel" />
+									</f:facet>
+									<h:outputText value="#{proprietaire.telTravail}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Modifier le proprietaire" />
+									</f:facet>
+
+									<p:commandButton value="Modifier" id="modifProprietaire"
+										action="versFormulaireModifierProprietaire"
+										actionListener="#{agenceMB.selectProprietaire()}"
+										styleClass="ui-priority-primary">
+										<f:param id="editId" name="id" value="#{proprietaire.id}" />
+									</p:commandButton>
+								</p:column>
+
+							</p:dataTable>
+						</div>
+
+						<p:spacer height="10" />
+
+						<h:panelGrid>
+							<p:commandButton value="Ajouter un propriétaire"
+								id="addProprietaire" action="versFormulaireAjoutProprietaire"
+								actionListener="#{agenceMB.initProprietaire}"
+								styleClass="ui-priority-primary" />
+						</h:panelGrid>
+					</p:layoutUnit>
+
+				</p:layout>
+
+
 			</h:form>
-			<hr />
-			
+
+
 		</ui:define>
-		
+
 	</ui:composition>
-	
+
 </body>
 </html>

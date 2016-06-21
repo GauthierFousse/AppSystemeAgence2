@@ -64,6 +64,26 @@ public class ConseillerServiceImpl implements IConseillerService {
 		}
 		return isValid;
 	}
+
+	public Conseiller getConseillerByID(int idConseiller) {
+		System.out.println("=====> Service : getting conseiller id#" + idConseiller);
+		return conseillerDao.getConseillerByID(idConseiller);
+	}
+
+	public Conseiller getConseillerByLogin(String pUserName, String pPassword) {
+		System.out.println("=====> Service : getting conseiller username : " + pUserName + " and password : " + pPassword);
+		return conseillerDao.getConseillerByLogin(pUserName, pPassword);
+	}
+
+	public void deleteConseiller(Conseiller pConseiller) {
+		System.out.println("=====> Service : deleting conseiller");
+		conseillerDao.deleteConseiller(pConseiller);
+	}
+
+	public void deleteConseillerById(int idConseiller) {
+		System.out.println("=====> Service : deleting conseiller by ID");
+		conseillerDao.deleteConseillerById(idConseiller);		
+	}
 	
 	
 }

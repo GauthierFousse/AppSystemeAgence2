@@ -9,15 +9,21 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
+import org.primefaces.context.RequestContext;
+
+import com.adaming.appSystemeAgence.dao.IClasseStandardDao;
 import com.adaming.appSystemeAgence.modele.Adresse;
 import com.adaming.appSystemeAgence.modele.BienAAcheter;
 import com.adaming.appSystemeAgence.modele.BienALouer;
 import com.adaming.appSystemeAgence.modele.BienImmobilier;
+import com.adaming.appSystemeAgence.modele.ClasseStandard;
 import com.adaming.appSystemeAgence.modele.Client;
 import com.adaming.appSystemeAgence.modele.Conseiller;
 import com.adaming.appSystemeAgence.modele.Proprietaire;
 import com.adaming.appSystemeAgence.service.IBienService;
+import com.adaming.appSystemeAgence.service.IClasseStandardService;
 import com.adaming.appSystemeAgence.service.IClientService;
 import com.adaming.appSystemeAgence.service.IConseillerService;
 import com.adaming.appSystemeAgence.service.IProprietaireService;
@@ -25,62 +31,69 @@ import com.adaming.appSystemeAgence.service.IProprietaireService;
 @ManagedBean(name="agenceMB")
 @SessionScoped
 public class AgenceBean implements Serializable {
-	
-private static final long serialVersionUID = 1L;
-	
+
+	private static final long serialVersionUID = 1L;
+
 	private Conseiller utilisateur;
 
 	private Conseiller conseiller;
 	private List<Conseiller> listeConseillers;
-	
+
 	private Proprietaire proprietaire;
 	private List<Proprietaire> listeProprietaires;
-	
+
 	private Client client;
 	private List<Client> listeClients;
-	
+
 	private BienALouer bienALouer;
 	private List<BienALouer> listeBiensALouer;
-	
+
 	private BienAAcheter bienAAcheter;
 	private List<BienAAcheter> listeBiensAAcheter;
-	
+
+	private ClasseStandard classeStandard;
+	private List<ClasseStandard> listeClasseStandard;
 	/*
 	 * Injection des services dans le managedbean.
 	 */
 	@ManagedProperty(value="#{conseillerServiceBean}")
 	private IConseillerService conseillerService;
-	
+
 	@ManagedProperty(value="#{proprietaireServiceBean}")
 	private IProprietaireService proprietaireService;
-	
+
 	@ManagedProperty(value="#{clientServiceBean}")
 	private IClientService clientService;
-	
+
 	@ManagedProperty(value="#{bienServiceBean}")
 	private IBienService bienService;
-	
+
+	@ManagedProperty(value="#{classeStandardServiceBean}")
+	private IClasseStandardService classeStandardService;
+
 	/**
 	 * Constructeur. 
 	 */
 	public AgenceBean() {
 		super();
-		
+
 		utilisateur = new Conseiller();
-		
+
 		setConseiller(new Conseiller());
 		conseiller.setAdresse(new Adresse());
-		
+
 		setProprietaire(new Proprietaire());
 		proprietaire.setAdresse(new Adresse());
-		
+
 		setBienALouer(new BienALouer());
 		bienALouer.setAdresse(new Adresse());
-		
+
 		setBienAAcheter(new BienAAcheter());
 		bienAAcheter.setAdresse(new Adresse());
+
+		classeStandard = new ClasseStandard();
 	}
-	
+
 	/**
 	 * Instanciation d'un nouveau conseiller.
 	 */
@@ -119,6 +132,15 @@ private static final long serialVersionUID = 1L;
 	}
 
 	/**
+	 * Instanciation d'une nouvelle classeStandard.
+	 */
+	public void initClasseStandard() {
+		System.out.println("===> MB : initClasseStandard()");
+		classeStandard = new ClasseStandard();
+		System.out.println("===> MB : new classeStandard set.");
+	}
+
+	/**
 	 * Ajout d'un conseiller dans la BDD.
 	 */
 	public void addConseiller() {
@@ -140,7 +162,52 @@ private static final long serialVersionUID = 1L;
 			System.out.println("===> MB : Proprietaire FAILED to add.");
 		}
 	}
-	
+
+	/**
+	 * Ajout d'une classe standard dans la BDD.
+	 */
+	public void addClasseStandard(ActionEvent event) {
+		RequestContext context = RequestContext.getCurrentInstance();
+		FacesMessage message = null;
+		boolean validForm = false;
+
+		if(true) {
+			validForm = true;
+			System.out.println("===> MB : add classeStandard : " + classeStandard);
+			if (getClasseStandardService().addClasseStandard(classeStandard)){
+				System.out.println("===> MB : classeStandard added with success to DB");
+				message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Succès" ,"classeStandard added with success to DB");
+			} else {
+				System.out.println("===> MB : classeStandard FAILED to add to DB");
+				message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur", "classeStandard FAILED to add to DB");
+			}
+
+		} else {
+			validForm = false;
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur", "Veuillez vérifier les champs");
+		}
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
+		context.addCallbackParam("validForm", validForm);
+	}   
+
+	/**
+	 * Suppression d'une classe standard dans la BDD.
+	 */
+	public void removeClasseStandard() {
+		//recup du parametre id de <f:param>
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		int idClasseStandard = Integer.parseInt(params.get("ID"));
+		System.out.println("===> MB : PARAM ID : " + idClasseStandard);
+
+		//on va supprimer la classeStandard de la Bdd
+		
+		getClasseStandardService().deleteClasseStandardById(idClasseStandard);
+		System.out.println("===> MB : PROPRIETAIRE SUPPRIME : "+ idClasseStandard);
+
+	}   
+
+
 	/**
 	 * 
 	 */
@@ -149,13 +216,13 @@ private static final long serialVersionUID = 1L;
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		int idProp = Integer.parseInt(params.get("id"));
 		System.out.println("===> MB : PARAM ID : " + idProp);
-		
-		//on va chercher le proprio � update avec son id
+
+		//on va chercher le proprio � update avec son id
 		Proprietaire proprietaire1 = getProprietaireService().getProprietaireById(idProp);
 		System.out.println("===> MB : PROPRIETAIRE RECUPERERE : "+ proprietaire1);
 		setProprietaire(proprietaire1);
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -163,46 +230,48 @@ private static final long serialVersionUID = 1L;
 		getProprietaireService().updateProprietaire(proprietaire);
 		System.out.println("===> MB : UPDATE Proprietaire : " + proprietaire);
 	}
-	
+
 	/**
 	 * Login session
 	 * @return
 	 */
 	public String login() {
 		// Récupération du nom d'utilisateur
-//		UIParameter cp = (UIParameter) event.getComponent().findComponent("loginPage_username");
-//		String username = (String) cp.getValue();
-		
+		//		UIParameter cp = (UIParameter) event.getComponent().findComponent("loginPage_username");
+		//		String username = (String) cp.getValue();
+
 		// Récupération du mot de passe
-//		cp = (UIParameter) event.getComponent().findComponent("loginPage_password");
-//		String password = (String) cp.getValue();
-		
+		//		cp = (UIParameter) event.getComponent().findComponent("loginPage_password");
+		//		String password = (String) cp.getValue();
+
 		String username = conseiller.getLogin();
 		String password = conseiller.getPassword();
 		System.out.println("===> MB : login : " + username + " ; " + password);
-		
-		if(conseillerService.isValidConseiller(username, password)){
-			utilisateur = conseiller; //get conseiller by login A FAIRE !
+
+		Conseiller conseillerTmp = conseillerService.getConseillerByLogin(username, password);
+
+		if(conseillerTmp!=null){
+			conseiller = utilisateur = conseillerTmp;
 			return("validationIdentificationConseiller");
 		}else{
 			FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Invalid Login!",
-                    "Please Try Again!"));
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN,
+							"Invalid Login!",
+							"Please Try Again!"));
 			return "identificationConseiller.xhtml";
 		}
 	}
-	
+
 	/**
 	 * Logout session
 	 */
 	public String logout() {
 		System.out.println("===> MB : deconnexion de " + utilisateur.getLogin());
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-	    return "deconnexion";
+		return "deconnexion";
 	}
-	
+
 	/**
 	 * 
 	 * @return la liste de tous les conseillers.
@@ -226,7 +295,7 @@ private static final long serialVersionUID = 1L;
 		return listeProprietaires;
 	}
 	/**
-	 * R�cup�ration de la liste de tous les clients.
+	 * R�cup�ration de la liste de tous les clients.
 	 * @return
 	 */
 	public List<Client> getListeClients() {
@@ -240,7 +309,7 @@ private static final long serialVersionUID = 1L;
 	 * 
 	 * @return la liste de tous les biens
 	 */
-	public List<BienALouer> getListeBiensALoeur() {
+	public List<BienALouer> getListeBiensALouer() {
 		System.out.println("===> MB : getting listeBiensALouer");
 		System.out.println("===> MB : managed property bienService : " + bienService);
 		listeBiensALouer = getBienService().getAllBiensALouer();
@@ -251,14 +320,26 @@ private static final long serialVersionUID = 1L;
 	 * 
 	 * @return la liste de tous les biens
 	 */
-	public List<BienALouer> getListeBiensAAcheter() {
+	public List<BienAAcheter> getListeBiensAAcheter() {
 		System.out.println("===> MB : getting listeBiensAAcheter");
 		System.out.println("===> MB : managed property bienService : " + bienService);
 		listeBiensAAcheter = getBienService().getAllBiensAAcheter();
 		System.out.println("===> MB : liste recuperee : " + listeBiensAAcheter);
-		return listeBiensALouer;
+		return listeBiensAAcheter;
 	}
-	
+
+	/**
+	 * 
+	 * @return la liste de toutes les classes standard
+	 */
+	public List<ClasseStandard> getListeClasseStandard() {
+		System.out.println("===> MB : getting listeClasseStandard");
+		System.out.println("===> MB : managed property ClasseStandardService : " + classeStandardService);
+		listeClasseStandard = getClasseStandardService().getAllClasseStandard();
+		System.out.println("===> MB : liste recuperee : " + listeClasseStandard);
+		return listeClasseStandard;
+	}
+
 	/* 
 	 * autres getters et setters
 	 **/
@@ -271,7 +352,7 @@ private static final long serialVersionUID = 1L;
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
-	
+
 	public void setListeProprietaires(List<Proprietaire> listeProprietaires) {
 		this.listeProprietaires = listeProprietaires;
 	}
@@ -288,7 +369,7 @@ private static final long serialVersionUID = 1L;
 	public void setUtilisateur(Conseiller utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	
+
 	public Client getClient() {
 		return client;
 	}
@@ -298,7 +379,7 @@ private static final long serialVersionUID = 1L;
 	public void setListeClients(List<Client> listeClients) {
 		this.listeClients = listeClients;
 	}
-	
+
 	public BienALouer getBienALouer() {
 		return bienALouer;
 	}
@@ -308,7 +389,7 @@ private static final long serialVersionUID = 1L;
 	public void setListeBiensALouer(List<BienALouer> listeBiensALouer) {
 		this.listeBiensALouer = listeBiensALouer;
 	}
-	
+
 	public BienAAcheter getBienAAcheter() {
 		return bienAAcheter;
 	}
@@ -319,7 +400,20 @@ private static final long serialVersionUID = 1L;
 		this.listeBiensAAcheter = listeBiensAAcheter;
 	}
 
-	
+	public void setListeClasseStandard(List<ClasseStandard> listeClasseStandard) {
+		this.listeClasseStandard = listeClasseStandard;
+	}
+
+	public ClasseStandard getClasseStandard() {
+		return classeStandard;
+	}
+
+	public void setClasseStandard(ClasseStandard classeStandard) {
+		this.classeStandard = classeStandard;
+	}
+
+
+
 	/* 
 	 * getter and SETTER of the managed properties
 	 */
@@ -351,7 +445,17 @@ private static final long serialVersionUID = 1L;
 	public void setBienService(IBienService bienService) {
 		this.bienService = bienService;
 	}
-	
-	
-	
+
+	public IClasseStandardService getClasseStandardService() {
+		return classeStandardService;
+	}
+
+	public void setClasseStandardService(
+			IClasseStandardService classeStandardService) {
+		this.classeStandardService = classeStandardService;
+	}
+
+
+
+
 }
