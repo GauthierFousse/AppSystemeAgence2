@@ -10,4 +10,5 @@ public List<Client> getAllClients();
 	
 public boolean addClient(Client pClient);
 public Client getClientById (int pId);
+public boolean deleteClient (int pId);
 }
