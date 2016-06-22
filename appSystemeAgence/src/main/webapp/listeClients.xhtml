@@ -154,7 +154,7 @@
  
     									<p:commandButton value="Supprimer" update="@all" action="versListeClients"  actionListener="#{agenceMB.deleteClient}" >
     										<f:param id="deleteId" name="id" value="#{client.id}"/>
-        									<p:confirm header="Confirmation" message="Supprimer définitivement ?" icon="ui-icon-alert" />
+        									<p:confirm header="Confirmation" update="@all" message="Supprimer définitivement ?" icon="ui-icon-alert" />
     									</p:commandButton>
  
     									<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
