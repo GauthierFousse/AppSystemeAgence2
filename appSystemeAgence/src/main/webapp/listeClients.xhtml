@@ -101,13 +101,15 @@
 				
 							<!-- <p:growl id="message" showDetail="true" /> update="message"-->
 
-  									<p:commandButton value="Supprimer" update="@all" action="versListeClients"  actionListener="#{agenceMB.deleteClient}" >
+  									<p:commandButton value="Supprimer" action="versListeClients"  actionListener="#{agenceMB.deleteClient}" >
   										<f:param id="deleteId" name="id" value="#{client.id}"/>
-      									<p:confirm header="Confirmation" update="@all" message="Supprimer définitivement ?" icon="ui-icon-alert" />
+      									<p:confirm header="Confirmation" message="Supprimer définitivement ?" icon="ui-icon-alert" />
   									</p:commandButton>
 
-  									<p:confirmDialog global="true" update="@all" showEffect="fade" hideEffect="fade">
-      									<p:commandButton value="Oui" action="versListeClients" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+  									<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+      									<p:commandButton value="Oui" action="versListeClients" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
+      										<f:ajax render="liste" />
+      									</p:commandButton>	
       									<p:commandButton value="Non" action="versListeClients" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
   									</p:confirmDialog>
 						</p:column>
