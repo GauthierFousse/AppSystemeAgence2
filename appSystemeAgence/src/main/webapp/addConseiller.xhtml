@@ -13,60 +13,68 @@
 	
 		<ui:define name="content">
 
-			<h:form>
-				<h3 style="margin-top: 0px">Identité</h3>
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="nom" value="Nom: " />
-					<p:inputText id="nom" value="#{agenceMB.conseiller.nom}"
-						required="true" />
-
-
-					<p:outputLabel for="prenom" value="Prenom: " />
-					<p:inputText id="prenom" value="#{agenceMB.conseiller.prenom}" />
-
-					<p:outputLabel for="tel" value="Telephone Prive: " />
-					<p:inputText id="tel" value="#{agenceMB.conseiller.telPrive}" />
-
-					<p:spacer height="10" />
-				</h:panelGrid>
-
-				<p:separator />
-				<h3>Adresse</h3>
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="rue" value="Rue: " />
-					<p:inputText id="rue" value="#{agenceMB.conseiller.adresse.rue}" />
-
-					<p:outputLabel for="codePostal" value="Code Postal: " />
-					<p:inputText id="codePostal"
-						value="#{agenceMB.conseiller.adresse.codePostal}" />
-
-					<p:outputLabel for="ville" value="Ville: " />
-					<p:inputText id="ville"
-						value="#{agenceMB.conseiller.adresse.ville}" required="true" />
-
-
-					<p:spacer height="10" />
-					<p:spacer height="10" />
-
-					<h3>Données de connexion</h3>
-					<h:outputText />
-
-					<p:outputLabel for="login" value="Login: " />
-					<p:inputText id="login" value="#{agenceMB.conseiller.login}" />
-
-					<h:outputLabel for="pwd1" value="Mot de passe : " />
-					<p:password id="pwd1" value="#{agenceMB.conseiller.password}"
-						match="pwd2" label="Password 1" required="true" feedback="true" />
-
-					<h:outputLabel for="pwd2" value="Confirmation Mot de passe : " />
-					<p:password id="pwd2" value="#{agenceMB.conseiller.password}"
-						label="Password 2" required="true" feedback="false" />
-
-
-					<p:spacer height="10" />
-					<p:spacer height="10" />
-
-				</h:panelGrid>
+			<h:outputStylesheet library="css" name="style.css" />
+			
+			<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
+			
+			<p:layoutUnit position="center" resizable="true" style="border: 0;">
+				<div>
+				
+					<h3 style="margin-top: 0px">Identité</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="nom" value="Nom: " />
+						<p:inputText id="nom" value="#{agenceMB.conseiller.nom}"
+							required="true" />
+	
+	
+						<p:outputLabel for="prenom" value="Prenom: " />
+						<p:inputText id="prenom" value="#{agenceMB.conseiller.prenom}" />
+	
+						<p:outputLabel for="tel" value="Telephone Prive: " />
+						<p:inputText id="tel" value="#{agenceMB.conseiller.telPrive}" />
+	
+						<p:spacer height="10" />
+					</h:panelGrid>
+	
+					<p:separator />
+					<h3>Adresse</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="rue" value="Rue: " />
+						<p:inputText id="rue" value="#{agenceMB.conseiller.adresse.rue}" />
+	
+						<p:outputLabel for="codePostal" value="Code Postal: " />
+						<p:inputText id="codePostal"
+							value="#{agenceMB.conseiller.adresse.codePostal}" />
+	
+						<p:outputLabel for="ville" value="Ville: " />
+						<p:inputText id="ville"
+							value="#{agenceMB.conseiller.adresse.ville}" required="true" />
+	
+	
+						<p:spacer height="10" />
+						<p:spacer height="10" />
+	
+						<h3>Données de connexion</h3>
+						<h:outputText />
+	
+						<p:outputLabel for="login" value="Login: " />
+						<p:inputText id="login" value="#{agenceMB.conseiller.login}" />
+	
+						<h:outputLabel for="pwd1" value="Mot de passe : " />
+						<p:password id="pwd1" value="#{agenceMB.conseiller.password}"
+							match="pwd2" label="Password 1" required="true" feedback="true" />
+	
+						<h:outputLabel for="pwd2" value="Confirmation Mot de passe : " />
+						<p:password id="pwd2" value="#{agenceMB.conseiller.password}"
+							label="Password 2" required="true" feedback="false" />
+	
+	
+						<p:spacer height="10" />
+						<p:spacer height="10" />
+	
+					</h:panelGrid>
+				</div>
+				
 				<h:panelGrid columns="2">
 					<p:commandButton value="Reset" type="reset" />
 					<p:commandButton value="Submit" action="validationAjoutConseiller"
@@ -74,9 +82,9 @@
 						styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
 				</h:panelGrid>
 
-			</h:form>
+			</p:layoutUnit>
 			
-		</ui:define>
+		</ui:define><!-- content -->
 		
 	</ui:composition>
 </body>

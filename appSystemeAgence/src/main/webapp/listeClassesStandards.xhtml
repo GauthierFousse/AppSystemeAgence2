@@ -14,182 +14,129 @@
 
 		<ui:define name="content">
 
-			<h:form>
+			<h:outputStylesheet library="css" name="style.css" />
 
-				<p:growl id="growl1" showSummary="true" showDetail="true"></p:growl>
+			<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
 
-				<p:layout fullPage="false">
+			<p:layoutUnit position="center" resizable="true" style="border: 0;">
+				<div>
+					<p:dataTable id="liste" value="#{agenceMB.listeClasseStandard}"
+						var="classeStandard">
 
-					<!-- §§§§§§§§§§§§§§§§§§§§ NORTH §§§§§§§§§§§§§§§§§§§§ -->
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="7">Liste des classes standards</p:column>
+							</p:row>
+						</f:facet>
 
-					<p:layoutUnit position="north">
-						<h:panelGroup>
-							<h:outputText
-								value="Tableau de bord de #{agenceMB.utilisateur.prenom} #{agenceMB.utilisateur.nom}"
-								styleClass="bold" style="float: left; padding-right: 30px;"></h:outputText>
-							<h:outputText value="CA = #{agenceMB.utilisateur.CA} €"
-								styleClass="bold" style="float: right; padding-right: 30px;"></h:outputText>
-						</h:panelGroup>
-					</p:layoutUnit>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="ID" />
+							</f:facet>
+							<h:outputText value="#{classeStandard.id}" />
+						</p:column>
 
-					<!-- §§§§§§§§§§§§§§§§§§§§ WEST §§§§§§§§§§§§§§§§§§§§ -->
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Type de bien" />
+							</f:facet>
+							<h:outputText value="#{classeStandard.typeBien}" />
+						</p:column>
 
-					<p:layoutUnit position="west" resizable="true" size="200"
-						minSize="40" maxSize="300" style="border: 0;">
-						<p:panel header="Navigation" styleClass="containerPanel"
-							style="text-align:center;">
-							<h:panelGrid>
-								<p:commandButton value="Vos informations"
-									id="informationsConseilers" action="versTableauBord"
-									styleClass="ui-priority-primary" />
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Prix max" />
+							</f:facet>
+							<h:outputText value="#{classeStandard.prixMax}" />
+						</p:column>
 
-								<p:commandButton value="Liste des conseillers"
-									id="listeConseillers" action="versListeConseillers"
-									styleClass="ui-priority-primary" />
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Superficie min" />
+							</f:facet>
+							<h:outputText value="#{classeStandard.superficieMin}" />
+						</p:column>
 
-								<p:commandButton value="Liste des propriétaires"
-									id="listeProprietaires" action="versListeProprietaires"
-									styleClass="ui-priority-primary" />
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Mode de l'offre" />
+							</f:facet>
+							<h:outputText value="#{classeStandard.modeOffre}" />
+						</p:column>
 
-								<p:commandButton value="Liste des clients" id="listeClients"
-									action="versListeClients" styleClass="ui-priority-primary" />
+						<p:column>
+							<f:facet name="header" />
+							<p:commandButton icon="ui-icon-trash"
+								actionListener="#{agenceMB.removeClasseStandard}">
+								<f:param name="classeStdId" value="#{classeStandard.id}" />
+								<f:ajax render="liste" />
+							</p:commandButton>
+						</p:column>
 
-								<p:commandButton value="Liste des biens" id="listeBiens"
-									action="versListeBiens" styleClass="ui-priority-primary" />
+					</p:dataTable>
+				</div>
 
-								<p:commandButton value="Liste de classes standards"
-									id="listeClassesStandards" action="verslisteClassesStandards"
-									styleClass="ui-priority-primary" />
+				<p:spacer height="10" />
 
-							</h:panelGrid>
-						</p:panel>
-					</p:layoutUnit>
+				<div>
+					<p:commandButton value="Ajouter une classe standard"
+						id="addClasse" onclick="PF('dlg').show();"
+						actionListener="#{agenceMB.initClasseStandard}"
+						styleClass="ui-priority-primary" />
 
-					<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
+					<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
-					<p:layoutUnit position="center" resizable="true" style="border: 0;">
-						<div>
-							<p:dataTable id="liste" value="#{agenceMB.listeClasseStandard}"
-								var="classeStandard">
+					<p:dialog header="Ajout d'une classe standard" widgetVar="dlg"
+						resizable="true">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputLabel for="typeBien" value="Type de bien :" />
+							<p:inputText id="typeBien"
+								value="#{agenceMB.classeStandard.typeBien}" required="true"
+								label="typeBien" />
 
-								<f:facet name="header">
-									<p:row>
-										<p:column colspan="7">Liste des classes standards</p:column>
-									</p:row>
-								</f:facet>
+							<h:outputLabel for="superficieMin" value="Superficie min :" />
+							<p:inputText id="superficieMin"
+								value="#{agenceMB.classeStandard.superficieMin}"
+								required="true" label="superficieMin" />
 
-								<p:column>
-									<f:facet name="header">
-										<h:outputText value="ID" />
-									</f:facet>
-									<h:outputText value="#{classeStandard.id}" />
-								</p:column>
+							<h:outputLabel for="prixMax" value="Prix max :" />
+							<p:inputText id="prixMax"
+								value="#{agenceMB.classeStandard.prixMax}" required="true"
+								label="prixMax" />
 
-								<p:column>
-									<f:facet name="header">
-										<h:outputText value="Type de bien" />
-									</f:facet>
-									<h:outputText value="#{classeStandard.typeBien}" />
-								</p:column>
+							<h:outputLabel for="modeOffre" value="mode de l'Offre :" />
+							<p:inputText id="modeOffre"
+								value="#{agenceMB.classeStandard.modeOffre}" required="true"
+								label="modeOffre" />
 
-								<p:column>
-									<f:facet name="header">
-										<h:outputText value="Prix max" />
-									</f:facet>
-									<h:outputText value="#{classeStandard.prixMax}" />
-								</p:column>
-
-								<p:column>
-									<f:facet name="header">
-										<h:outputText value="Superficie min" />
-									</f:facet>
-									<h:outputText value="#{classeStandard.superficieMin}" />
-								</p:column>
-
-								<p:column>
-									<f:facet name="header">
-										<h:outputText value="Mode de l'offre" />
-									</f:facet>
-									<h:outputText value="#{classeStandard.modeOffre}" />
-								</p:column>
-
-								<p:column>
-									<f:facet name="header" />
-									<p:commandButton icon="ui-icon-trash"
-										actionListener="#{agenceMB.removeClasseStandard}">
-										<f:param name="classeStdId" value="#{classeStandard.id}" />
-										<f:ajax render="liste" />
+							<f:facet name="footer">
+								<p:commandButton value="Valider" update="growl"
+									actionListener="#{agenceMB.addClasseStandard}"
+									oncomplete="handleLoginRequest(xhr, status, args)" >
+									<f:ajax render="liste"/>
 									</p:commandButton>
-								</p:column>
+							</f:facet>
+						</h:panelGrid>
+					</p:dialog>
 
-							</p:dataTable>
-						</div>
+					<script type="text/javascript">
+					function handleLoginRequest(xhr, status, args) {
+						if (!args.validForm) {
+							PF('dlg').jq.effect("shake", {
+								times : 5
+							}, 100);
+						} else {
+							PF('dlg').hide();
+							$('#loginLink').fadeOut();
+						}
+					}
+				</script>
+				</div>
 
-						<p:spacer height="10" />
+			</p:layoutUnit>
 
-						<div>
-							<p:commandButton value="Ajouter une classe standard"
-								id="addClasse" onclick="PF('dlg').show();"
-								actionListener="#{agenceMB.initClasseStandard}"
-								styleClass="ui-priority-primary" />
+		</ui:define><!-- content -->
 
-							<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-
-							<p:dialog header="Ajout d'une classe standard" widgetVar="dlg"
-								resizable="true">
-								<h:panelGrid columns="2" cellpadding="5">
-									<h:outputLabel for="typeBien" value="Type de bien :" />
-									<p:inputText id="typeBien"
-										value="#{agenceMB.classeStandard.typeBien}" required="true"
-										label="typeBien" />
-
-									<h:outputLabel for="superficieMin" value="Superficie min :" />
-									<p:inputText id="superficieMin"
-										value="#{agenceMB.classeStandard.superficieMin}"
-										required="true" label="superficieMin" />
-
-									<h:outputLabel for="prixMax" value="Prix max :" />
-									<p:inputText id="prixMax"
-										value="#{agenceMB.classeStandard.prixMax}" required="true"
-										label="prixMax" />
-
-									<h:outputLabel for="modeOffre" value="mode de l'Offre :" />
-									<p:inputText id="modeOffre"
-										value="#{agenceMB.classeStandard.modeOffre}" required="true"
-										label="modeOffre" />
-
-									<f:facet name="footer">
-										<p:commandButton value="Valider" update="growl"
-											actionListener="#{agenceMB.addClasseStandard}"
-											oncomplete="handleLoginRequest(xhr, status, args)" >
-											<f:ajax render="liste"/>
-											</p:commandButton>
-									</f:facet>
-								</h:panelGrid>
-							</p:dialog>
-
-							<script type="text/javascript">
-							function handleLoginRequest(xhr, status, args) {
-								if (!args.validForm) {
-									PF('dlg').jq.effect("shake", {
-										times : 5
-									}, 100);
-								} else {
-									PF('dlg').hide();
-									$('#loginLink').fadeOut();
-								}
-							}
-						</script>
-						</div>
-
-
-					</p:layoutUnit>
-
-				</p:layout>
-
-			</h:form>
-
-		</ui:define>
 	</ui:composition>
 
 </body>

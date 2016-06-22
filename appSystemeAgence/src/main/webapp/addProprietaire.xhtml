@@ -13,41 +13,47 @@
 	
 		<ui:define name="content">
 
-			<h:form>
-				<h3 style="margin-top: 0px">Identité</h3>
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="nom" value="Nom: " />
-					<p:inputText id="nom" value="#{agenceMB.proprietaire.nom}" />
+			<h:outputStylesheet library="css" name="style.css" />
+			
+			<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
+			
+			<p:layoutUnit position="center" resizable="true" style="border: 0;">
+				<div>
 
-					<p:outputLabel for="prenom" value="Prenom: " />
-					<p:inputText id="prenom" value="#{agenceMB.proprietaire.prenom}" />
-
-					<p:outputLabel for="telPrive" value="Telephone Prive: " />
-					<p:inputText id="telPrive" value="#{agenceMB.proprietaire.telPrive}" />
-					
-					<p:outputLabel for="telTravail" value="Telephone Professionnel: " />
-					<p:inputText id="telTravail" value="#{agenceMB.proprietaire.telTravail}" />
-
-					<p:spacer height="10" />
-				</h:panelGrid>
-
+					<h3 style="margin-top: 0px">Identité</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="nom" value="Nom: " />
+						<p:inputText id="nom" value="#{agenceMB.proprietaire.nom}" />
+	
+						<p:outputLabel for="prenom" value="Prenom: " />
+						<p:inputText id="prenom" value="#{agenceMB.proprietaire.prenom}" />
+	
+						<p:outputLabel for="telPrive" value="Telephone Prive: " />
+						<p:inputText id="telPrive" value="#{agenceMB.proprietaire.telPrive}" />
+						
+						<p:outputLabel for="telTravail" value="Telephone Professionnel: " />
+						<p:inputText id="telTravail" value="#{agenceMB.proprietaire.telTravail}" />
+	
+						<p:spacer height="10" />
+					</h:panelGrid>
+	
+					<p:separator />
+					<h3>Adresse</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="rue" value="Rue: " />
+						<p:inputText id="rue" value="#{agenceMB.proprietaire.adresse.rue}" />
+	
+						<p:outputLabel for="codePostal" value="Code Postal: " />
+						<p:inputText id="codePostal"
+							value="#{agenceMB.proprietaire.adresse.codePostal}" />
+	
+						<p:outputLabel for="ville" value="Ville: " />
+						<p:inputText id="ville"
+							value="#{agenceMB.proprietaire.adresse.ville}" />
+					</h:panelGrid>
+				</div>
+				
 				<p:separator />
-				<h3>Adresse</h3>
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="rue" value="Rue: " />
-					<p:inputText id="rue" value="#{agenceMB.proprietaire.adresse.rue}" />
-
-					<p:outputLabel for="codePostal" value="Code Postal: " />
-					<p:inputText id="codePostal"
-						value="#{agenceMB.proprietaire.adresse.codePostal}" />
-
-					<p:outputLabel for="ville" value="Ville: " />
-					<p:inputText id="ville"
-						value="#{agenceMB.proprietaire.adresse.ville}" />
-				</h:panelGrid>
-
-				<p:separator />
-
 
 				<h:panelGrid columns="2" cellpadding="5">
 					<p:commandButton value="Reset" type="reset" />
@@ -56,9 +62,9 @@
 						styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
 				</h:panelGrid>
 
-			</h:form>
-			
-		</ui:define>
+			</p:layoutUnit>
+
+		</ui:define><!-- content -->
 		
 	</ui:composition>
 </body>
