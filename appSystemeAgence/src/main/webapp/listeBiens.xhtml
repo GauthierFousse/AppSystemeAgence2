@@ -18,12 +18,14 @@
 
 			<p:layoutUnit position="center" resizable="true" style="border: 0;">
 			
-				<!-- ================ BIEN A ACHETER ===== -->
-				<div>
+				
+				<div><!-- ================ BIEN A ACHETER ===== -->
+				
 					<p:fieldset legend="Biens à acheter" collapsed="false"
 						toggleable="true" toggleOrientation="vertical">
-						<p:dataTable id="listeBienAAcheter" value="#{agenceMB.listeBiensAAcheter}"
-							var="bienAAcheter">
+						<p:dataTable id="listeBienAAcheter" 
+									 value="#{agenceMB.listeBiensAAcheter}"
+									 var="bienAAcheter">
 
 							<p:column>
 								<f:facet name="header">
@@ -118,12 +120,12 @@
 				
 				<p:spacer height="20" />
 
-				<!-- ================ BIEN A LOUER ===== -->
-				<div>
+				<div><!-- ================ BIEN A LOUER ===== -->
 					<p:fieldset legend="Biens à louer" collapsed="false"
 						toggleable="true" toggleOrientation="vertical">
-						<p:dataTable id="listeBienALouer" value="#{agenceMB.listeBiensALouer}"
-							var="bienALouer">
+						<p:dataTable id="listeBienALouer" 
+									 value="#{agenceMB.listeBiensALouer}"
+									 var="bienALouer">
 
 							<p:column>
 								<f:facet name="header">

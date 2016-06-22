@@ -58,7 +58,7 @@
 	</navigation-rule>
 
 	<!--=================== CONSEILLERS ========================== -->
-	<navigation-rule>
+	<navigation-rule><!-- liste -->
 		<from-view-id>/listeConseillers.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -96,7 +96,7 @@
 		</navigation-case>
 	</navigation-rule>
 
-	<navigation-rule>
+	<navigation-rule><!-- add -->
 		<from-view-id>/addConseiller.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -135,7 +135,7 @@
 	</navigation-rule>
 
 	<!--=================== PROPRIETAIRES ========================== -->
-	<navigation-rule>
+	<navigation-rule><!-- liste -->
 		<from-view-id>listeProprietaires.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -177,7 +177,7 @@
 		</navigation-case>
 	</navigation-rule>
 
-	<navigation-rule>
+	<navigation-rule><!-- add -->
 		<from-view-id>/addProprietaire.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -211,7 +211,7 @@
 		<!-- cas speciaux -->
 	</navigation-rule>
 	
-	<navigation-rule>
+	<navigation-rule><!-- detail -->
 		<from-view-id>/detailProprietaire.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -249,7 +249,7 @@
 		</navigation-case>
 	</navigation-rule>
 
-	<navigation-rule>
+	<navigation-rule><!-- update -->
 		<from-view-id>updateProprietaire.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -288,7 +288,7 @@
 	</navigation-rule>
 
 	<!--=================== CLIENTS ========================== -->
-	<navigation-rule>
+	<navigation-rule><!-- liste -->
 		<from-view-id>/listeClients.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -326,7 +326,7 @@
 		</navigation-case>
 	</navigation-rule>
 
-	<navigation-rule>
+	<navigation-rule><!-- add -->
 		<from-view-id>/addClient.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -361,7 +361,7 @@
 	</navigation-rule>
 
 	<!--=================== BIENS ========================== -->
-	<navigation-rule>
+	<navigation-rule><!-- liste -->
 		<from-view-id>/listeBiens.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -399,7 +399,7 @@
 		</navigation-case>
 	</navigation-rule>
 	
-	<navigation-rule>
+	<navigation-rule><!-- add -->
 		<from-view-id>/addBienAAcheter.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
@@ -434,7 +434,7 @@
 	</navigation-rule>
 
 	<!--=================== CLASSES STANDARDS ========================== -->
-	<navigation-rule>
+	<navigation-rule><!-- liste -->
 		<from-view-id>/listeClassesStandards.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>

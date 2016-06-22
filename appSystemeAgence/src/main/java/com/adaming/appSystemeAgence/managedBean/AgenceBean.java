@@ -54,6 +54,7 @@ public class AgenceBean implements Serializable {
 
 	private ClasseStandard classeStandard;
 	private List<ClasseStandard> listeClasseStandard;
+	
 	/*
 	 * Injection des services dans le managedbean.
 	 */
@@ -96,6 +97,10 @@ public class AgenceBean implements Serializable {
 		classeStandard.setTypeBien(" ");
 	}
 
+	/****************************************
+	 * 				INIT METHODS			*
+	 ****************************************/
+	
 	/**
 	 * Instanciation d'un nouveau conseiller.
 	 */
@@ -156,6 +161,10 @@ public class AgenceBean implements Serializable {
 		System.out.println("===> MB : new classeStandard set.");
 	}
 
+	/****************************************
+	 * 				ADD METHODS			*
+	 ****************************************/
+	
 	/**
 	 * Ajout d'un conseiller dans la BDD.
 	 */
@@ -230,6 +239,10 @@ public class AgenceBean implements Serializable {
 		context.addCallbackParam("validForm", validForm);
 	}
 
+	/****************************************
+	 * 				DELETE METHODS			*
+	 ****************************************/
+	
 	/**
 	 * Suppression d'une classe standard dans la BDD.
 	 */
@@ -249,6 +262,10 @@ public class AgenceBean implements Serializable {
 
 	}
 
+	/****************************************
+	 * 				SELECT METHODS			*
+	 ****************************************/
+	
 	/**
 	 * 
 	 */
@@ -257,7 +274,7 @@ public class AgenceBean implements Serializable {
 		Map<String, String> params = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap();
 		int idProp = Integer.parseInt(params.get("id"));
-		System.out.println("===> MB : PARAM ID : " + idProp);
+		System.out.println("===> MB : select proprietaire id#" + idProp);
 
 		// on va chercher le proprio � update avec son id
 		Proprietaire proprietaire1 = getProprietaireService()
@@ -277,8 +294,7 @@ public class AgenceBean implements Serializable {
 				.getExternalContext().getRequestParameterMap();
 		int idClient = Integer.parseInt(params.get("id"));
 		System.out
-				.println("===== AgenceBean.java, m�thode selectClient - idClient : "
-						+ idClient + ". =====");
+				.println("===> MB : select client id#" + idClient);
 
 		/* Recherche du client � afficher par son identifiant. */
 		Client client = getClientService().getClientById(idClient);
