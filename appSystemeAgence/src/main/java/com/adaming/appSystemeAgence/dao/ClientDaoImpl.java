@@ -54,9 +54,7 @@ public class ClientDaoImpl implements IClientDao {
 	}
 
 	public Client getClientById(int pId) {
-		System.out
-				.println("===== ClientDaoImpl.java - Entrée dans la méthode getClientById avec le paramètre pId = "
-						+ pId + ". =====");
+		System.out.println("=====> DAO : get client id#" + pId);
 
 		Session session = sf.openSession();
 		String hqlReq = "FROM client WHERE id= :clientId";
@@ -64,9 +62,7 @@ public class ClientDaoImpl implements IClientDao {
 		requete.setParameter("clientId", pId);
 		Client client = (Client) requete.uniqueResult();
 
-		System.out
-				.println("===== ClientDaoImpl.java - Sortie la méthode getClientById avec un client : "
-						+ (client != null) + ". =====");
+		System.out.println("=====> DAO : got client : " + client);
 
 		return client;
 	}
@@ -75,7 +71,7 @@ public class ClientDaoImpl implements IClientDao {
 	 * Méthode de suppression d'un client.
 	 */
 	public boolean deleteClient(int pId) {
-		System.out.println("===== ClientDaoImpl.java - Entrée dans la méthode deleteClient avec le paramètre d'entrée pId = " + pId + ". =====");
+		System.out.println("=====> DAO : delete client id#" + pId);
 
 		Session session = sf.openSession();
 
@@ -86,23 +82,22 @@ public class ClientDaoImpl implements IClientDao {
 		Query requete = session.createQuery(hqlSupprClient);
 		requete.setParameter("clID", pId);
 		int resultat = requete.executeUpdate();
-		System.out.println("===== ClientDaoImpl.java - " + resultat + " client supprimé. =====");
+		System.out.println("=====> DAO : " + resultat + " client(s) supprimé(s).");
 
 		/* Suppression de l'adresse du client de la table adresses. */
 		String hqlSupprAdresse = "DELETE FROM adresse a WHERE a.id = :aID";
 		Query requete2 = session.createQuery(hqlSupprAdresse);
 		requete2.setParameter("aID", client.getAdresse().getId());
 		int resultat2 = requete2.executeUpdate();
-		System.out.println("===== ClientDaoImpl.java - " + resultat2
-				+ " adresse supprimée.");
+		System.out.println("=====> DAO : " + resultat + " adresse(s) supprimée(s).");
 
-		boolean schtroumpf;
+		boolean success;
 		if (resultat != 0 && resultat2 != 0)
-			schtroumpf = true;
+			success = true;
 		else
-			schtroumpf = false;
-		System.out.println("===== ClientDaoImpl.java - Sortie de la méthode deleteClient - Suppression réussie : " + schtroumpf + ". =====");
-		return schtroumpf;
+			success = false;
+		
+		return success;
 	}
 
 }
