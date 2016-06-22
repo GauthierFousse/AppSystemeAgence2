@@ -190,6 +190,30 @@ public class AgenceBean implements Serializable {
 	}
 	
 	/**
+	 * Ajout d'un bien a louer dans la BDD.
+	 */
+	public void addBienALouer() {
+		System.out.println("===> MB : add bien a louer : " + bienALouer);
+		if (getBienService().addBienALouer(bienALouer)){
+			System.out.println("===> MB : Client added with success");
+		} else {
+			System.out.println("===> MB : Client FAILED to add.");
+		}
+	}
+	
+	/**
+	 * Ajout d'un bien a acheter dans la BDD.
+	 */
+	public void addBienAAcheter() {
+		System.out.println("===> MB : add bien a acheter : " + bienAAcheter);
+		if (getBienService().addBienAAcheter(bienAAcheter)){
+			System.out.println("===> MB : Client added with success");
+		} else {
+			System.out.println("===> MB : Client FAILED to add.");
+		}
+	}
+	
+	/**
 	 * Ajout d'un client dans la BDD.
 	 */
 	public void addClient() {
@@ -240,34 +264,12 @@ public class AgenceBean implements Serializable {
 	}
 
 	/****************************************
-	 * 				DELETE METHODS			*
-	 ****************************************/
-	
-	/**
-	 * Suppression d'une classe standard dans la BDD.
-	 */
-	public void removeClasseStandard(ActionEvent e) {
-		System.out.println("!!!!!!!!!!! removeClasseStandard !!!!!!!!!!!!!!!");
-		// recup du parametre id de <f:param>
-		Map<String, String> params = FacesContext.getCurrentInstance()
-				.getExternalContext().getRequestParameterMap();
-		int idClasseStandard = Integer.parseInt(params.get("classeStdId"));
-		System.out.println("===> MB : PARAM ID : " + idClasseStandard);
-
-		// on va supprimer la classeStandard de la Bdd
-
-		classeStandardService.deleteClasseStandardById(idClasseStandard);
-		System.out.println("===> MB : PROPRIETAIRE SUPPRIME : "
-				+ idClasseStandard);
-
-	}
-
-	/****************************************
 	 * 				SELECT METHODS			*
 	 ****************************************/
 	
 	/**
-	 * 
+	 * Recuperation de l'id proprietaire choisi dans la page et
+	 * recherche du proprietaire correspondant dans la BDD.
 	 */
 	public void selectProprietaire() {
 		// recup du parametre id de <f:param>
@@ -276,17 +278,16 @@ public class AgenceBean implements Serializable {
 		int idProp = Integer.parseInt(params.get("id"));
 		System.out.println("===> MB : select proprietaire id#" + idProp);
 
-		// on va chercher le proprio ï¿½ update avec son id
+		// on va chercher le proprio a update avec son id
 		Proprietaire proprietaire1 = getProprietaireService()
 				.getProprietaireById(idProp);
-		System.out.println("===> MB : PROPRIETAIRE RECUPERERE : "
-				+ proprietaire1);
+		System.out.println("===> MB : got proprietaire : " + proprietaire1);
 		setProprietaire(proprietaire1);
 	}
 
 	/**
-	 * Rï¿½cupï¿½ration de l'identifiant du client choisi dans la page et
-	 * recherche du client correspondant dans la base de donnï¿½es.
+	 * Recuperation de l'id client choisi dans la page et
+	 * recherche du client correspondant dans la BDD.
 	 */
 	public void selectClient() {
 		/* Rï¿½cupï¿½ration du paramï¿½tre id de <f:param>. */
@@ -299,8 +300,7 @@ public class AgenceBean implements Serializable {
 		/* Recherche du client ï¿½ afficher par son identifiant. */
 		Client client = getClientService().getClientById(idClient);
 		System.out
-				.println("===== AgenceBean.java, mï¿½thode selectClient - Client rï¿½cupï¿½rï¿½ : "
-						+ client + ". =====");
+				.println("===> MB : got client : " + client);
 		setClient(client);
 	}
 
@@ -331,20 +331,19 @@ public class AgenceBean implements Serializable {
 		System.out
 				.println("===== AgenceBean.java - Sortie de la méthode selectConseiller. =====");
 	}
-
+	
+	/****************************************
+	 * 				DELETE METHODS			*
+	 ****************************************/
+	
 	/**
-	 * 
+	 * Suppression d'un proprietaire
 	 */
-	public void updateProprietaire() {
-		getProprietaireService().updateProprietaire(proprietaire);
-		System.out.println("===> MB : UPDATE Proprietaire : " + proprietaire);
-	}
-
 	public void deleteProprietaire() {
 		Map<String, String> params = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap();
 		int idProp = Integer.parseInt(params.get("id"));
-		System.out.println("===> MB DELETE PROPRIO : PARAM ID : " + idProp);
+		System.out.println("===> MB : DELETE PROPRIO : PARAM ID : " + idProp);
 		getProprietaireService().deleteProprietaire(idProp);
 		// System.out.println("===> dans DELETE get ALL :");
 		// getListeProprietaires();
@@ -354,13 +353,44 @@ public class AgenceBean implements Serializable {
 	 * Suppression d'un client.
 	 */
 	public void deleteClient () {
-		System.out.println("===== AgenceBean.java - Entrée dans la méthode deleteClient. =====");
 		
 		Map<String, String> parametres = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		int idClient = Integer.parseInt(parametres.get("id"));
-		boolean asterix = getClientService().deleteClient(idClient);
-		
-		System.out.println("===== AgenceBean.java - Sortie de la méthode deleteClient - Suppression réussie : " + asterix + ". =====");
+		System.out.println("===> MB : delete client id#" + idClient);
+		if (getClientService().deleteClient(idClient)){
+			System.out.println("===> MB : delete success");
+		} else {
+			System.out.println("===> MB : delete FAILED");
+		}
+	}
+	
+	/**
+	 * Suppression d'une classe standard dans la BDD.
+	 */
+	public void removeClasseStandard(ActionEvent e) {
+		System.out.println("===> MB : remove Classe Standard");
+		// recup du parametre id de <f:param>
+		Map<String, String> params = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
+		int idClasseStandard = Integer.parseInt(params.get("classeStdId"));
+		System.out.println("===> MB : classe standard id#" + idClasseStandard);
+
+		// suppression de la classeStandard dans la BDD
+		classeStandardService.deleteClasseStandardById(idClasseStandard);
+		System.out.println("===> MB : class standard supprimee : " + idClasseStandard);
+
+	}
+
+	/****************************************
+	 * 				UPDATE METHODS			*
+	 ****************************************/
+	
+	/**
+	 * 
+	 */
+	public void updateProprietaire() {
+		getProprietaireService().updateProprietaire(proprietaire);
+		System.out.println("===> MB : UPDATE Proprietaire : " + proprietaire);
 	}
 	
 	/**

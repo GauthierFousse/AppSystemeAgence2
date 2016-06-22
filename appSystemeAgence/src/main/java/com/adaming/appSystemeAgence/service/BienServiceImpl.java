@@ -30,24 +30,45 @@ public class BienServiceImpl implements IBienService, Serializable {
 		return bienDao.getAllBiensAAcheter();
 	}
 
-	public BienImmobilier getBienById(int pId) {
-		// TODO Auto-generated method stub
-		return null;
+	public BienALouer getBienALouerById(int pId) {
+		System.out.println("====> Service: getting Bien a louer id#" + pId);
+		return bienDao.getBienALouerById(pId);
 	}
 
-	public boolean addBien(BienImmobilier pBien) {
-		// TODO Auto-generated method stub
-		return false;
+	public BienAAcheter getBienAAcheterById(int pId) {
+		System.out.println("====> Service: getting Bien a acheter id#" + pId);
+		return bienDao.getBienAAcheterById(pId);
 	}
 
-	public boolean updateBien(BienImmobilier pBien) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addBienALouer(BienALouer pBien) {
+		System.out.println("====> Service: adding Bien a louer : " + pBien);
+		return bienDao.addBienALouer(pBien);
 	}
 
-	public boolean deleteBien(int pId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addBienAAcheter(BienAAcheter pBien) {
+		System.out.println("====> Service: adding Bien a acheter : " + pBien);
+		return bienDao.addBienAAcheter(pBien);
 	}
+
+	public boolean updateBienALouer(BienALouer pBien) {
+		System.out.println("====> Service: updating Bien a louer : " + pBien);
+		return bienDao.updateBienALouer(pBien);
+	}
+
+	public boolean updateBienAAcheter(BienAAcheter pBien) {
+		System.out.println("====> Service: updating Bien a acheter : " + pBien);
+		return bienDao.updateBienAAcheter(pBien);
+	}
+
+	public boolean deleteBienALouer(int pId) {
+		System.out.println("====> Service: deleting Bien a louer id#" + pId);
+		return bienDao.deleteBienALouer(pId);
+	}
+
+	public boolean deleteBienAAcheter(int pId) {
+		System.out.println("====> Service: deleting Bien a acheter id#" + pId);
+		return bienDao.deleteBienAAcheter(pId);
+	}
+
 
 }

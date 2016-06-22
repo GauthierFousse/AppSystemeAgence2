@@ -12,12 +12,20 @@ public interface IBienService {
 	
 	public List<BienAAcheter> getAllBiensAAcheter();
 	
-	public BienImmobilier getBienById(int pId);
+	public BienALouer getBienALouerById(int pId);
 	
-	public boolean addBien(BienImmobilier pBien);
+	public BienAAcheter getBienAAcheterById(int pId);
 	
-	public boolean updateBien(BienImmobilier pBien);
+	public boolean addBienALouer(BienALouer pBien);
 	
-	public boolean deleteBien(int pId);
+	public boolean addBienAAcheter(BienAAcheter pBien);
+	
+	public boolean updateBienALouer(BienALouer pBien);
+	
+	public boolean updateBienAAcheter(BienAAcheter pBien);
+	
+	public boolean deleteBienALouer(int pId);
+	
+	public boolean deleteBienAAcheter(int pId);
 	
 }

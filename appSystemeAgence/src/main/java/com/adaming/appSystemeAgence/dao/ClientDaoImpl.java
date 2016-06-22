@@ -43,7 +43,6 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Transactional(readOnly=false)
 	public boolean addClient(Client pClient) {
-		
 		System.out.println("=====> DAO : add Client : " + pClient);
 		
 		Session session = sf.openSession();
