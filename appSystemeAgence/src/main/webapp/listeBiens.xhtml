@@ -10,307 +10,256 @@
 </h:head>
 <body>
 
-	<ui:composition template="/templates/layoutTableauBord.xhtml">
+	<ui:composition template="/templates/layout.xhtml">
 
 		<ui:define name="content">
 
-			<h:form>
+			<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
 
-				<p:growl id="growl1" showSummary="true" showDetail="true"></p:growl>
+			<p:layoutUnit position="center" resizable="true" style="border: 0;">
+			
+				<!-- ================ BIEN A ACHETER ===== -->
+				<div>
+					<p:fieldset legend="Biens à acheter" collapsed="false"
+						toggleable="true" toggleOrientation="vertical">
+						<p:dataTable id="listeBienAAcheter" value="#{agenceMB.listeBiensAAcheter}"
+							var="bienAAcheter">
 
-				<p:layout fullPage="false">
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="n° contrat" />
+								</f:facet>
+								<h:outputText value="#{bienAAcheter.numContrat}" />
+							</p:column>
 
-					<!-- §§§§§§§§§§§§§§§§§§§§ NORTH §§§§§§§§§§§§§§§§§§§§ -->
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="statut" />
+								</f:facet>
+								<h:outputText value="#{bienAAcheter.statut}" />
+							</p:column>
 
-					<p:layoutUnit position="north">
-						<h:panelGroup>
-							<h:outputText
-								value="Tableau de bord de #{agenceMB.utilisateur.prenom} #{agenceMB.utilisateur.nom}"
-								styleClass="bold" style="float: left; padding-right: 30px;"></h:outputText>
-							<h:outputText value="CA = #{agenceMB.utilisateur.CA} €"
-								styleClass="bold" style="float: right; padding-right: 30px;"></h:outputText>
-						</h:panelGroup>
-					</p:layoutUnit>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="ID de l'adresse" />
+								</f:facet>
+								<h:outputText value="#{bienAAcheter.adresse.id}" />
+							</p:column>
 
-					<!-- §§§§§§§§§§§§§§§§§§§§ WEST §§§§§§§§§§§§§§§§§§§§ -->
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Adresse" />
+								</f:facet>
+								<h:outputText value="#{bienAAcheter.adresse.rue}" />
+								<h:outputText value=" " />
+								<h:outputText value="#{bienAAcheter.adresse.codePostal}" />
+								<h:outputText value=" " />
+								<h:outputText value="#{bienAAcheter.adresse.ville}" />
+							</p:column>
 
-					<p:layoutUnit position="west" resizable="true" size="200"
-						minSize="40" maxSize="300" style="border: 0;">
-						<p:panel header="Navigation" styleClass="containerPanel"
-							style="text-align:center;">
-							<h:panelGrid>
-								<p:commandButton value="Vos informations"
-									id="informationsConseilers" action="versTableauBord"
-									styleClass="ui-priority-primary" />
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="classe standard" />
+								</f:facet>
+								<p:panel header="#{bienAAcheter.classeStandard.id}"
+									toggleable="true" toggleOrientation="horizontal"
+									collapsed="true" style="border: 0;">
+									<h:panelGrid columns="2">
+										<h:outputText value="Type de bien : " />
+										<h:outputText
+											value="#{bienAAcheter.classeStandard.typeBien}" />
+										<h:outputText value="Superficie minimum" />
+										<h:outputText
+											value="#{bienAAcheter.classeStandard.superficieMin}" />
+										<h:outputText value="Prix maximum" />
+										<h:outputText value="Mode de l'offre" />
+										<h:outputText
+											value="#{bienAAcheter.classeStandard.modeOffre}" />
+									</h:panelGrid>
+								</p:panel>
+							</p:column>
 
-								<p:commandButton value="Liste des conseillers"
-									id="listeConseillers" action="versListeConseillers"
-									styleClass="ui-priority-primary" />
 
-								<p:commandButton value="Liste des propriétaires"
-									id="listeProprietaires" action="versListeProprietaires"
-									styleClass="ui-priority-primary" />
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="disponibilite" />
+								</f:facet>
+								<h:outputText value="#{bienAAcheter.dateDisponibilite}" />
+							</p:column>
 
-								<p:commandButton value="Liste des clients" id="listeClients"
-									action="versListeClients" styleClass="ui-priority-primary" />
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Proprietaire" />
+								</f:facet>
+								<h:outputText value="#{proprietaire.nom}" />
+								<h:outputText value=" " />
+								<h:outputText value="#{proprietaire.prenom}" />
+							</p:column>
 
-								<p:commandButton value="Liste des biens" id="listeBiens"
-									action="versListeBiens" styleClass="ui-priority-primary" />
 
-								<p:commandButton value="Liste de classes standards"
-									id="listeClassesStandards" action="verslisteClassesStandards"
-									styleClass="ui-priority-primary" />
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="date d'entree" />
+								</f:facet>
+								<h:outputText value="#{bienAAcheter.dateEntree}" />
+							</p:column>
 
-							</h:panelGrid>
-						</p:panel>
-					</p:layoutUnit>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Visite / Achat" />
+								</f:facet>
+								<p:commandLink value="Visiter" />
+								<p:commandLink value="Acheter" />
+							</p:column>
 
-					<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
+						</p:dataTable>
+					</p:fieldset>
+				</div>
+				
+				<p:spacer height="10" />
+				<!-- ================ NOUVEAUX BIENS A ACHETER ===== -->
+				<h:panelGrid>
+					<h:panelGrid columns="2" cellpadding="3">
+						<p:commandButton value="Ajouter un bien à acheter"
+										 id="addBienAcheter" 
+										 action="versFormulaireAjoutBienAAcheter"
+										 actionListener="#{agenceMB.initBienAAcheter}"
+										 styleClass="ui-priority-primary" />
+					</h:panelGrid>
+				</h:panelGrid>
 
-					<p:layoutUnit position="center" resizable="true" style="border: 0;">
-						<!-- ================ BIEN A ACHETER ===== -->
-						<div>
-							<p:fieldset legend="Biens à acheter" collapsed="false"
-								toggleable="true" toggleOrientation="vertical">
-								<p:dataTable id="listeBienAAcheter" value="#{agenceMB.listeBiensAAcheter}"
-									var="bienAAcheter">
+				<p:spacer height="20" />
 
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="n° contrat" />
+				<!-- ================ BIEN A LOUER ===== -->
+				<div>
+					<p:fieldset legend="Biens à louer" collapsed="false"
+						toggleable="true" toggleOrientation="vertical">
+						<p:dataTable id="listeBienALouer" value="#{agenceMB.listeBiensALouer}"
+							var="bienALouer">
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="n° contrat" />
+								</f:facet>
+								<h:outputText value="#{bienALouer.numContrat}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="statut" />
+								</f:facet>
+								<h:outputText value="#{bienALouer.statut}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="ID de l'adresse" />
+								</f:facet>
+								<h:outputText value="#{bienALouer.adresse.id}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Adresse" />
+								</f:facet>
+								<h:outputText value="#{bienALouer.adresse.rue}" />
+								<h:outputText value=" " />
+								<h:outputText value="#{bienALouer.adresse.codePostal}" />
+								<h:outputText value=" " />
+								<h:outputText value="#{bienALouer.adresse.ville}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="classe standard" />
+								</f:facet>
+								<p:panel header="#{bienALouer.classeStandard.id}"
+									toggleable="true" toggleOrientation="horizontal"
+									collapsed="true" style="border: 0;">
+									<h:panelGrid columns="2">
+										<h:outputText value="Type de bien : " />
+										<h:outputText value="#{bienALouer.classeStandard.typeBien}" />
+										<h:outputText value="Superficie minimum" />
+										<h:outputText
+											value="#{bienALouer.classeStandard.superficieMin}" />
+										<h:outputText value="Prix maximum" />
+										<h:outputText value="Mode de l'offre" />
+										<h:outputText value="#{bienALouer.classeStandard.modeOffre}" />
+									</h:panelGrid>
+								</p:panel>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="disponibilite" />
+								</f:facet>
+								<h:outputText value="#{bienALouer.dateDisponibilite}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Proprietaire" />
+								</f:facet>
+								<h:outputText value="#{proprietaire.nom}" />
+								<h:outputText value=" " />
+								<h:outputText value="#{proprietaire.prenom}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="date d'entree" />
+								</f:facet>
+								<h:outputText value="#{bienALouer.dateEntree}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Visite / Achat" />
+								</f:facet>
+								<p:commandLink value="Visiter" onclick="PF('dlg_visite').show();"
+									type="button" />
+								<p:commandLink value="Acheter" onclick="PF('dlg_achat').show();"
+									type="button" />
+
+								<p:growl id="growl" sticky="true" showDetail="true"
+									life="3000" />
+								<p:dialog header="Login" widgetVar="dlg_visite" resizable="false">
+									<h:panelGrid columns="2" cellpadding="5">
+										<h:outputLabel for="prenom" value="Prenom du client:" />
+										<p:inputText id="prenom" value="#{agenceMB.client.prenom}"
+											required="true" label="prenom" />
+										<h:outputLabel for="nom" value="Nom du client:" />
+										<p:inputText id="nom" value="#{agenceMB.client.nom}"
+											required="true" label="nom" />
+
+										<f:facet name="footer">
+											<p:commandButton value="Confirmaer Visite" update="growl"
+												actionListener="#{agenceMB.visiterBien}"
+												oncomplete="handleLoginRequest(xhr, status, args)" />
 										</f:facet>
-										<h:outputText value="#{bienAAcheter.numContrat}" />
-									</p:column>
+									</h:panelGrid>
+								</p:dialog>
+							</p:column>
 
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="statut" />
-										</f:facet>
-										<h:outputText value="#{bienAAcheter.statut}" />
-									</p:column>
+						</p:dataTable>
+					</p:fieldset>
+				</div>
 
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="ID de l'adresse" />
-										</f:facet>
-										<h:outputText value="#{bienAAcheter.adresse.id}" />
-									</p:column>
+				<p:spacer height="10" />
+				<!-- ================ NOUVEAUX BIENS A LOUER ===== -->
+				<h:panelGrid>
+					<h:panelGrid columns="2" cellpadding="3">
+						<p:commandButton value="Ajouter un bien louer" 
+										 id="addBienLouer"
+										 action="versFormulaireAjoutBienALouer"
+										 actionListener="#{agenceMB.initBienALouer}"
+										 styleClass="ui-priority-primary" />
+					</h:panelGrid>
+				</h:panelGrid>
 
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="Adresse" />
-										</f:facet>
-										<h:outputText value="#{bienAAcheter.adresse.rue}" />
-										<h:outputText value=" " />
-										<h:outputText value="#{bienAAcheter.adresse.codePostal}" />
-										<h:outputText value=" " />
-										<h:outputText value="#{bienAAcheter.adresse.ville}" />
-									</p:column>
+			</p:layoutUnit>
 
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="classe standard" />
-										</f:facet>
-										<p:panel header="#{bienAAcheter.classeStandard.id}"
-											toggleable="true" toggleOrientation="horizontal"
-											collapsed="true" style="border: 0;">
-											<h:panelGrid columns="2">
-												<h:outputText value="Type de bien : " />
-												<h:outputText
-													value="#{bienAAcheter.classeStandard.typeBien}" />
-												<h:outputText value="Superficie minimum" />
-												<h:outputText
-													value="#{bienAAcheter.classeStandard.superficieMin}" />
-												<h:outputText value="Prix maximum" />
-												<h:outputText value="Mode de l'offre" />
-												<h:outputText
-													value="#{bienAAcheter.classeStandard.modeOffre}" />
-											</h:panelGrid>
-										</p:panel>
-									</p:column>
-
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="disponibilite" />
-										</f:facet>
-										<h:outputText value="#{bienAAcheter.dateDisponibilite}" />
-									</p:column>
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="Proprietaire" />
-										</f:facet>
-										<h:outputText value="#{proprietaire.nom}" />
-										<h:outputText value=" " />
-										<h:outputText value="#{proprietaire.prenom}" />
-									</p:column>
-
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="date d'entree" />
-										</f:facet>
-										<h:outputText value="#{bienAAcheter.dateEntree}" />
-									</p:column>
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="Visite / Achat" />
-										</f:facet>
-										<p:commandLink value="Visiter" />
-										<p:commandLink value="Acheter" />
-									</p:column>
-
-								</p:dataTable>
-							</p:fieldset>
-						</div>
-
-						<p:spacer height="20" />
-
-						<!-- ================ BIEN A LOUER ===== -->
-						<div>
-							<p:fieldset legend="Biens à louer" collapsed="false"
-								toggleable="true" toggleOrientation="vertical">
-								<p:dataTable id="listeBienALouer" value="#{agenceMB.listeBiensALouer}"
-									var="bienALouer">
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="n° contrat" />
-										</f:facet>
-										<h:outputText value="#{bienALouer.numContrat}" />
-									</p:column>
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="statut" />
-										</f:facet>
-										<h:outputText value="#{bienALouer.statut}" />
-									</p:column>
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="ID de l'adresse" />
-										</f:facet>
-										<h:outputText value="#{bienALouer.adresse.id}" />
-									</p:column>
-
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="Adresse" />
-										</f:facet>
-										<h:outputText value="#{bienALouer.adresse.rue}" />
-										<h:outputText value=" " />
-										<h:outputText value="#{bienALouer.adresse.codePostal}" />
-										<h:outputText value=" " />
-										<h:outputText value="#{bienALouer.adresse.ville}" />
-									</p:column>
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="classe standard" />
-										</f:facet>
-										<p:panel header="#{bienALouer.classeStandard.id}"
-											toggleable="true" toggleOrientation="horizontal"
-											collapsed="true" style="border: 0;">
-											<h:panelGrid columns="2">
-												<h:outputText value="Type de bien : " />
-												<h:outputText value="#{bienALouer.classeStandard.typeBien}" />
-												<h:outputText value="Superficie minimum" />
-												<h:outputText
-													value="#{bienALouer.classeStandard.superficieMin}" />
-												<h:outputText value="Prix maximum" />
-												<h:outputText value="Mode de l'offre" />
-												<h:outputText value="#{bienALouer.classeStandard.modeOffre}" />
-											</h:panelGrid>
-										</p:panel>
-									</p:column>
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="disponibilite" />
-										</f:facet>
-										<h:outputText value="#{bienALouer.dateDisponibilite}" />
-									</p:column>
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="Proprietaire" />
-										</f:facet>
-										<h:outputText value="#{proprietaire.nom}" />
-										<h:outputText value=" " />
-										<h:outputText value="#{proprietaire.prenom}" />
-									</p:column>
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="date d'entree" />
-										</f:facet>
-										<h:outputText value="#{bienALouer.dateEntree}" />
-									</p:column>
-
-									<p:column>
-										<f:facet name="header">
-											<h:outputText value="Visite / Achat" />
-										</f:facet>
-										<p:commandLink value="Visiter" onclick="PF('dlg_visite').show();"
-											type="button" />
-										<p:commandLink value="Acheter" onclick="PF('dlg_achat').show();"
-											type="button" />
-
-										<p:growl id="growl" sticky="true" showDetail="true"
-											life="3000" />
-										<p:dialog header="Login" widgetVar="dlg_visite" resizable="false">
-											<h:panelGrid columns="2" cellpadding="5">
-												<h:outputLabel for="prenom" value="Prenom du client:" />
-												<p:inputText id="prenom" value="#{agenceMB.client.prenom}"
-													required="true" label="prenom" />
-												<h:outputLabel for="nom" value="Nom du client:" />
-												<p:inputText id="nom" value="#{agenceMB.client.nom}"
-													required="true" label="nom" />
-
-												<f:facet name="footer">
-													<p:commandButton value="Confirmaer Visite" update="growl"
-														actionListener="#{agenceMB.visiterBien}"
-														oncomplete="handleLoginRequest(xhr, status, args)" />
-												</f:facet>
-											</h:panelGrid>
-										</p:dialog>
-									</p:column>
-
-								</p:dataTable>
-							</p:fieldset>
-						</div>
-
-						<p:spacer height="20" />
-
-						<!-- ================ NOUVEAUX BIENS ===== -->
-						<h:panelGrid>
-							<h:panelGrid columns="2" cellpadding="3">
-								<p:commandButton value="Ajouter un bien à acheter"
-									id="addBienAcheter" action="versFormulaireAjoutBien"
-									actionListener="#{agenceMB.initBienAAcheter}"
-									styleClass="ui-priority-primary" />
-
-								<p:commandButton value="Ajouter un bien louer" id="addBienLouer"
-									action="versFormulaireAjoutBien"
-									actionListener="#{agenceMB.initBienALouer}"
-									styleClass="ui-priority-primary" />
-							</h:panelGrid>
-						</h:panelGrid>
-
-					</p:layoutUnit>
-
-				</p:layout>
-
-
-			</h:form>
-
-
-
-		</ui:define>
+		</ui:define><!-- content -->
 
 	</ui:composition>
 

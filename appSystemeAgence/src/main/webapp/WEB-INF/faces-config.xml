@@ -216,8 +216,8 @@
 	<navigation-rule>
 		<from-view-id>/listeBiens.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>versFormulaireAjoutBien</from-outcome>
-			<to-view-id>/ajouterBien.xhtml</to-view-id>
+			<from-outcome>versFormulaireAjoutBienAAcheter</from-outcome>
+			<to-view-id>/addBienAAcheter.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>

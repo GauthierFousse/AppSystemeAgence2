@@ -10,6 +10,45 @@
     </h:head>
     <h:body>
         <ui:composition>
+        
+        <h:form>
+					
+				<!-- §§§§§§§§§§§§§§§§§§§§ WEST §§§§§§§§§§§§§§§§§§§§ -->
+				
+				<p:layoutUnit position="west" resizable="true" size="200"
+					minSize="40" maxSize="300" style="border: 0;">
+					<p:panel header="Navigation" styleClass="containerPanel"
+						style="text-align:center;">
+						<h:panelGrid>
+							<p:commandButton value="Vos informations"
+								id="informationsConseilers" action="versTableauBord"
+								styleClass="ui-priority-primary" />
+
+							<p:commandButton value="Liste des conseillers"
+								id="listeConseillers" action="versListeConseillers"
+								styleClass="ui-priority-primary" />
+
+							<p:commandButton value="Liste des propriétaires"
+								id="listeProprietaires" action="versListeProprietaires"
+								styleClass="ui-priority-primary" />
+
+							<p:commandButton value="Liste des clients" id="listeClients"
+								action="versListeClients" styleClass="ui-priority-primary" />
+
+							<p:commandButton value="Liste des biens" id="listeBiens"
+								action="versListeBiens" styleClass="ui-priority-primary" />
+
+							<p:commandButton value="Liste de classes standards"
+								id="listeClassesStandards" action="verslisteClassesStandards"
+								styleClass="ui-priority-primary" />
+
+						</h:panelGrid>
+					</p:panel>
+					
+				</p:layoutUnit>
+        
+			</h:form>
+        
         </ui:composition>
     </h:body>
 </html>
