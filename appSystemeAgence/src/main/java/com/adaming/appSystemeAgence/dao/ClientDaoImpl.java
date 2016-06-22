@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.appSystemeAgence.modele.Client;
-import com.adaming.appSystemeAgence.modele.Proprietaire;
 
 @Repository
 public class ClientDaoImpl implements IClientDao {
@@ -87,17 +86,17 @@ public class ClientDaoImpl implements IClientDao {
 		String hqlSupprAdresse = "DELETE FROM adresse a WHERE a.id = :aID";
 		Query requete2 = session.createQuery(hqlSupprAdresse);
 		requete2.setParameter("aID", client.getAdresse().getId());
-
 		int resultat2 = requete2.executeUpdate();
 		System.out.println("===== ClientDaoImpl.java - " + resultat2
 				+ " adresse supprimée.");
 
-		System.out.println("===== ClientDaoImpl.java - Sortie de la méthode deleteClient. =====");
-		
+		boolean schtroumpf;
 		if (resultat != 0 && resultat2 != 0)
-			return true;
+			schtroumpf = true;
 		else
-			return false;
+			schtroumpf = false;
+		System.out.println("===== ClientDaoImpl.java - Sortie de la méthode deleteClient - Suppression réussie : " + schtroumpf + ". =====");
+		return schtroumpf;
 	}
 
 }

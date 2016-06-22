@@ -37,5 +37,16 @@ public class ClientServiceImpl implements IClientService {
 		return null;
 	}
 
+	/**
+	 * Suppression d'un client.
+	 */
+	public boolean deleteClient(int pId) {
+		System.out.println("===== ClientServiceImpl.java - Entrée dans la méthode deleteClient avec le paramètre d'entrée pId = " + pId + ". =====");
+		boolean gastonLagaffe = clientDao.deleteClient(pId);
+		System.out.println("===== ClientServiceImpl.java - Sortie de la méthode deleteClient - Suppression réussie : " + gastonLagaffe + ". =====");
+		
+		return gastonLagaffe;
+	}
+
 	
 }

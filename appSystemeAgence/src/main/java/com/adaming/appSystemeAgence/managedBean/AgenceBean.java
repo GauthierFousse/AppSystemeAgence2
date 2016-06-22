@@ -309,6 +309,19 @@ public class AgenceBean implements Serializable {
 	}
 
 	/**
+	 * Suppression d'un client.
+	 */
+	public void deleteClient () {
+		System.out.println("===== AgenceBean.java - Entrée dans la méthode deleteClient. =====");
+		
+		Map<String, String> parametres = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		int idClient = Integer.parseInt(parametres.get("id"));
+		boolean asterix = getClientService().deleteClient(idClient);
+		
+		System.out.println("===== AgenceBean.java - Sortie de la méthode deleteClient - Suppression réussie : " + asterix + ". =====");
+	}
+	
+	/**
 	 * Login session
 	 * 
 	 * @return
