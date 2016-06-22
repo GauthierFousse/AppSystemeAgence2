@@ -247,6 +247,14 @@
 			<from-outcome>versFormulaireModifierProprietaire</from-outcome>
 			<to-view-id>/updateProprietaire.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>versFormulaireAjoutBienALouer</from-outcome>
+			<to-view-id>/addBienALouer.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versFormulaireAjoutBienAAcheter</from-outcome>
+			<to-view-id>/addBienACheter.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule><!-- update -->
