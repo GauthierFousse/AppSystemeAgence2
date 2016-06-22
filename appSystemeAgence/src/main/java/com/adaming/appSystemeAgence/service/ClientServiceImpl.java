@@ -26,7 +26,7 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	public boolean addClient(Client pClient) {
-		// TODO Auto-generated method stub
+		clientDao.addClient(pClient);
 		return false;
 	}
 

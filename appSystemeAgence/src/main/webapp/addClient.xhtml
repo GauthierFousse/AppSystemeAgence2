@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page d'ajout client</title>
+</h:head>
+<body>
+	<ui:composition template="/templates/layout.xhtml">
+	
+		<ui:define name="content">
+
+			<h:form>
+				<h3 style="margin-top: 0px">Identité</h3>
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="nom" value="Nom: " />
+					<p:inputText id="nom" value="#{agenceMB.client.nom}" />
+
+					<p:outputLabel for="prenom" value="Prenom: " />
+					<p:inputText id="prenom" value="#{agenceMB.client.prenom}" />
+
+					<p:outputLabel for="telPrive" value="Telephone Prive: " />
+					<p:inputText id="telPrive" value="#{agenceMB.client.telPrive}" />
+
+					<p:spacer height="10" />
+				</h:panelGrid>
+
+				<p:separator />
+				<h3>Adresse</h3>
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="rue" value="Rue: " />
+					<p:inputText id="rue" value="#{agenceMB.client.adresse.rue}" />
+
+					<p:outputLabel for="codePostal" value="Code Postal: " />
+					<p:inputText id="codePostal"
+						value="#{agenceMB.client.adresse.codePostal}" />
+
+					<p:outputLabel for="ville" value="Ville: " />
+					<p:inputText id="ville"
+						value="#{agenceMB.client.adresse.ville}" />
+				</h:panelGrid>
+
+				<p:separator />
+				
+				<h3>Statut</h3>
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="acquereur" value="Acquereur: " />
+					<p:inputText id="acquereur"
+						value="#{agenceMB.client.acquereur}" />
+						
+				</h:panelGrid>
+
+				<p:separator />
+
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:commandButton value="Reset" type="reset" />
+					<p:commandButton value="Submit" action="versListeClients"
+						type="submit" actionListener="#{agenceMB.addClient()}"
+						styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
+				</h:panelGrid>
+
+			</h:form>
+			
+		</ui:define>
+		
+	</ui:composition>
+</body>
+</html>
+

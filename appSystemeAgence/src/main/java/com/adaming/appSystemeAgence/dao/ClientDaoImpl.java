@@ -41,10 +41,16 @@ public class ClientDaoImpl implements IClientDao {
 		return listeClients;
 	}
 
+	@Transactional(readOnly=false)
 	public boolean addClient(Client pClient) {
+		
 		System.out.println("=====> DAO : add Client : " + pClient);
-		System.out.println("=====> DAO : add Client : methode a faire.");
-		return false;
+		
+		Session session = sf.openSession();
+		session.save(pClient);
+		
+		System.out.println("=====> DAO : Client ajouté");
+		return true;
 	}
 
 	public Client getClientById(int pId) {

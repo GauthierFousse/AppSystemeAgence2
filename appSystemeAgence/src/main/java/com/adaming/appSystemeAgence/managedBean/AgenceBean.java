@@ -115,6 +115,16 @@ public class AgenceBean implements Serializable {
 		proprietaire.setAdresse(new Adresse());
 		System.out.println("===> MB : new Proprietaire set.");
 	}
+	
+	/**
+	 * Instanciation d'un nouveau Client.
+	 */
+	public void initClient() {
+		System.out.println("===> MB : initClient()");
+		setClient(new Client());
+		client.setAdresse(new Adresse());
+		System.out.println("===> MB : new Client set.");
+	}
 
 	/**
 	 * Instanciation d'un nouveau Bien a louer.
@@ -167,6 +177,22 @@ public class AgenceBean implements Serializable {
 			System.out.println("===> MB : Proprietaire added with success");
 		} else {
 			System.out.println("===> MB : Proprietaire FAILED to add.");
+		}
+	}
+	
+	/**
+	 * Ajout d'un client dans la BDD.
+	 */
+	public void addClient() {
+		System.out.println("===> MB : add Client : " + client);
+		
+		// on attribut le conseiller utilisateur au client
+		client.setConseiller(utilisateur);
+		
+		if (getClientService().addClient(client)){
+			System.out.println("===> MB : Client added with success");
+		} else {
+			System.out.println("===> MB : Client FAILED to add.");
 		}
 	}
 
