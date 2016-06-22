@@ -7,54 +7,60 @@
 	xmlns:x="http://java.sun.com/jsp/jstl/xml">
 
 <h:head>
-	<title>Page detailClient.xhtml</title>
+	<title>detail client</title>
 </h:head>
 
 <body>
 	<ui:composition template="/templates/layout.xhtml">
 		<ui:define name="content">
-<!-- 			<h:outputStylesheet library="css" name="style.css" /> -->
-			<hr />
-			<br />
-			<h:form>
-				<h:inputHidden id="id" value="#{agenceMB.client.id}" />
-
-				<h:panelGrid>
-
-					<h:outputText value="Identifiant : #{agenceMB.client.id}" />
-					<h:outputText value="Nom : #{agenceMB.client.nom}" />
-					<h:outputText value="Prénom : #{agenceMB.client.prenom}" />
-					<h:outputText value="Téléphone personnel : #{agenceMB.client.telPrive}" />
-					<h:outputText value="Acquéreur : #{agenceMB.client.id}" />
-
-
-					<h:outputText value="Titre" />
-					<h:inputText value="#{gestionLivresMB.livre.titre}" />
-
-					<h:outputText value="Auteur" />
-					<h:inputText value="#{gestionLivresMB.livre.auteur}" />
-
-					<h:outputText value="Disponibilité" />
-					<h:selectBooleanCheckbox
-						value="#{gestionLivresMB.livre.disponibilite}" />
-
-				</h:panelGrid>
-
-				<h:messages id="errors" layout="table" />
-
-				<h:commandButton value="Sauvegarder" action="listeLivres"
-					actionListener="#{gestionLivresMB.saveLivre}" />
-
-			</h:form>
-			<br />
-			<br />
-			<h:form>
+			<h:outputStylesheet library="css" name="style.css" />
+			
+			<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
+			
+			<p:layoutUnit position="center" resizable="true" style="border: 0;">
+				<div>
+				
+					<h3 style="margin-top: 0px">Identité du conseiller</h3>
+					<h:inputHidden id="id" value="#{agenceMB.client.id}" />
+	
+					<h:panelGrid>
+	
+						<h:outputText value="Identifiant : #{agenceMB.client.id}" />
+						<h:outputText value="Nom : #{agenceMB.client.nom}" />
+						<h:outputText value="Prénom : #{agenceMB.client.prenom}" />
+						<h:outputText value="Téléphone personnel : #{agenceMB.client.telPrive}" />
+						<h:outputText value="Acquéreur : #{agenceMB.client.id}" />
+	
+	
+						<h:outputText value="Titre" />
+						<h:inputText value="#{gestionLivresMB.livre.titre}" />
+	
+						<h:outputText value="Auteur" />
+						<h:inputText value="#{gestionLivresMB.livre.auteur}" />
+	
+						<h:outputText value="Disponibilité" />
+						<h:selectBooleanCheckbox
+							value="#{gestionLivresMB.livre.disponibilite}" />
+	
+					</h:panelGrid>
+	
+					<h:messages id="errors" layout="table" />
+	
+					<h:commandButton value="Sauvegarder" action="listeLivres"
+						actionListener="#{gestionLivresMB.saveLivre}" />
+	
+				</div>
+				
+				<p:separator />
+				
 				<p:commandButton value="Retour vers la liste des clients"
 					id="boutonDetailClient" action="deDetailClientAListeClient"
 					styleClass="ui-priority-primary" />
-			</h:form>
 			
-		</ui:define>
+			</p:layoutUnit>
+
+		</ui:define><!-- content -->
+		
 	</ui:composition>
 </body>
 </html>

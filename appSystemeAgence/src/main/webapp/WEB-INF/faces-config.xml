@@ -26,252 +26,446 @@
 	<!--=================== TABLEAU BORD ========================== -->
 	<navigation-rule>
 		<from-view-id>tableauBord.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
 			<from-outcome>deconnexion</from-outcome>
 			<to-view-id>/identificationConseiller.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versListeProprietaires</from-outcome>
-			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versListeConseillers</from-outcome>
 			<to-view-id>/listeConseillers.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versListeBiens</from-outcome>
-			<to-view-id>/listeBiens.xhtml</to-view-id>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versListeClients</from-outcome>
 			<to-view-id>/listeClients.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>verslisteClassesStandards</from-outcome>
-			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versTableauBord</from-outcome>
-			<to-view-id>/tableauBord.xhtml</to-view-id>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
 	<!--=================== CONSEILLERS ========================== -->
 	<navigation-rule>
 		<from-view-id>/listeConseillers.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
-			<from-outcome>versFormulaireAjoutConseiller</from-outcome>
-			<to-view-id>/addConseiller.xhtml</to-view-id>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>versListeProprietaires</from-outcome>
-			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versListeConseillers</from-outcome>
 			<to-view-id>/listeConseillers.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versListeBiens</from-outcome>
-			<to-view-id>/listeBiens.xhtml</to-view-id>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versListeClients</from-outcome>
 			<to-view-id>/listeClients.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>verslisteClassesStandards</from-outcome>
 			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
+		<navigation-case>
+			<from-outcome>versFormulaireAjoutConseiller</from-outcome>
+			<to-view-id>/addConseiller.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>/addConseiller.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
-			<from-outcome>validationAjoutConseiller</from-outcome>
-			<to-view-id>/listeConseillers.xhtml</to-view-id>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
+		<navigation-case>
+			<from-outcome>validationAjoutConseiller</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
 	<!--=================== PROPRIETAIRES ========================== -->
 	<navigation-rule>
 		<from-view-id>listeProprietaires.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
+		<navigation-case>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
 		<navigation-case>
 			<from-outcome>versFormulaireAjoutProprietaire</from-outcome>
 			<to-view-id>/addProprietaire.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versTableauBord</from-outcome>
-			<to-view-id>/tableauBord.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>versFormulaireModifierProprietaire</from-outcome>
-			<to-view-id>/updateProprietaire.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>versListeProprietaires</from-outcome>
-			<to-view-id>/listeProprietaires.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>versListeConseillers</from-outcome>
-			<to-view-id>/listeConseillers.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>versListeBiens</from-outcome>
-			<to-view-id>/listeBiens.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>versListeClients</from-outcome>
-			<to-view-id>/listeClients.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>verslisteClassesStandards</from-outcome>
-			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+			<from-outcome>versDetailProprietaire</from-outcome>
+			<to-view-id>/detailProprietaire.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>/addProprietaire.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
+		<navigation-case>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
 		<navigation-case>
 			<from-outcome>versListeProprietaires</from-outcome>
 			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/detailProprietaire.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
+		<navigation-case>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
+		<navigation-case>
+			<from-outcome>versFormulaireModifierProprietaire</from-outcome>
+			<to-view-id>/updateProprietaire.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>updateProprietaire.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
-			<from-outcome>deUpdateProprietaireVersListeProprietaires</from-outcome>
-			<to-view-id>/listeProprietaires.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>validationModificationProprietaire</from-outcome>
-			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
-
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
+		<navigation-case>
+			<from-outcome>validationModificationProprietaire</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<!--=================== CLIENTS ========================== -->
 	<navigation-rule>
 		<from-view-id>/listeClients.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
-			<from-outcome>deListeClientsADetailClient</from-outcome>
-			<to-view-id>/detailClient.xhtml</to-view-id>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versListeProprietaires</from-outcome>
-			<to-view-id>/listeProprietaires.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
 			<from-outcome>versListeConseillers</from-outcome>
 			<to-view-id>/listeConseillers.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versListeBiens</from-outcome>
-			<to-view-id>/listeBiens.xhtml</to-view-id>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versListeClients</from-outcome>
 			<to-view-id>/listeClients.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>verslisteClassesStandards</from-outcome>
 			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
+		<navigation-case>
+			<from-outcome>deListeClientsADetailClient</from-outcome>
+			<to-view-id>/detailClient.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>/addClient.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
-			<from-outcome>versListeClients</from-outcome>
-			<to-view-id>/listeClients.xhtml</to-view-id>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
 	</navigation-rule>
 
 	<!--=================== BIENS ========================== -->
 	<navigation-rule>
 		<from-view-id>/listeBiens.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
-			<from-outcome>versFormulaireAjoutBienAAcheter</from-outcome>
-			<to-view-id>/addBienAAcheter.xhtml</to-view-id>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versListeProprietaires</from-outcome>
-			<to-view-id>/listeProprietaires.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
 			<from-outcome>versListeConseillers</from-outcome>
 			<to-view-id>/listeConseillers.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versListeBiens</from-outcome>
-			<to-view-id>/listeBiens.xhtml</to-view-id>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versListeClients</from-outcome>
 			<to-view-id>/listeClients.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>verslisteClassesStandards</from-outcome>
 			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
 		</navigation-case>
+		<!-- cas speciaux -->
+		<navigation-case>
+			<from-outcome>versFormulaireAjoutBienAAcheter</from-outcome>
+			<to-view-id>/addBienAAcheter.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/addBienAAcheter.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
+		<navigation-case>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
 	</navigation-rule>
 
 	<!--=================== CLASSES STANDARDS ========================== -->
 	<navigation-rule>
 		<from-view-id>/listeClassesStandards.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
+		<navigation-case>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
+		</navigation-case>
 		<navigation-case>
 			<from-outcome>versTableauBord</from-outcome>
 			<to-view-id>/tableauBord.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>versListeProprietaires</from-outcome>
-			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versListeConseillers</from-outcome>
 			<to-view-id>/listeConseillers.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>versListeBiens</from-outcome>
-			<to-view-id>/listeBiens.xhtml</to-view-id>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>versListeClients</from-outcome>
 			<to-view-id>/listeClients.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>verslisteClassesStandards</from-outcome>
 			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
 		</navigation-case>
+		<!-- cas speciaux -->
 	</navigation-rule>
 
 </faces-config>

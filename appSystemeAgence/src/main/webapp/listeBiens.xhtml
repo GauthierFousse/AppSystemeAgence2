@@ -116,18 +116,6 @@
 					</p:fieldset>
 				</div>
 				
-				<p:spacer height="10" />
-				<!-- ================ NOUVEAUX BIENS A ACHETER ===== -->
-				<h:panelGrid>
-					<h:panelGrid columns="2" cellpadding="3">
-						<p:commandButton value="Ajouter un bien à acheter"
-										 id="addBienAcheter" 
-										 action="versFormulaireAjoutBienAAcheter"
-										 actionListener="#{agenceMB.initBienAAcheter}"
-										 styleClass="ui-priority-primary" />
-					</h:panelGrid>
-				</h:panelGrid>
-
 				<p:spacer height="20" />
 
 				<!-- ================ BIEN A LOUER ===== -->
@@ -244,18 +232,6 @@
 						</p:dataTable>
 					</p:fieldset>
 				</div>
-
-				<p:spacer height="10" />
-				<!-- ================ NOUVEAUX BIENS A LOUER ===== -->
-				<h:panelGrid>
-					<h:panelGrid columns="2" cellpadding="3">
-						<p:commandButton value="Ajouter un bien louer" 
-										 id="addBienLouer"
-										 action="versFormulaireAjoutBienALouer"
-										 actionListener="#{agenceMB.initBienALouer}"
-										 styleClass="ui-priority-primary" />
-					</h:panelGrid>
-				</h:panelGrid>
 
 			</p:layoutUnit>
 

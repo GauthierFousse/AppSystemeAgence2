@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>detail proprietaire</title>
+</h:head>
+<body>
+	<ui:composition template="/templates/layout.xhtml">
+	
+		<ui:define name="content">
+
+			<h:outputStylesheet library="css" name="style.css" />
+			
+			<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
+			
+			<p:layoutUnit position="center" resizable="true" style="border: 0;">
+				<div>
+
+					<h3 style="margin-top: 0px">Identité du propriétaire</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="nom" value="Nom: " />
+						<p:outputText id="nom" value="#{agenceMB.proprietaire.nom}" />
+	
+						<p:outputLabel for="prenom" value="Prenom: " />
+						<p:outputText id="prenom" value="#{agenceMB.proprietaire.prenom}" />
+	
+						<p:outputLabel for="telPrive" value="Telephone Prive: " />
+						<p:outputText id="telPrive" value="#{agenceMB.proprietaire.telPrive}" />
+						
+						<p:outputLabel for="telTravail" value="Telephone Professionnel: " />
+						<p:outputText id="telTravail" value="#{agenceMB.proprietaire.telTravail}" />
+	
+						<p:spacer height="10" />
+					</h:panelGrid>
+	
+					<p:separator />
+					
+					<h3>Adresse</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="rue" value="Rue: " />
+						<p:outputText id="rue" value="#{agenceMB.proprietaire.adresse.rue}" />
+	
+						<p:outputLabel for="codePostal" value="Code Postal: " />
+						<p:outputText id="codePostal"
+							value="#{agenceMB.proprietaire.adresse.codePostal}" />
+	
+						<p:outputLabel for="ville" value="Ville: " />
+						<p:outputText id="ville"
+							value="#{agenceMB.proprietaire.adresse.ville}" />
+					</h:panelGrid>
+				</div>
+				
+				<p:separator />
+
+				<h:panelGrid columns="2" cellpadding="3">
+					
+					<p:commandButton value="Ajouter un bien à acheter"
+									 id="addBienAcheter" 
+									 action="versFormulaireAjoutBienAAcheter"
+									 actionListener="#{agenceMB.initBienAAcheter}"
+									 styleClass="ui-priority-primary" />
+					
+					<p:commandButton value="Ajouter un bien louer" 
+									 id="addBienLouer"
+									 action="versFormulaireAjoutBienALouer"
+									 actionListener="#{agenceMB.initBienALouer}"
+									 styleClass="ui-priority-primary" />
+				</h:panelGrid>
+				
+				<h:panelGrid columns="2" cellpadding="3">
+				
+					<p:commandButton id="modifProprietaire"
+									 value="Modifier"
+									 action="versFormulaireModifierProprietaire"
+								     actionListener="#{agenceMB.selectProprietaire()}"
+									 styleClass="ui-priority-primary" >
+						<f:param id="editId" 
+								 name="id" 
+								 value="#{proprietaire.id}"/>
+					</p:commandButton>
+					
+					<p:commandButton value="Supprimer" 
+									 update="@all" 
+									 action="versListeProrios"  
+									 actionListener="#{agenceMB.deleteProprietaire}" >
+						<f:param id="deleteId" 
+								 name="id" 
+								 value="#{proprietaire.id}"/>
+						<p:confirm header="Confirmation" 
+								   message="Supprimer définitivement ?" 
+								   icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:confirmDialog global="true" 
+									 showEffect="fade" 
+									 hideEffect="fade">
+						<p:commandButton value="Oui" 
+										 action="versListeProrios" 
+										 type="button" 
+										 styleClass="ui-confirmdialog-yes" 
+										 icon="ui-icon-check" />
+						<p:commandButton value="Non" 
+										 action="versListeProrios" 
+										 type="button" 
+										 styleClass="ui-confirmdialog-no" 
+										 icon="ui-icon-close" />
+					</p:confirmDialog>
+					
+				</h:panelGrid>
+				
+			</p:layoutUnit>
+
+		</ui:define><!-- content -->
+		
+	</ui:composition>
+</body>
+</html>
+

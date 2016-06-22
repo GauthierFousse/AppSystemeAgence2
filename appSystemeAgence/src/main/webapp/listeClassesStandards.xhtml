@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Liste des conseillers</title>
+	<title>classes standards</title>
 </h:head>
 <body>
 
@@ -65,7 +65,9 @@
 						</p:column>
 
 						<p:column>
-							<f:facet name="header" />
+							<f:facet name="header">
+								<h:outputText value="Supprimer" />
+							</f:facet>
 							<p:commandButton icon="ui-icon-trash"
 								actionListener="#{agenceMB.removeClasseStandard}">
 								<f:param name="classeStdId" value="#{classeStandard.id}" />

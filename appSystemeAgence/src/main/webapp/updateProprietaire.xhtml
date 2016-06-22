@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Page updateProprietaire.xhtml</title>
+	<title>modifications proprietaire</title>
 </h:head>
 
 <body>
@@ -60,10 +60,15 @@
 				<p:separator />
 
 				<h:panelGrid columns="2" cellpadding="5">
-					<p:commandButton value="Retourner à la liste" type="submit" action="deUpdateProprietaireVersListeProprietaires"/>
-					<p:commandButton value="Valider" action="validationModificationProprietaire"
-						type="submit" actionListener="#{agenceMB.updateProprietaire}"
-						styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
+					<p:commandButton value="Retourner à la liste" 
+									 type="submit" 
+									 action="versListeProprietaires"/>
+					<p:commandButton value="Valider" 
+									 action="validationModificationProprietaire"
+									 type="submit" 
+									 actionListener="#{agenceMB.updateProprietaire}"
+									 styleClass="ui-priority-primary" 
+									 update="matchGrid" ajax="false" />
 				</h:panelGrid>
 
 			</p:layoutUnit>

@@ -6,53 +6,60 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Page d'ajout client</title>
+	<title>ajout client</title>
 </h:head>
 <body>
 	<ui:composition template="/templates/layout.xhtml">
 	
 		<ui:define name="content">
 
-			<h:form>
-				<h3 style="margin-top: 0px">Identité</h3>
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="nom" value="Nom: " />
-					<p:inputText id="nom" value="#{agenceMB.client.nom}" />
-
-					<p:outputLabel for="prenom" value="Prenom: " />
-					<p:inputText id="prenom" value="#{agenceMB.client.prenom}" />
-
-					<p:outputLabel for="telPrive" value="Telephone Prive: " />
-					<p:inputText id="telPrive" value="#{agenceMB.client.telPrive}" />
-
-					<p:spacer height="10" />
-				</h:panelGrid>
-
-				<p:separator />
-				<h3>Adresse</h3>
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="rue" value="Rue: " />
-					<p:inputText id="rue" value="#{agenceMB.client.adresse.rue}" />
-
-					<p:outputLabel for="codePostal" value="Code Postal: " />
-					<p:inputText id="codePostal"
-						value="#{agenceMB.client.adresse.codePostal}" />
-
-					<p:outputLabel for="ville" value="Ville: " />
-					<p:inputText id="ville"
-						value="#{agenceMB.client.adresse.ville}" />
-				</h:panelGrid>
-
-				<p:separator />
+			<h:outputStylesheet library="css" name="style.css" />
+			
+			<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
+			
+			<p:layoutUnit position="center" resizable="true" style="border: 0;">
+				<div>
 				
-				<h3>Statut</h3>
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="acquereur" value="Acquereur: " />
-					<p:inputText id="acquereur"
-						value="#{agenceMB.client.acquereur}" />
-						
-				</h:panelGrid>
-
+					<h3 style="margin-top: 0px">Identité du client</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="nom" value="Nom: " />
+						<p:inputText id="nom" value="#{agenceMB.client.nom}" />
+	
+						<p:outputLabel for="prenom" value="Prenom: " />
+						<p:inputText id="prenom" value="#{agenceMB.client.prenom}" />
+	
+						<p:outputLabel for="telPrive" value="Telephone Prive: " />
+						<p:inputText id="telPrive" value="#{agenceMB.client.telPrive}" />
+	
+						<p:spacer height="10" />
+					</h:panelGrid>
+	
+					<p:separator />
+					<h3>Adresse</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="rue" value="Rue: " />
+						<p:inputText id="rue" value="#{agenceMB.client.adresse.rue}" />
+	
+						<p:outputLabel for="codePostal" value="Code Postal: " />
+						<p:inputText id="codePostal"
+							value="#{agenceMB.client.adresse.codePostal}" />
+	
+						<p:outputLabel for="ville" value="Ville: " />
+						<p:inputText id="ville"
+							value="#{agenceMB.client.adresse.ville}" />
+					</h:panelGrid>
+	
+					<p:separator />
+					
+					<h3>Statut</h3>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="acquereur" value="Acquereur: " />
+						<p:inputText id="acquereur"
+							value="#{agenceMB.client.acquereur}" />
+							
+					</h:panelGrid>
+				</div>
+				
 				<p:separator />
 
 				<h:panelGrid columns="2" cellpadding="5">
@@ -62,10 +69,10 @@
 						styleClass="ui-priority-primary" update="matchGrid" ajax="false" />
 				</h:panelGrid>
 
-			</h:form>
+			</p:layoutUnit>
+
+		</ui:define><!-- content -->
 			
-		</ui:define>
-		
 	</ui:composition>
 </body>
 </html>
