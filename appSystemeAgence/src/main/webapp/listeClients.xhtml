@@ -132,6 +132,37 @@
 									</p:fieldset>
 								</p:column>
 								
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Modifier le client"/>
+									</f:facet>
+				
+								<p:commandButton value="Modifier" id="modifClient"
+										action="versFormulaireModifierClient"
+										actionListener="#{agenceMB.selectClient()}"
+										styleClass="ui-priority-primary" >
+											<f:param id="editId" name="id" value="#{client.id}"/>
+									</p:commandButton>
+								</p:column>
+					
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Supprimer le client"/>
+									</f:facet>
+						
+									<!-- <p:growl id="message" showDetail="true" /> update="message"-->
+ 
+    									<p:commandButton value="Supprimer" update="@all" action="versListeClients"  actionListener="#{agenceMB.deleteClient}" >
+    										<f:param id="deleteId" name="id" value="#{client.id}"/>
+        									<p:confirm header="Confirmation" message="Supprimer définitivement ?" icon="ui-icon-alert" />
+    									</p:commandButton>
+ 
+    									<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        									<p:commandButton value="Oui" action="versListeClients" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        									<p:commandButton value="Non" action="versListeClients" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    									</p:confirmDialog>
+								</p:column>
+								
 							</p:dataTable>
 						</div>
 
