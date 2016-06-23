@@ -17,80 +17,6 @@
 				
 				<p:layoutUnit position="center" resizable="true" style="border: 0;">
 					<p:tabView>
-
-						<p:tab title="Informations personnelles">
-
-							<h:form>
-								<p:fieldset legend="Identité" collapsed="false" toggleable="true"
-									toggleOrientation="vertical">
-									<h:panelGrid columns="2">
-
-										<p:outputLabel for="prenom" value="Prénom : " />
-										<h:outputText id="prenom"
-											value="#{agenceMB.utilisateur.prenom}" />
-
-
-										<p:outputLabel for="nom" value="Nom : " />
-										<h:outputText id="nom" value="#{agenceMB.utilisateur.nom}" />
-
-
-
-										<p:outputLabel for="tel" value="Téléphone privé : " />
-										<h:outputText id="tel"
-											value="#{agenceMB.utilisateur.telPrive}" />
-
-									</h:panelGrid>
-								</p:fieldset>
-								<p:spacer height="20" />
-
-
-
-								<p:fieldset legend="Adresse" collapsed="false" toggleable="true"
-									toggleOrientation="vertical">
-									<h:panelGrid columns="2">
-
-										<p:outputLabel for="rue" value="Rue : " />
-										<h:outputText id="rue"
-											value="#{agenceMB.utilisateur.adresse.rue}" />
-
-										<p:outputLabel for="codePostal" value="Code postal : " />
-										<h:outputText id="codePostal"
-											value="#{agenceMB.utilisateur.adresse.codePostal}"
-											required="true" />
-
-										<p:outputLabel for="ville" value="Ville : " />
-										<h:outputText id="ville"
-											value="#{agenceMB.utilisateur.adresse.ville}" />
-
-									</h:panelGrid>
-								</p:fieldset>
-								<p:spacer height="20" />
-
-								<p:fieldset legend="Login" collapsed="false" toggleable="true"
-									toggleOrientation="vertical">
-									<h:panelGrid columns="2">
-
-										<p:outputLabel for="login" value="Identifiant : " />
-										<h:outputText id="login"
-											value="#{agenceMB.utilisateur.login}" />
-									</h:panelGrid>
-								</p:fieldset>
-								<p:spacer height="20" />
-
-								<h:panelGrid columns="3">
-									<p:commandButton id="modifier" value="Modifier" action="versFormulaireAjoutConseiller" actionListener="#{agenceMB.selectConseiller}">
-										<f:param id="modifierConseiller" name="id" value="#{utilisateur.id}"></f:param>
-									</p:commandButton>
-								</h:panelGrid>
-
-							</h:form>
-						</p:tab>
-
-						<p:tab title="Liste des ventes réalisées">
-							<h:panelGrid columns="2" cellpadding="10">
-								<h:outputText value="Francis Ford Coppola's legendary..." />
-							</h:panelGrid>
-						</p:tab>
 						<p:tab title="Liste des visites">
 							<!-- ================ LISTE VISITES BIENS A ACHETER ===== -->
 				<div>
@@ -229,7 +155,7 @@
 			
 				<!-- ================ LISTE VISITES BIENS A LOUER ===== -->
 				<div>
-					<p:fieldset legend="Visites des biens immobiliers en vente" collapsed="false"
+					<p:fieldset legend="Visites des biens immobiliers à louer" collapsed="false"
 						toggleable="true" toggleOrientation="vertical">
 					<p:dataTable id="liste" value="#{agenceMB.listeVisites}"
 						var="visite">
@@ -346,6 +272,81 @@
 					</p:dialog>
 				</div>
 						</p:tab>
+						
+						<p:tab title="Informations personnelles">
+
+							<h:form>
+								<p:fieldset legend="Identité" collapsed="false" toggleable="true"
+									toggleOrientation="vertical">
+									<h:panelGrid columns="2">
+
+										<p:outputLabel for="prenom" value="Prénom : " />
+										<h:outputText id="prenom"
+											value="#{agenceMB.utilisateur.prenom}" />
+
+
+										<p:outputLabel for="nom" value="Nom : " />
+										<h:outputText id="nom" value="#{agenceMB.utilisateur.nom}" />
+
+
+
+										<p:outputLabel for="tel" value="Téléphone privé : " />
+										<h:outputText id="tel"
+											value="#{agenceMB.utilisateur.telPrive}" />
+
+									</h:panelGrid>
+								</p:fieldset>
+								<p:spacer height="20" />
+
+
+
+								<p:fieldset legend="Adresse" collapsed="false" toggleable="true"
+									toggleOrientation="vertical">
+									<h:panelGrid columns="2">
+
+										<p:outputLabel for="rue" value="Rue : " />
+										<h:outputText id="rue"
+											value="#{agenceMB.utilisateur.adresse.rue}" />
+
+										<p:outputLabel for="codePostal" value="Code postal : " />
+										<h:outputText id="codePostal"
+											value="#{agenceMB.utilisateur.adresse.codePostal}"
+											required="true" />
+
+										<p:outputLabel for="ville" value="Ville : " />
+										<h:outputText id="ville"
+											value="#{agenceMB.utilisateur.adresse.ville}" />
+
+									</h:panelGrid>
+								</p:fieldset>
+								<p:spacer height="20" />
+
+								<p:fieldset legend="Login" collapsed="false" toggleable="true"
+									toggleOrientation="vertical">
+									<h:panelGrid columns="2">
+
+										<p:outputLabel for="login" value="Identifiant : " />
+										<h:outputText id="login"
+											value="#{agenceMB.utilisateur.login}" />
+									</h:panelGrid>
+								</p:fieldset>
+								<p:spacer height="20" />
+
+								<h:panelGrid columns="3">
+									<p:commandButton id="modifier" value="Modifier" action="versFormulaireAjoutConseiller" actionListener="#{agenceMB.selectConseiller}">
+										<f:param id="modifierConseiller" name="id" value="#{utilisateur.id}"></f:param>
+									</p:commandButton>
+								</h:panelGrid>
+
+							</h:form>
+						</p:tab>
+
+						<p:tab title="Liste des ventes réalisées">
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:outputText value="Francis Ford Coppola's legendary..." />
+							</h:panelGrid>
+						</p:tab>
+						
 					</p:tabView>
 				</p:layoutUnit>
 
