@@ -22,6 +22,7 @@ import com.adaming.appSystemeAgence.modele.ClasseStandard;
 import com.adaming.appSystemeAgence.modele.Client;
 import com.adaming.appSystemeAgence.modele.Conseiller;
 import com.adaming.appSystemeAgence.modele.Proprietaire;
+import com.adaming.appSystemeAgence.modele.Visite;
 import com.adaming.appSystemeAgence.service.IBienService;
 import com.adaming.appSystemeAgence.service.IClasseStandardService;
 import com.adaming.appSystemeAgence.service.IClientService;
@@ -54,6 +55,9 @@ public class AgenceBean implements Serializable {
 
 	private ClasseStandard classeStandard;
 	private List<ClasseStandard> listeClasseStandard;
+	
+	private Visite visite;
+	private List<Visite> listeVisites;
 	
 	/*
 	 * Injection des services dans le managedbean.
@@ -525,6 +529,14 @@ public class AgenceBean implements Serializable {
 				.println("===> MB : liste recuperee : " + listeClasseStandard);
 		return listeClasseStandard;
 	}
+	
+	/**
+	 * 
+	 * @return la liste de toutes les visites
+	 */
+	public List<Visite> getListeVisites() {
+		return listeVisites;
+	}
 
 	/*
 	 * autres getters et setters
@@ -609,6 +621,18 @@ public class AgenceBean implements Serializable {
 		this.classeStandard = classeStandard;
 	}
 
+	public Visite getVisite() {
+		return visite;
+	}
+	
+	public void setVisite(Visite visite) {
+		this.visite = visite;
+	}
+	
+	public void setListeVisites(List<Visite> listeVisites) {
+		this.listeVisites = listeVisites;
+	}
+	
 	/*
 	 * getter and SETTER of the managed properties
 	 */
