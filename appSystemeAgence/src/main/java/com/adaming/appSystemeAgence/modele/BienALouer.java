@@ -193,14 +193,12 @@ public class BienALouer extends BienImmobilier {
 	public void setListeContrats(Collection<Contrat> listeContrats) {
 		this.listeContrats = listeContrats;
 	}
-	
 	@Override
 	public String toString() {
 		return "BienALouer [id=" + id + ", caution=" + caution + ", loyerMensuel=" + loyerMensuel
 				+ ", chargesMensuelles=" + chargesMensuelles + ", typeBail=" + typeBail + ", garniture=" + garniture
 				+ ", adresse=" + adresse + ", proprietaire=" + proprietaire + ", listeVisites=" + listeVisites
-				+ ", listeContrats=" + listeContrats + "]";
+				+ ", listeContrats=" + listeContrats + ", classeStandard=" + classeStandard + "]";
 	}
-	
 	
 }

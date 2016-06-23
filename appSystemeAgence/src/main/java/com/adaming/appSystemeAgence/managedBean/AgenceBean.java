@@ -190,18 +190,6 @@ public class AgenceBean implements Serializable {
 	}
 	
 	/**
-	 * Ajout d'un bien a louer dans la BDD.
-	 */
-	public void addBienALouer() {
-		System.out.println("===> MB : add bien a louer : " + bienALouer);
-		if (getBienService().addBienALouer(bienALouer)){
-			System.out.println("===> MB : Client added with success");
-		} else {
-			System.out.println("===> MB : Client FAILED to add.");
-		}
-	}
-	
-	/**
 	 * Ajout d'un bien a acheter dans la BDD.
 	 */
 	public void addBienAAcheter() {
@@ -215,6 +203,26 @@ public class AgenceBean implements Serializable {
 		bienAAcheter.setDateDisponibilite(converter.StringToDateFR(bienAAcheter.getStrDateDisponibilite()));
 		
 		if (getBienService().addBienAAcheter(bienAAcheter)){
+			System.out.println("===> MB : bien added with success");
+		} else {
+			System.out.println("===> MB : bien FAILED to add.");
+		}
+	}
+	
+	/**
+	 * Ajout d'un bien a louer dans la BDD.
+	 */
+	public void addBienALouer() {
+		System.out.println("===> MB : add bien a louer : " + bienALouer
+					   + "\n        :    de proprietaire : " + proprietaire);
+		bienAAcheter.setProprietaire(proprietaire);
+		
+		/* conversion de la date via le converter dans tools */
+		Converter converter = new Converter();
+		bienALouer.setDateEntree(converter.StringToDateFR(bienALouer.getStrDateEntree()));
+		bienALouer.setDateDisponibilite(converter.StringToDateFR(bienALouer.getStrDateDisponibilite()));
+		
+		if (getBienService().addBienALouer(bienALouer)){
 			System.out.println("===> MB : bien added with success");
 		} else {
 			System.out.println("===> MB : bien FAILED to add.");
