@@ -53,8 +53,9 @@ public class BienALouer extends BienImmobilier {
 	@OneToMany(mappedBy = "bienALouer")
     private Collection<Visite> listeVisites;
 	
-	@OneToMany(mappedBy = "bienALouer")
-    private Collection<Contrat> listeContrats;
+	@OneToOne
+	@JoinColumn(name = "contrat_id", referencedColumnName = "id_contrat")
+    private Contrat contrat;
 	
 	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn (name = "classe_standard_id", referencedColumnName = "id_classe_standard")
@@ -105,7 +106,7 @@ public class BienALouer extends BienImmobilier {
 	 */
 	public BienALouer(int id, double caution, double loyerMensuel, double chargesMensuelles, String typeBail,
 			int garniture, Adresse adresse, Proprietaire proprietaire, Collection<Visite> listeVisites,
-			Collection<Contrat> listeContrats, ClasseStandard classeStandard) {
+			Contrat contrat, ClasseStandard classeStandard) {
 		super();
 		this.id = id;
 		this.caution = caution;
@@ -116,7 +117,7 @@ public class BienALouer extends BienImmobilier {
 		this.adresse = adresse;
 		this.proprietaire = proprietaire;
 		this.listeVisites = listeVisites;
-		this.listeContrats = listeContrats;
+		this.contrat = contrat;
 		this.classeStandard = classeStandard;
 	}
 	
@@ -187,18 +188,16 @@ public class BienALouer extends BienImmobilier {
 		this.listeVisites = listeVisites;
 	}
 	
-	public Collection<Contrat> getListeContrats() {
-		return listeContrats;
+	public Contrat getContrat() {
+		return contrat;
 	}
-	public void setListeContrats(Collection<Contrat> listeContrats) {
-		this.listeContrats = listeContrats;
+	public void setContrat(Contrat contrat) {
+		this.contrat = contrat;
 	}
+	
 	@Override
 	public String toString() {
-		return "BienALouer [id=" + id + ", caution=" + caution + ", loyerMensuel=" + loyerMensuel
-				+ ", chargesMensuelles=" + chargesMensuelles + ", typeBail=" + typeBail + ", garniture=" + garniture
-				+ ", adresse=" + adresse + ", proprietaire=" + proprietaire + ", listeVisites=" + listeVisites
-				+ ", listeContrats=" + listeContrats + ", classeStandard=" + classeStandard + "]";
+		return "BienALouer [id=" + id + ", loyerMensuel=" + loyerMensuel + "]";
 	}
 	
 }

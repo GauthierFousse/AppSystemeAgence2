@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="contrat")
@@ -34,13 +35,11 @@ public class Contrat implements Serializable{
 	private Date dateAchat;
 	
 	/////////// ASSOCIATIONS ///////////
-		
-	@ManyToOne (fetch = FetchType.EAGER)
-	@JoinColumn(name = "bien_a_louer_id", referencedColumnName = "id_bien_a_louer")
+	
+	@OneToOne(mappedBy = "contrat")
 	private BienALouer bienALouer;
 	
-	@ManyToOne (fetch = FetchType.EAGER)
-	@JoinColumn(name = "bien_a_acheter_id", referencedColumnName = "id_bien_a_acheter")
+	@OneToOne(mappedBy = "contrat")
 	private BienAAcheter bienAAcheter;
 	
 	@ManyToOne (fetch = FetchType.EAGER)

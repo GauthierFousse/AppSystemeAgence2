@@ -41,11 +41,12 @@ public class BienAAcheter extends BienImmobilier {
 	@JoinColumn (name = "proprietaire_id", referencedColumnName = "id_proprietaire")
 	private Proprietaire proprietaire;
 	
-	@OneToMany(mappedBy = "bienALouer")
+	@OneToMany(mappedBy = "bienAAcheter")
     private Collection<Visite> listeVisites;
 	
-	@OneToMany(mappedBy = "bienALouer")
-    private Collection<Contrat> listeContrats;
+	@OneToOne
+	@JoinColumn(name = "contrat_id", referencedColumnName = "id_contrat")
+    private Contrat contrat;
 	
 	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn (name = "classe_standard_id", referencedColumnName = "id_classe_standard")
@@ -86,7 +87,7 @@ public class BienAAcheter extends BienImmobilier {
 	 * @param classeStandard
 	 */
 	public BienAAcheter(int id, double prixAchat, String etat, Adresse adresse, Proprietaire proprietaire,
-			Collection<Visite> listeVisites, Collection<Contrat> listeContrats, ClasseStandard classeStandard) {
+			Collection<Visite> listeVisites, Contrat contrat, ClasseStandard classeStandard) {
 		super();
 		this.id = id;
 		this.prixAchat = prixAchat;
@@ -94,7 +95,7 @@ public class BienAAcheter extends BienImmobilier {
 		this.adresse = adresse;
 		this.proprietaire = proprietaire;
 		this.listeVisites = listeVisites;
-		this.listeContrats = listeContrats;
+		this.contrat = contrat;
 		this.classeStandard = classeStandard;
 	}
 	
@@ -144,11 +145,11 @@ public class BienAAcheter extends BienImmobilier {
 		this.listeVisites = listeVisites;
 	}
 	
-	public Collection<Contrat> getListeContrats() {
-		return listeContrats;
+	public Contrat getContrat() {
+		return contrat;
 	}
-	public void setListeContrats(Collection<Contrat> listeContrats) {
-		this.listeContrats = listeContrats;
+	public void setContrat(Contrat contrat) {
+		this.contrat = contrat;
 	}
 	
 	public ClasseStandard getClasseStandard() {
@@ -160,9 +161,7 @@ public class BienAAcheter extends BienImmobilier {
 	
 	@Override
 	public String toString() {
-		return "BienAAcheter [id=" + id + ", prixAchat=" + prixAchat + ", etat=" + etat + ", adresse=" + adresse
-				+ ", proprietaire=" + proprietaire + ", listeVisites=" + listeVisites + ", listeContrats="
-				+ listeContrats + ", classeStandard=" + classeStandard + "]";
+		return "BienAAcheter [id=" + id + ", prixAchat=" + prixAchat + "]";
 	}
 	
 }
