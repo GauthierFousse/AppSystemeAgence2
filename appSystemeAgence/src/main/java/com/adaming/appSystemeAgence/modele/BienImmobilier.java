@@ -16,15 +16,14 @@ public abstract class BienImmobilier implements Serializable {
 	
 	@Column(name = "date_entree")
 	private Date dateEntree;
+	private String strDateEntree; // pour la conversion
 	
 	@Column(name = "date_disponibilite")
 	private Date dateDisponibilite;
+	private String strDateDisponibilite; // pour la conversion
 	
 	@Column(name = "revenu_cadastral")
 	private double revenuCadastral;
-	
-	@Column(name = "num_contrat")
-	private String numContrat = null;
 	
 	/**
 	 * Constructeur vide
@@ -33,7 +32,7 @@ public abstract class BienImmobilier implements Serializable {
 		super();
 	}
 	/**
-	 * Constructeur plein
+	 * Constructeur plein, sans les dates (String)
 	 * @param statut
 	 * @param dateEntree
 	 * @param dateDisponibilite
@@ -47,8 +46,24 @@ public abstract class BienImmobilier implements Serializable {
 		this.dateDisponibilite = dateDisponibilite;
 		this.revenuCadastral = revenuCadastral;
 	}
-
-
+	
+	/**
+	 * Constructeur plein, sans les dates (Date)
+	 * @param statut
+	 * @param strDateEntree
+	 * @param strDateDisponibilite
+	 * @param revenuCadastral
+	 * @param numContrat
+	 */
+	public BienImmobilier(int statut, String strDateEntree, String strDateDisponibilite, double revenuCadastral,
+			String numContrat) {
+		super();
+		this.statut = statut;
+		this.strDateEntree = strDateEntree;
+		this.strDateDisponibilite = strDateDisponibilite;
+		this.revenuCadastral = revenuCadastral;
+	}
+	
 	/* Accesseurs et mutateurs. */
 	public int getStatut() {
 		return statut;
@@ -74,4 +89,17 @@ public abstract class BienImmobilier implements Serializable {
 	public void setRevenuCadastral(double revenuCadastral) {
 		this.revenuCadastral = revenuCadastral;
 	}
+	public String getStrDateEntree() {
+		return strDateEntree;
+	}
+	public void setStrDateEntree(String strDateEntree) {
+		this.strDateEntree = strDateEntree;
+	}
+	public String getStrDateDisponibilite() {
+		return strDateDisponibilite;
+	}
+	public void setStrDateDisponibilite(String strDateDisponibilite) {
+		this.strDateDisponibilite = strDateDisponibilite;
+	}
+	
 }

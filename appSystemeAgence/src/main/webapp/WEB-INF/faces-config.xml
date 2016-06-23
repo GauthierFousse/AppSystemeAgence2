@@ -411,8 +411,42 @@
 		</navigation-case>
 	</navigation-rule>
 	
-	<navigation-rule><!-- add -->
+	<navigation-rule><!-- add a acheter-->
 		<from-view-id>/addBienAAcheter.xhtml</from-view-id>
+		<!-- cas classiques : sidebar + header -->
+		<navigation-case>
+			<from-outcome>deconnexion</from-outcome>
+			<to-view-id>/identificationConseiller.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versTableauBord</from-outcome>
+			<to-view-id>/tableauBord.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeConseillers</from-outcome>
+			<to-view-id>/listeConseillers.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeProprietaires</from-outcome>
+			<to-view-id>/listeProprietaires.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeClients</from-outcome>
+			<to-view-id>/listeClients.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>versListeBiens</from-outcome>
+			<to-view-id>/listeBiens.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>verslisteClassesStandards</from-outcome>
+			<to-view-id>/listeClassesStandards.xhtml</to-view-id>
+		</navigation-case>
+		<!-- cas speciaux -->
+	</navigation-rule>
+	
+	<navigation-rule><!-- add a louer -->
+		<from-view-id>/addBienALouer.xhtml</from-view-id>
 		<!-- cas classiques : sidebar + header -->
 		<navigation-case>
 			<from-outcome>deconnexion</from-outcome>

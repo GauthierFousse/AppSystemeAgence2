@@ -18,7 +18,6 @@ import com.adaming.appSystemeAgence.dao.IClasseStandardDao;
 import com.adaming.appSystemeAgence.modele.Adresse;
 import com.adaming.appSystemeAgence.modele.BienAAcheter;
 import com.adaming.appSystemeAgence.modele.BienALouer;
-import com.adaming.appSystemeAgence.modele.BienImmobilier;
 import com.adaming.appSystemeAgence.modele.ClasseStandard;
 import com.adaming.appSystemeAgence.modele.Client;
 import com.adaming.appSystemeAgence.modele.Conseiller;
@@ -28,6 +27,7 @@ import com.adaming.appSystemeAgence.service.IClasseStandardService;
 import com.adaming.appSystemeAgence.service.IClientService;
 import com.adaming.appSystemeAgence.service.IConseillerService;
 import com.adaming.appSystemeAgence.service.IProprietaireService;
+import com.adaming.appSystemeAgence.tools.Converter;
 
 @ManagedBean(name = "agenceMB")
 @SessionScoped
@@ -205,11 +205,19 @@ public class AgenceBean implements Serializable {
 	 * Ajout d'un bien a acheter dans la BDD.
 	 */
 	public void addBienAAcheter() {
-		System.out.println("===> MB : add bien a acheter : " + bienAAcheter);
+		System.out.println("===> MB : add bien a acheter : " + bienAAcheter
+					   + "\n        :    de proprietaire : " + proprietaire);
+		bienAAcheter.setProprietaire(proprietaire);
+		
+		/* conversion de la date via le converter dans tools */
+		Converter converter = new Converter();
+		bienAAcheter.setDateEntree(converter.StringToDateFR(bienAAcheter.getStrDateEntree()));
+		bienAAcheter.setDateDisponibilite(converter.StringToDateFR(bienAAcheter.getStrDateDisponibilite()));
+		
 		if (getBienService().addBienAAcheter(bienAAcheter)){
-			System.out.println("===> MB : Client added with success");
+			System.out.println("===> MB : bien added with success");
 		} else {
-			System.out.println("===> MB : Client FAILED to add.");
+			System.out.println("===> MB : bien FAILED to add.");
 		}
 	}
 	
@@ -294,13 +302,11 @@ public class AgenceBean implements Serializable {
 		Map<String, String> params = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap();
 		int idClient = Integer.parseInt(params.get("id"));
-		System.out
-				.println("===> MB : select client id#" + idClient);
+		System.out.println("===> MB : select client id#" + idClient);
 
 		/* Recherche du client ï¿½ afficher par son identifiant. */
 		Client client = getClientService().getClientById(idClient);
-		System.out
-				.println("===> MB : got client : " + client);
+		System.out.println("===> MB : got client : " + client);
 		setClient(client);
 	}
 
@@ -309,27 +315,17 @@ public class AgenceBean implements Serializable {
 	 * recherche du conseiller correspondant dans la base de données.
 	 */
 	public void selectConseiller() {
-		System.out
-				.println("===== AgenceBean.java - Entrée dans la méthode selectConseiller. =====");
-
 		/* Récupération du paramètre id de <f:param>. */
 		Map<String, String> params = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap();
 		int idConseiller = Integer.parseInt(params.get("id"));
-		System.out
-				.println("===== AgenceBean.java, méthode selectConseiller - idConseiller = "
-						+ idConseiller + ". =====");
-
+		System.out.println("===> MB : select client id#" + idConseiller);
+		
 		/* Recherche du client à afficher par son identifiant. */
-		Conseiller conseiller = getConseillerService().getConseillerByID(
-				idConseiller);
-		System.out
-				.println("===== AgenceBean.java, méthode selectConseiller - Conseiller récupéré : "
-						+ (conseiller != null) + ". =====");
+		Conseiller conseiller = getConseillerService().
+								getConseillerByID(idConseiller);
+		System.out.println("===> MB : got client : " + client);
 		setClient(client);
-
-		System.out
-				.println("===== AgenceBean.java - Sortie de la méthode selectConseiller. =====");
 	}
 	
 	/****************************************

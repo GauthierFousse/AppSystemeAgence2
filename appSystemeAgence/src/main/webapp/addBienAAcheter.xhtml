@@ -44,11 +44,11 @@
 					
 					<h3 style="margin-top: 0px">Informations</h3>
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:outputLabel for="dateEntree" value="Date d'enregistrement : " />
-						<p:inputText id="dateEntree" value="#{agenceMB.bienAAcheter.dateEntree}" />
+						<p:outputLabel for="dateEntree" value="Date d'enregistrement (dd/mm/yyyy) : " />
+						<p:inputText id="dateEntree" value="#{agenceMB.bienAAcheter.strDateEntree}" />
 
-						<p:outputLabel for="dateDisponibilite" value="Date dde disponibilite : " />
-						<p:inputText id="dateDisponibilite" value="#{agenceMB.bienAAcheter.dateDisponibilite}" />
+						<p:outputLabel for="dateDisponibilite" value="Date de disponibilite (dd/mm/yyyy) : " />
+						<p:inputText id="dateDisponibilite" value="#{agenceMB.bienAAcheter.strDateDisponibilite}" />
 						
 						<p:outputLabel for="revenuCadastral" value="Revenu Cadastral : " />
 						<p:inputText id="revenuCadastral" value="#{agenceMB.bienAAcheter.revenuCadastral}" />
@@ -64,21 +64,6 @@
 						<p:spacer height="10" />
 					</h:panelGrid>
 					
-					<p:separator />
-					
-					<h3 style="margin-top: 0px">Identité du proprietaire</h3>
-					<h:panelGrid columns="2" cellpadding="5">
-						<p:outputLabel for="nom" value="Nom: " />
-						<p:inputText id="nom" value="#{agenceMB.bienAAcheter.proprietaire.nom}" />
-
-						<p:outputLabel for="prenom" value="Prenom: " />
-						<p:inputText id="prenom" value="#{agenceMB.proprietaire.prenom}" />
-	
-						<!-- pourquoi ne pas ajouter a partir de la liste des proprio ? -->
-	
-						<p:spacer height="10" />
-					</h:panelGrid>
-				
 				</div>
 
 				<p:spacer height="10" />
