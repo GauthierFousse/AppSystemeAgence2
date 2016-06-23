@@ -1,6 +1,7 @@
 package com.adaming.appSystemeAgence.managedBean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -448,7 +449,16 @@ public class AgenceBean implements Serializable {
 				.invalidateSession();
 		return "deconnexion";
 	}
+	
+	/**
+	 * A FAIRE
+	 */
+	public void visiterBien() {}
 
+	/****************************************
+	 * 			LIST GETTER METHODS			*
+	 ****************************************/
+	
 	/**
 	 * 
 	 * @return la liste de tous les conseillers.
@@ -491,7 +501,7 @@ public class AgenceBean implements Serializable {
 
 	/**
 	 * 
-	 * @return la liste de tous les biens
+	 * @return la liste de tous les biens a louer
 	 */
 	public List<BienALouer> getListeBiensALouer() {
 		System.out.println("===> MB : getting listeBiensALouer");
@@ -504,7 +514,7 @@ public class AgenceBean implements Serializable {
 
 	/**
 	 * 
-	 * @return la liste de tous les biens
+	 * @return la liste de tous les biens a acheter
 	 */
 	public List<BienAAcheter> getListeBiensAAcheter() {
 		System.out.println("===> MB : getting listeBiensAAcheter");
@@ -514,7 +524,7 @@ public class AgenceBean implements Serializable {
 		System.out.println("===> MB : liste recuperee : " + listeBiensAAcheter);
 		return listeBiensAAcheter;
 	}
-
+	
 	/**
 	 * 
 	 * @return la liste de toutes les classes standard
@@ -538,9 +548,10 @@ public class AgenceBean implements Serializable {
 		return listeVisites;
 	}
 
-	/*
-	 * autres getters et setters
-	 */
+	/* ******************************************
+	 * 		AUTRES GETTERS et SETTERS			*
+	 ********************************************/
+	
 	public void setListeConseillers(List<Conseiller> listeConseillers) {
 		this.listeConseillers = listeConseillers;
 	}
