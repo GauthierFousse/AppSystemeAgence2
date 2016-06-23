@@ -19,20 +19,20 @@
 			
 			<p:layoutUnit position="center" resizable="true" style="border: 0;">
 				<div>	
-					<!-- id : auto ; statut : a vendre -->
+					<!-- id : auto ; statut : a louer -->
 					
-					<h3>Adresse du bien a vendre</h3>
+					<h3>Adresse du bien a louer</h3>
 					<h:panelGrid columns="2" cellpadding="5">
 						<p:outputLabel for="rue" value="Rue: " />
-						<p:inputText id="rue" value="#{agenceMB.bienAAcheter.adresse.rue}" />
+						<p:inputText id="rue" value="#{agenceMB.bienALouer.adresse.rue}" />
 	
 						<p:outputLabel for="codePostal" value="Code Postal: " />
 						<p:inputText id="codePostal"
-							value="#{agenceMB.bienAAcheter.adresse.codePostal}" />
+							value="#{agenceMB.bienALouer.adresse.codePostal}" />
 	
 						<p:outputLabel for="ville" value="Ville: " />
 						<p:inputText id="ville"
-							value="#{agenceMB.bienAAcheter.adresse.ville}" />
+							value="#{agenceMB.bienALouer.adresse.ville}" />
 					</h:panelGrid>
 					
 					<p:separator />
@@ -40,19 +40,28 @@
 					<h3 style="margin-top: 0px">Informations</h3>
 					<h:panelGrid columns="2" cellpadding="5">
 						<p:outputLabel for="dateEntree" value="Date d'enregistrement (dd/mm/yyyy) : " />
-						<p:inputText id="dateEntree" value="#{agenceMB.bienAAcheter.strDateEntree}" />
+						<p:inputText id="dateEntree" value="#{agenceMB.bienALouer.strDateEntree}" />
 
 						<p:outputLabel for="dateDisponibilite" value="Date de disponibilite (dd/mm/yyyy) : " />
-						<p:inputText id="dateDisponibilite" value="#{agenceMB.bienAAcheter.strDateDisponibilite}" />
+						<p:inputText id="dateDisponibilite" value="#{agenceMB.bienALouer.strDateDisponibilite}" />
 						
 						<p:outputLabel for="revenuCadastral" value="Revenu Cadastral : " />
-						<p:inputText id="revenuCadastral" value="#{agenceMB.bienAAcheter.revenuCadastral}" />
+						<p:inputText id="revenuCadastral" value="#{agenceMB.bienALouer.revenuCadastral}" />
 						
-						<p:outputLabel for="etat" value="Etat : " />
-						<p:inputText id="etat" value="#{agenceMB.bienAAcheter.etat}" />
+						<p:outputLabel for="loyer" value="Loyer (mensuel) : " />
+						<p:inputText id="loyer" value="#{agenceMB.bienALouer.loyerMensuel}" />
 						
-						<p:outputLabel for="prixAchat" value="prixAchat : " />
-						<p:inputText id="prixAchat" value="#{agenceMB.bienAAcheter.prixAchat}" />
+						<p:outputLabel for="charges" value="Charges (mensuelles) : " />
+						<p:inputText id="charges" value="#{agenceMB.bienALouer.chargesMensuelles}" />
+						
+						<p:outputLabel for="caution" value="Caution : " />
+						<p:inputText id="caution" value="#{agenceMB.bienALouer.caution}" />
+						
+						<p:outputLabel for="garniture" value="Meubl&eacute; : " />
+						<p:inputText id="garniture" value="#{agenceMB.bienALouer.garniture}" />
+						
+						<p:outputLabel for="bail" value="Type de Bail : " />
+						<p:inputText id="bail" value="#{agenceMB.bienALouer.typeBail}" />
 						
 						<!-- classeStandard -->
 						
@@ -67,7 +76,7 @@
 					<p:commandButton value="Submit" 
 									 action="versListeBiens"
 									 type="submit" 
-									 actionListener="#{agenceMB.addBienAAcheter()}"
+									 actionListener="#{agenceMB.addBienALouer()}"
 									styleClass="ui-priority-primary" 
 									update="matchGrid" ajax="false" />
 				</h:panelGrid>

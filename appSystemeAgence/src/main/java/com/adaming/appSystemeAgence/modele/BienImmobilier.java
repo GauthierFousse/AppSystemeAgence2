@@ -12,7 +12,7 @@ public abstract class BienImmobilier implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Column(name = "statut")
-	private int statut;
+	private String statut;
 	
 	@Column(name = "date_entree")
 	private Date dateEntree;
@@ -38,7 +38,7 @@ public abstract class BienImmobilier implements Serializable {
 	 * @param dateDisponibilite
 	 * @param revenuCadastral
 	 */
-	public BienImmobilier(int statut, Date dateEntree,
+	public BienImmobilier(String statut, Date dateEntree,
 			Date dateDisponibilite, double revenuCadastral) {
 		super();
 		this.statut = statut;
@@ -55,7 +55,7 @@ public abstract class BienImmobilier implements Serializable {
 	 * @param revenuCadastral
 	 * @param numContrat
 	 */
-	public BienImmobilier(int statut, String strDateEntree, String strDateDisponibilite, double revenuCadastral,
+	public BienImmobilier(String statut, String strDateEntree, String strDateDisponibilite, double revenuCadastral,
 			String numContrat) {
 		super();
 		this.statut = statut;
@@ -65,10 +65,10 @@ public abstract class BienImmobilier implements Serializable {
 	}
 	
 	/* Accesseurs et mutateurs. */
-	public int getStatut() {
+	public String getStatut() {
 		return statut;
 	}
-	public void setStatut(int statut) {
+	public void setStatut(String statut) {
 		this.statut = statut;
 	}
 	public Date getDateEntree() {

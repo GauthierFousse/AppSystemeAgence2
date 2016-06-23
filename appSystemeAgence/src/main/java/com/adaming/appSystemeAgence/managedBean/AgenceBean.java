@@ -196,6 +196,7 @@ public class AgenceBean implements Serializable {
 		System.out.println("===> MB : add bien a acheter : " + bienAAcheter
 					   + "\n        :    de proprietaire : " + proprietaire);
 		bienAAcheter.setProprietaire(proprietaire);
+		bienAAcheter.setStatut("a vendre");
 		
 		/* conversion de la date via le converter dans tools */
 		Converter converter = new Converter();
@@ -215,7 +216,8 @@ public class AgenceBean implements Serializable {
 	public void addBienALouer() {
 		System.out.println("===> MB : add bien a louer : " + bienALouer
 					   + "\n        :    de proprietaire : " + proprietaire);
-		bienAAcheter.setProprietaire(proprietaire);
+		bienALouer.setProprietaire(proprietaire);
+		bienALouer.setStatut("a louer");
 		
 		/* conversion de la date via le converter dans tools */
 		Converter converter = new Converter();
