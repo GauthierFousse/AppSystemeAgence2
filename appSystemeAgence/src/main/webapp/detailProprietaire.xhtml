@@ -15,8 +15,6 @@
 
 			<h:outputStylesheet library="css" name="style.css" />
 			
-			<!-- §§§§§§§§§§§§§§§§§§§§ CENTER §§§§§§§§§§§§§§§§§§§§ -->
-			
 			<p:layoutUnit position="center" resizable="true" style="border: 0;">
 				<div>
 
@@ -54,7 +52,7 @@
 					</h:panelGrid>
 				</div>
 				
-				<h:panelGrid columns="2" cellpadding="3">
+				<h:panelGrid columns="2" cellpadding="3"><!-- === BOUTON SUPPR/MODIF ============= -->
 				
 					<p:commandButton id="modifProprietaire"
 									 value="Modifier"
@@ -183,14 +181,6 @@
 								<h:outputText value="#{bienAAcheter.strDateEntree}" />
 							</p:column>
 
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Visite / Achat" />
-								</f:facet>
-								<p:commandLink value="Visiter" />
-								<p:commandLink value="Acheter" />
-							</p:column>
-
 						</p:dataTable>
 					</p:fieldset>
 				</div>
@@ -277,35 +267,6 @@
 									<h:outputText value="date d'entree" />
 								</f:facet>
 								<h:outputText value="#{bienALouer.strDateEntree}" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Visite / Achat" />
-								</f:facet>
-								<p:commandLink value="Visiter" onclick="PF('dlg_visite').show();"
-									type="button" />
-								<p:commandLink value="Acheter" onclick="PF('dlg_achat').show();"
-									type="button" />
-
-								<p:growl id="growl" sticky="true" showDetail="true"
-									life="3000" />
-								<p:dialog header="Login" widgetVar="dlg_visite" resizable="false">
-									<h:panelGrid columns="2" cellpadding="5">
-										<h:outputLabel for="prenom" value="Prenom du client:" />
-										<p:inputText id="prenom" value="#{agenceMB.client.prenom}"
-											required="true" label="prenom" />
-										<h:outputLabel for="nom" value="Nom du client:" />
-										<p:inputText id="nom" value="#{agenceMB.client.nom}"
-											required="true" label="nom" />
-
-										<f:facet name="footer">
-											<p:commandButton value="Confirmaer Visite" update="growl"
-												actionListener="#{agenceMB.visiterBien}"
-												oncomplete="handleLoginRequest(xhr, status, args)" />
-										</f:facet>
-									</h:panelGrid>
-								</p:dialog>
 							</p:column>
 
 						</p:dataTable>

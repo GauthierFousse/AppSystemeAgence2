@@ -195,6 +195,13 @@ public class BienALouer extends BienImmobilier {
 		this.contrat = contrat;
 	}
 	
+	public ClasseStandard getClasseStandard() {
+		return classeStandard;
+	}
+	public void setClasseStandard(ClasseStandard classeStandard) {
+		this.classeStandard = classeStandard;
+	}
+	
 	@Override
 	public String toString() {
 		return "BienALouer [id=" + id + ", loyerMensuel=" + loyerMensuel + "]";
