@@ -112,8 +112,7 @@ public class Proprietaire extends Personne implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Proprietaire [id=" + id + ", telTravail=" + telTravail + ", adresse=" + adresse + ", listeBiensALouer="
-				+ listeBiensALouer + ", listeBiensAAcheter=" + listeBiensAAcheter + "]";
+		return "Proprietaire [id=" + id + ", " + getNom() + "]";
 	}
 	
 	
